@@ -35,7 +35,6 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
   <!-- GSAP для анимаций -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
- 
   <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
   <script>
@@ -56,10 +55,10 @@
       pointer-events: none;
     }
     body {
-      font-family: 'Raleway', sans-serif; /* Основной шрифт для текста */
+      font-family: 'Raleway', sans-serif;
     }
     h1, h2, h3 {
-      font-family: 'Raleway', sans-serif; /* Шрифт для заголовков */
+      font-family: 'Raleway', sans-serif;
     }
     .bottom-left-panel {
       position: fixed;
@@ -106,6 +105,9 @@
       border: 1px solid rgba(255, 255, 255, 0.1);
       box-shadow: 0 4px 15px rgba(255, 0, 122, 0.3);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 16px;
     }
     .benefit-card:hover {
       transform: scale(1.05);
@@ -142,13 +144,13 @@
       transform: scale(1.05);
     }
     .logo img {
-      width: auto; /* Сохраняем пропорции */
-      max-width: 100%; /* Ограничиваем по ширине контейнера */
-      transition: transform 0.3s ease, filter 0.3s ease; /* Плавные эффекты */
+      width: auto;
+      max-width: 100%;
+      transition: transform 0.3s ease, filter 0.3s ease;
     }
     .logo img:hover {
-      transform: scale(1.1); /* Увеличение при наведении */
-      filter: drop-shadow(0 0 10px rgba(255, 0, 122, 0.5)); /* Тень в стиле акцента */
+      transform: scale(1.1);
+      filter: drop-shadow(0 0 10px rgba(255, 0, 122, 0.5));
     }
     @media (max-width: 640px) {
       .bottom-left-panel {
@@ -164,7 +166,7 @@
         font-size: 12px;
       }
       .logo img {
-        height: 40px; /* Меньший размер на мобильных */
+        height: 40px;
       }
     }
   </style>
@@ -212,18 +214,25 @@
   <!-- Main Content -->
   <main>
     <!-- Main Section -->
-    <section id="main" class="min-h-screen max-h-screen flex items-center justify-center py-10 px-4 overflow-hidden relative">
-      <div class="container mx-auto flex justify-center relative z-0">
-        <div class="why-us-card p-6 rounded-xl max-w-lg" data-aos="fade-up" data-aos-delay="200">
+    <section id="main" class="min-h-screen flex items-center justify-center py-10 px-4 overflow-hidden relative">
+      <div class="container mx-auto flex flex-col items-center justify-center text-center z-10">
+        <h1 class="text-4xl sm:text-5xl md:text-6xl font-heading font-bold mb-4 text-white" data-aos="fade-up" data-aos-duration="1000">TEAM UP</h1>
+        <p class="text-xl md:text-2xl font-sans mb-4" data-aos="fade-up" data-aos-delay="200">Наша команда в поисках менеджера по работе с клиентами.</p>
+        <p class="text-lg md:text-xl font-sans mb-6" data-aos="fade-up" data-aos-delay="400">Работай с нами и выходи на высокий доход</p>
+        <p class="text-base md:text-lg font-sans mb-8" data-aos="fade-up" data-aos-delay="600">Обучение, жилье, переезд за наш счет</p>
+        <a href="#apply" class="inline-block bg-primary text-white px-8 py-4 rounded-full hover:bg-secondary smooth-scroll text-lg font-medium main-button" data-aos="fade-up" data-aos-delay="800">Оставляй заявку</a>
+      </div>
+    </section>
+
+    <!-- Why Us Section -->
+    <section id="why-us" class="py-20 bg-background">
+      <div class="container mx-auto px-4">
+        <div class="why-us-card p-6 rounded-xl max-w-lg mx-auto" data-aos="fade-up" data-aos-delay="200">
           <h3 class="text-3xl md:text-4xl font-heading font-bold mb-6 text-center">Почему именно мы?</h3>
           <p>Наша команда ждёт целеустремлённых сотрудников, готовых к росту и развитию. Мы предлагаем стабильную работу в современном офисе с достойной оплатой, бонусами и карьерными перспективами.</p>
           <p class="mt-4">Присоединяйся к нам прямо сейчас, оставь заявку и начни путь к высокому доходу, который превзойдёт твои ожидания!</p>
           <p class="mt-4">Мы ищем амбициозных сотрудников для офисной работы с зарплатой от 50 000 грн, бонусами и жильём для иногородних.</p>
         </div>
-      </div>
-      <div class="absolute inset-0 flex flex-col items-center justify-center z-10 max-w-full">
-        <h1 class="text-4xl sm:text-5xl md:text-6xl font-heading font-bold mb-8 text-white" data-aos="fade-up" data-aos-duration="1000">TEAM UP</h1>
-        <a href="#apply" class="inline-block bg-primary text-white px-8 py-4 rounded-full hover:bg-secondary smooth-scroll text-lg font-medium main-button" data-aos="fade-up" data-aos-delay="500">Оставить заявку</a>
       </div>
     </section>
 
@@ -233,28 +242,58 @@
         <h2 class="text-3xl md:text-4xl font-heading font-bold text-center mb-12" data-aos="zoom-in">Наши преимущества</h2>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div class="benefit-card p-6 rounded-xl" data-aos="flip-left" data-aos-delay="200">
-            <h3 class="text-xl font-heading font-bold mb-4">Стабильная оплата</h3>
-            <p>Зарплата от 50 000 грн, еженедельные бонусы и премии без потолка. Всё официально и без задержек.</p>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-12 h-12 fill-primary">
+              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+            </svg>
+            <div>
+              <h3 class="text-xl font-heading font-bold mb-4">Стабильная оплата</h3>
+              <p>Зарплата от 50 000 грн, еженедельные бонусы и премии без потолка. Всё официально и без задержек.</p>
+            </div>
           </div>
           <div class="benefit-card p-6 rounded-xl" data-aos="flip-left" data-aos-delay="400">
-            <h3 class="text-xl font-heading font-bold mb-4">Комфортные условия</h3>
-            <p>Современный офис, фиксированный график 5/2, чай/кофе и зона отдыха для твоего удобства.</p>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-12 h-12 fill-primary">
+              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/>
+            </svg>
+            <div>
+              <h3 class="text-xl font-heading font-bold mb-4">Комфортные условия</h3>
+              <p>Современный офис, фиксированный график 5/2, чай/кофе и зона отдыха для твоего удобства.</p>
+            </div>
           </div>
           <div class="benefit-card p-6 rounded-xl" data-aos="flip-left" data-aos-delay="600">
-            <h3 class="text-xl font-heading font-bold mb-4">Карьерный рост</h3>
-            <p>Начни с оператора, стань тимлидом или руководителем. Мы продвигаем амбициозных!</p>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-12 h-12 fill-primary">
+              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+            </svg>
+            <div>
+              <h3 class="text-xl font-heading font-bold mb-4">Карьерный рост</h3>
+              <p>Начни с оператора, стань тимлидом или руководителем. Мы продвигаем амбициозных!</p>
+            </div>
           </div>
           <div class="benefit-card p-6 rounded-xl" data-aos="flip-left" data-aos-delay="200">
-            <h3 class="text-xl font-heading font-bold mb-4">Жильё для иногородних</h3>
-            <p>Предоставляем жильё, чтобы ты мог сосредоточиться на работе, а не на бытовых вопросах.</p>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-12 h-12 fill-primary">
+              <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
+            </svg>
+            <div>
+              <h3 class="text-xl font-heading font-bold mb-4">Жильё для иногородних</h3>
+              <p>Предоставляем жильё, чтобы ты мог сосредоточиться на работе, а не на бытовых вопросах.</p>
+            </div>
           </div>
           <div class="benefit-card p-6 rounded-xl" data-aos="flip-left" data-aos-delay="400">
-            <h3 class="text-xl font-heading font-bold mb-4">Обучение и поддержка</h3>
-            <p>Наставники помогут адаптироваться, даже если у тебя нет опыта. Всему научим!</p>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-12 h-12 fill-primary">
+              <path d="M20 2H4c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-9 18h-1v-1h1v1zm3-3h-4v-1h4v1zm3-3h-7v-1h7v1zm0-3h-7v-1h7v1zm-1-4c0 1.1-.9 2-2 2s-2-.9-2-2 .9-2 2-2 2 .9 2 2z"/>
+            </svg>
+            <div>
+              <h3 class="text-xl font-heading font-bold mb-4">Обучение и поддержка</h3>
+              <p>Наставники помогут адаптироваться, даже если у тебя нет опыта. Всему научим!</p>
+            </div>
           </div>
           <div class="benefit-card p-6 rounded-xl" data-aos="flip-left" data-aos-delay="600">
-            <h3 class="text-xl font-heading font-bold mb-4">Дружный коллектив</h3>
-            <p>Тёплая атмосфера, корпоративы, конкурсы и поддержка команды на каждом этапе.</p>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-12 h-12 fill-primary">
+              <path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/>
+            </svg>
+            <div>
+              <h3 class="text-xl font-heading font-bold mb-4">Дружный коллектив</h3>
+              <p>Тёплая атмосфера, корпоративы, конкурсы и поддержка команды на каждом этапе.</p>
+            </div>
           </div>
         </div>
       </div>
@@ -318,7 +357,7 @@
             <input type="text" id="name" placeholder="Имя" class="w-full p-3 rounded-lg bg-background text-text border border-gray-700 focus:outline-none focus:border-primary">
           </div>
           <div class="mb-6">
-            <input type="number" id="age" placeholder="Возраст" class="w-full p-3 rounded-lg bg-background text-text border border-gray-700 focus:outline-none focus:border-primary">
+            <input type="number" id="age" placeholder="Возраст" min="16" max="36" class="w-full p-3 rounded-lg bg-background text-text border border-gray-700 focus:outline-none focus:border-primary">
           </div>
           <div class="mb-6">
             <input type="tel" id="phone" placeholder="Телефон" class="w-full p-3 rounded-lg bg-background text-text border border-gray-700 focus:outline-none focus:border-primary">
@@ -360,8 +399,7 @@
     // GSAP анимации
     gsap.from("#main h1", { opacity: 0, y: -100, rotation: 5, duration: 1, ease: "power2.out" });
     gsap.from("#main .main-button", { opacity: 0, scale: 0, rotation: -10, duration: 1, delay: 0.5, ease: "elastic.out(1, 0.5)" });
-    gsap.from("#main h3", { opacity: 0, y: 50, duration: 1, delay: 1, ease: "power2.out" });
-    gsap.from("#main p", { opacity: 0, y: 100, scale: 0.9, duration: 1, delay: 1.2, ease: "power2.out" });
+    gsap.from("#main p", { opacity: 0, y: 50, duration: 1, delay: 0.2, ease: "power2.out", stagger: 0.2 });
     gsap.from("header", { opacity: 0, y: -50, duration: 1, ease: "power2.out" });
     gsap.from(".logo img", { opacity: 0, scale: 0, rotation: 180, duration: 1, delay: 0.5, ease: "elastic.out(1, 0.5)" });
     gsap.from(".bottom-left-panel", { opacity: 0, y: 50, duration: 1, delay: 2, ease: "power2.out" });
@@ -407,47 +445,48 @@
     });
 
     // Валидация формы в реальном времени
-const inputs = document.querySelectorAll('#apply-form input');
-inputs.forEach(input => {
-    input.addEventListener('input', () => {
+    const inputs = document.querySelectorAll('#apply-form input');
+    inputs.forEach(input => {
+      input.addEventListener('input', () => {
         input.value.trim() === '' ? input.classList.add('border-red-500') : input.classList.remove('border-red-500');
+      });
     });
-});
 
-document.getElementById('apply-form').addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const name = document.getElementById('name').value.trim();
-    const age = parseInt(document.getElementById('age').value);
-    const phone = document.getElementById('phone').value.trim();
-    const city = document.getElementById('city').value.trim();
+    document.getElementById('apply-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const age = parseInt(document.getElementById('age').value);
+      const phone = document.getElementById('phone').value.trim();
+      const city = document.getElementById('city').value.trim();
 
-    if (!name || !age || !phone || !city) {
+      if (!name || !age || !phone || !city) {
         alert('Пожалуйста, заполните все поля');
         return;
-    }
-    if (isNaN(age) || age < 18) {
-        alert('Возраст должен быть числом и не менее 18 лет');
+      }
+      if (isNaN(age) || age < 16 || age > 36) {
+        alert('Возраст должен быть числом от 16 до 36 лет');
         return;
-    }
+      }
 
-    try {
+      try {
         const response = await fetch('http://localhost:3000/submit', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' }, // Указываем, что отправляем JSON
-            body: JSON.stringify({ name, age, phone, city }) // Преобразуем данные в JSON
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ name, age, phone, city })
         });
         const result = await response.json();
         if (response.ok) {
-            document.getElementById('success-modal').classList.remove('hidden');
-            e.target.reset();
-            inputs.forEach(input => input.classList.remove('border-red-500'));
+          document.getElementById('success-modal').classList.remove('hidden');
+          e.target.reset();
+          inputs.forEach(input => input.classList.remove('border-red-500'));
         } else {
-            throw new Error(result.error || 'Ошибка сервера');
+          throw new Error(result.error || 'Ошибка сервера');
         }
-    } catch (error) {
+      } catch (error) {
         alert('Ошибка: ' + error.message);
-    }
-});
+      }
+    });
+
     // Анимация с движущимися кругами
     const rand = (min, max) => Math.random() * (max - min) + min;
     const canvas = document.getElementById('liquid-canvas');

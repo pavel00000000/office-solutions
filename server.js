@@ -3,12 +3,11 @@ const TelegramBot = require('node-telegram-bot-api');
 const dotenv = require('dotenv');
 const path = require('path');
 const cors = require('cors');
-const multer = require('multer'); // Добавляем multer
 
-console.log('2. Модули импортированы');
+console.log('1. Начинаю запуск сервера...');
 
 dotenv.config();
-console.log('3. Переменные окружения загружены:', {
+console.log('2. Переменные окружения загружены:', {
     token: process.env.TELEGRAM_TOKEN ? 'Есть' : 'Нет',
     chatId: process.env.CHAT_ID ? 'Есть' : 'Нет',
     port: process.env.PORT
@@ -17,20 +16,31 @@ console.log('3. Переменные окружения загружены:', {
 const app = express();
 const port = process.env.PORT || 3000;
 
-console.log('4. Создаю бота...');
-const bot = new TelegramBot(process.env.TELEGRAM_TOKEN, { polling: true });
+console.log('3. Создаю бота...');
+const bot = new TelegramBot(process.env.TELEGRAM_TOKEN, { polling: false }); // Отключаем polling
 
-console.log('5. Настраиваю middleware...');
+// Настраиваем webhook
+const webhookUrl = `https://your-app.onrender.com/bot${process.env.TELEGRAM_TOKEN}`; // Замените на ваш домен
+bot.setWebHook(webhookUrl).then(() => {
+    console.log(`Webhook установлен: ${webhookUrl}`);
+}).catch(err => {
+    console.error('Ошибка установки webhook:', err);
+});
+
+console.log('4. Настраиваю middleware...');
 app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static(__dirname));
 
-// Настраиваем multer (без загрузки файлов, только для парсинга формы)
-const upload = multer();
+// Маршрут для обработки обновлений от Telegram
+app.post(`/bot${process.env.TELEGRAM_TOKEN}`, (req, res) => {
+    bot.processUpdate(req.body);
+    res.sendStatus(200);
+});
 
-app.post('/submit', upload.none(), (req, res) => {
-    console.log('6. Получен запрос на /submit:', req.body);
+app.post('/submit', (req, res) => {
+    console.log('5. Получен запрос на /submit:', req.body);
     const { name, age, phone, city } = req.body;
     if (!name || !age || !phone || !city) {
         return res.status(400).json({ error: 'Все поля обязательны' });
@@ -63,5 +73,5 @@ bot.on('message', (msg) => {
 });
 
 app.listen(port, () => {
-    console.log(`7. Сервер запущен на http://localhost:${port}`);
+    console.log(`6. Сервер запущен на http://localhost:${port}`);
 });
