@@ -451,7 +451,6 @@
         input.value.trim() === '' ? input.classList.add('border-red-500') : input.classList.remove('border-red-500');
       });
     });
-
     document.getElementById('apply-form').addEventListener('submit', async (e) => {
   e.preventDefault();
   const name = document.getElementById('name').value.trim();
@@ -469,7 +468,7 @@
   }
 
   try {
-    const response = await fetch('http://localhost:3000/submit', {
+    const response = await fetch('https://office-solutions.onrender.com/submit', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ name, age, phone, city })

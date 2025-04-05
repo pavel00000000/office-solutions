@@ -8,39 +8,32 @@ dotenv.config();
 const app = express();
 const port = process.env.PORT || 3000;
 
-// Проверка переменных окружения
 const { TELEGRAM_TOKEN, CHAT_ID } = process.env;
 if (!TELEGRAM_TOKEN || !CHAT_ID) {
   console.error('Ошибка: TELEGRAM_TOKEN и CHAT_ID должны быть заданы в .env');
   process.exit(1);
 }
 
-// Инициализация Telegram бота с polling
-const bot = new TelegramBot(TELEGRAM_TOKEN, { polling: true });
+const bot = new TelegramBot(TELEGRAM_TOKEN);
 
-// Middleware
-app.use(cors({ origin: '*' })); // Разрешаем запросы с любого источника
+app.use(cors({ origin: '*' }));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(express.static(__dirname)); // Статические файлы из корневой директории
+app.use(express.static(__dirname));
 
-// Логирование запросов
 app.use((req, res, next) => {
   console.log(`[${new Date().toISOString()}] ${req.method} ${req.url}`);
   next();
 });
 
-// Корневой маршрут для API
 app.get('/api', (req, res) => {
   res.status(200).json({ message: 'Сервер работает. Используйте /submit для отправки формы.' });
 });
 
-// Обслуживание index.html
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'index.html'));
 });
 
-// Обработка формы
 app.post('/submit', (req, res) => {
   const { name, age, phone, city } = req.body;
   if (!name || !age || !phone || !city) {
@@ -70,18 +63,30 @@ app.post('/submit', (req, res) => {
     });
 });
 
-// Обработка несуществующих маршрутов
+if (process.env.NODE_ENV === 'production') {
+  const webhookUrl = `https://office-solutions.onrender.com/bot${TELEGRAM_TOKEN}`;
+  bot.setWebHook(webhookUrl)
+    .then(() => console.log(`Webhook установлен: ${webhookUrl}`))
+    .catch((err) => console.error('Ошибка установки Webhook:', err.message));
+
+  app.post(`/bot${TELEGRAM_TOKEN}`, (req, res) => {
+    bot.processUpdate(req.body);
+    res.sendStatus(200);
+  });
+} else {
+  bot.startPolling({ restart: true });
+  console.log('Polling запущен для локального режима');
+}
+
 app.use((req, res) => {
   res.status(404).json({ error: 'Маршрут не найден' });
 });
 
-// Глобальный обработчик ошибок
 app.use((err, req, res, next) => {
   console.error('Необработанная ошибка:', err.stack);
   res.status(500).json({ error: 'Внутренняя ошибка сервера' });
 });
 
-// Запуск сервера
 app.listen(port, () => {
   console.log(`Сервер запущен на http://localhost:${port}`);
 });
