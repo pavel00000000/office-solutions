@@ -4,76 +4,84 @@ const dotenv = require('dotenv');
 const path = require('path');
 const cors = require('cors');
 
-console.log('1. Начинаю запуск сервера...');
-
 dotenv.config();
-console.log('2. Переменные окружения загружены:', {
-    token: process.env.TELEGRAM_TOKEN ? 'Есть' : 'Нет',
-    chatId: process.env.CHAT_ID ? 'Есть' : 'Нет',
-    port: process.env.PORT
-});
-
 const app = express();
 const port = process.env.PORT || 3000;
 
-console.log('3. Создаю бота...');
-const bot = new TelegramBot(process.env.TELEGRAM_TOKEN, { polling: false }); // Отключаем polling
+// Проверка переменных окружения
+const { TELEGRAM_TOKEN, CHAT_ID } = process.env;
+if (!TELEGRAM_TOKEN || !CHAT_ID) {
+  console.error('Ошибка: TELEGRAM_TOKEN и CHAT_ID должны быть заданы в .env');
+  process.exit(1);
+}
 
-// Настраиваем webhook
-const webhookUrl = `https://office-solutions.onrender.com${process.env.TELEGRAM_TOKEN}`; // Замените на ваш домен
-bot.setWebHook(webhookUrl).then(() => {
-    console.log(`Webhook установлен: ${webhookUrl}`);
-}).catch(err => {
-    console.error('Ошибка установки webhook:', err);
-});
+// Инициализация Telegram бота с polling
+const bot = new TelegramBot(TELEGRAM_TOKEN, { polling: true });
 
-console.log('4. Настраиваю middleware...');
-app.use(cors());
+// Middleware
+app.use(cors({ origin: '*' })); // Разрешаем запросы с любого источника
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(express.static(__dirname)); // Статические файлы из корневой директории
 
-// ✅ Используем папку public для статики
-app.use(express.static(path.join(__dirname, 'public')));
-
-// Маршрут для обработки обновлений от Telegram
-app.post(`/bot${process.env.TELEGRAM_TOKEN}`, (req, res) => {
-    bot.processUpdate(req.body);
-    res.sendStatus(200);
+// Логирование запросов
+app.use((req, res, next) => {
+  console.log(`[${new Date().toISOString()}] ${req.method} ${req.url}`);
+  next();
 });
 
+// Корневой маршрут для API
+app.get('/api', (req, res) => {
+  res.status(200).json({ message: 'Сервер работает. Используйте /submit для отправки формы.' });
+});
+
+// Обслуживание index.html
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'index.html'));
+});
+
+// Обработка формы
 app.post('/submit', (req, res) => {
-    console.log('5. Получен запрос на /submit:', req.body);
-    const { name, age, phone, city } = req.body;
-    if (!name || !age || !phone || !city) {
-        return res.status(400).json({ error: 'Все поля обязательны' });
-    }
-    if (isNaN(age) || age < 18) {
-        return res.status(400).json({ error: 'Возраст должен быть числом и не менее 18 лет' });
-    }
+  const { name, age, phone, city } = req.body;
+  if (!name || !age || !phone || !city) {
+    return res.status(400).json({ error: 'Все поля обязательны' });
+  }
+  if (isNaN(age) || age < 18) {
+    return res.status(400).json({ error: 'Возраст должен быть числом и не менее 18 лет' });
+  }
 
-    const message = `
-Новая заявка:
-Имя: ${name}
-Возраст: ${age}
-Телефон: ${phone}
-Город: ${city}
-Дата: ${new Date().toLocaleString('ru-RU')}
-    `;
+  const message = `
+    Новая заявка:
+    Имя: ${name}
+    Возраст: ${age}
+    Телефон: ${phone}
+    Город: ${city}
+    Дата: ${new Date().toLocaleString('ru-RU')}
+  `;
 
-    bot.sendMessage(process.env.CHAT_ID, message)
-        .then(() => res.status(200).json({ success: true }))
-        .catch((error) => {
-            console.error('Ошибка отправки в Telegram:', error);
-            res.status(500).json({ error: 'Ошибка сервера' });
-        });
+  bot.sendMessage(CHAT_ID, message)
+    .then(() => {
+      console.log('Сообщение успешно отправлено в Telegram');
+      res.status(200).json({ success: true });
+    })
+    .catch((error) => {
+      console.error('Ошибка отправки в Telegram:', error.message);
+      res.status(500).json({ error: 'Ошибка сервера' });
+    });
 });
 
-bot.on('message', (msg) => {
-    const chatId = msg.chat.id;
-    console.log(`Ваш CHAT_ID: ${chatId}`);
-    bot.sendMessage(chatId, 'Привет! Я получил ваше сообщение.');
+// Обработка несуществующих маршрутов
+app.use((req, res) => {
+  res.status(404).json({ error: 'Маршрут не найден' });
 });
 
+// Глобальный обработчик ошибок
+app.use((err, req, res, next) => {
+  console.error('Необработанная ошибка:', err.stack);
+  res.status(500).json({ error: 'Внутренняя ошибка сервера' });
+});
+
+// Запуск сервера
 app.listen(port, () => {
-    console.log(`6. Сервер запущен на http://localhost:${port}`);
+  console.log(`Сервер запущен на http://localhost:${port}`);
 });

@@ -453,40 +453,39 @@
     });
 
     document.getElementById('apply-form').addEventListener('submit', async (e) => {
-      e.preventDefault();
-      const name = document.getElementById('name').value.trim();
-      const age = parseInt(document.getElementById('age').value);
-      const phone = document.getElementById('phone').value.trim();
-      const city = document.getElementById('city').value.trim();
+  e.preventDefault();
+  const name = document.getElementById('name').value.trim();
+  const age = parseInt(document.getElementById('age').value);
+  const phone = document.getElementById('phone').value.trim();
+  const city = document.getElementById('city').value.trim();
 
-      if (!name || !age || !phone || !city) {
-        alert('Пожалуйста, заполните все поля');
-        return;
-      }
-      if (isNaN(age) || age < 16 || age > 36) {
-        alert('Возраст должен быть числом от 16 до 36 лет');
-        return;
-      }
+  if (!name || !age || !phone || !city) {
+    alert('Пожалуйста, заполните все поля');
+    return;
+  }
+  if (isNaN(age) || age < 16 || age > 36) {
+    alert('Возраст должен быть числом от 16 до 36 лет');
+    return;
+  }
 
-      try {
-        const response = await fetch('https://office-solutions.onrender.com', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ name, age, phone, city })
-        });
-        const result = await response.json();
-        if (response.ok) {
-          document.getElementById('success-modal').classList.remove('hidden');
-          e.target.reset();
-          inputs.forEach(input => input.classList.remove('border-red-500'));
-        } else {
-          throw new Error(result.error || 'Ошибка сервера');
-        }
-      } catch (error) {
-        alert('Ошибка: ' + error.message);
-      }
+  try {
+    const response = await fetch('http://localhost:3000/submit', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name, age, phone, city })
     });
-
+    const result = await response.json();
+    if (response.ok) {
+      document.getElementById('success-modal').classList.remove('hidden');
+      e.target.reset();
+      inputs.forEach(input => input.classList.remove('border-red-500'));
+    } else {
+      throw new Error(result.error || 'Ошибка сервера');
+    }
+  } catch (error) {
+    alert('Ошибка: ' + error.message);
+  }
+});
     // Анимация с движущимися кругами
     const rand = (min, max) => Math.random() * (max - min) + min;
     const canvas = document.getElementById('liquid-canvas');
