@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Присоединяйся к команде Офисных решений! Офисная работа с зарплатой от 50 000 грн, бонусами, жильём для иногородних и карьерным ростом.">
+  <meta name="keywords" content="вакансии, офисная работа, высокая зарплата, карьерный рост, холодные звонки">
+  <meta name="author" content="Офисные решения">
+  <title>Офисные решения | Вакансии</title>
+  <!-- Подключение шрифта Raleway через Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Tailwind CSS через CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#E91E63', // Фуксия
+            secondary: '#FF007A', // Розовый
+            background: '#0F0F0F', // Тёмный фон
+            text: '#FFFFFF', // Белый текст
+            accent: '#FF007A', // Акцент
+          },
+          fontFamily: {
+            sans: ['Raleway', 'sans-serif'], // Основной текст
+            heading: ['Raleway', 'sans-serif'], // Заголовки
+          },
+        },
+      },
+    }
+  </script>
+  <!-- AOS для анимаций -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <!-- GSAP для анимаций -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+ 
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX');
+  </script>
+  <!-- Стили -->
+  <style>
+    #liquid-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      pointer-events: none;
+    }
+    body {
+      font-family: 'Raleway', sans-serif; /* Основной шрифт для текста */
+    }
+    h1, h2, h3 {
+      font-family: 'Raleway', sans-serif; /* Шрифт для заголовков */
+    }
+    .bottom-left-panel {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      z-index: 100;
+    }
+    .social-icon, .apply-button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 48px;
+      height: 48px;
+      background-color: #1F1F1F;
+      border-radius: 50%;
+      transition: transform 0.3s ease, background-color 0.3s ease;
+    }
+    .social-icon:hover, .apply-button:hover {
+      transform: scale(1.1);
+      background-color: #FF007A;
+    }
+    .social-icon:focus, .apply-button:focus, .faq-button:focus, .nav-button:focus {
+      outline: 2px solid #FF007A;
+      outline-offset: 2px;
+    }
+    .apply-button {
+      width: auto;
+      padding: 12px 16px;
+      border-radius: 24px;
+      font-size: 14px;
+      font-weight: 500;
+      color: #FFFFFF;
+    }
+    .social-icon svg, .apply-button svg {
+      width: 24px;
+      height: 24px;
+      fill: #FFFFFF;
+    }
+    .benefit-card {
+      background-color: transparent;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 4px 15px rgba(255, 0, 122, 0.3);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .benefit-card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 10px 25px rgba(255, 0, 122, 0.5);
+    }
+    .why-us-card {
+      background-color: #0F0F0F;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 4px 15px rgba(255, 0, 122, 0.3);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .why-us-card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 10px 25px rgba(255, 0, 122, 0.5);
+    }
+    .border-red-500 {
+      border-color: #EF4444;
+    }
+    .nav-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8px 16px;
+      background-color: #1F1F1F;
+      color: #FFFFFF;
+      border-radius: 24px;
+      font-size: 14px;
+      font-weight: 500;
+      text-decoration: none;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+    .nav-button:hover {
+      background-color: #FF007A;
+      transform: scale(1.05);
+    }
+    .logo img {
+      width: auto; /* Сохраняем пропорции */
+      max-width: 100%; /* Ограничиваем по ширине контейнера */
+      transition: transform 0.3s ease, filter 0.3s ease; /* Плавные эффекты */
+    }
+    .logo img:hover {
+      transform: scale(1.1); /* Увеличение при наведении */
+      filter: drop-shadow(0 0 10px rgba(255, 0, 122, 0.5)); /* Тень в стиле акцента */
+    }
+    @media (max-width: 640px) {
+      .bottom-left-panel {
+        left: 10px;
+        bottom: 10px;
+      }
+      .social-icon, .apply-button {
+        width: 36px;
+        height: 36px;
+      }
+      .nav-button {
+        padding: 6px 12px;
+        font-size: 12px;
+      }
+      .logo img {
+        height: 40px; /* Меньший размер на мобильных */
+      }
+    }
+  </style>
+</head>
+<body class="bg-background text-text">
+  <!-- Canvas для анимации -->
+  <canvas id="liquid-canvas"></canvas>
+
+  <!-- Preloader -->
+  <div id="preloader" class="fixed inset-0 bg-background flex items-center justify-center z-50">
+    <div class="animate-spin rounded-full h-24 w-24 border-t-2 border-b-2 border-primary"></div>
+  </div>
+
+  <!-- Header -->
+  <header class="fixed top-0 w-full bg-background/90 backdrop-blur-sm z-50">
+    <nav class="container mx-auto flex justify-between items-center py-4 px-4 md:px-0">
+      <div class="logo">
+        <img src="new-logo.png" alt="Логотип Team Up" class="h-12 md:h-14">
+      </div>
+      <ul class="flex space-x-4 md:space-x-6">
+        <li><a href="#benefits" class="nav-button smooth-scroll">О нас</a></li>
+        <li><a href="#faq" class="nav-button smooth-scroll">Частые вопросы</a></li>
+        <li><a href="#apply" class="nav-button smooth-scroll">Оставить заявку</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Bottom Left Panel -->
+  <div class="bottom-left-panel">
+    <a href="https://www.instagram.com/rabota_work23?igsh=MWY2cXlhMTNjNGw0OQ==" target="_blank" class="social-icon" title="Instagram" tabindex="0">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.366.062 2.633.326 3.608 1.301.975.975 1.24 2.242 1.301 3.608.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.062 1.366-.326 2.633-1.301 3.608-.975.975-2.242 1.24-3.608 1.301-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.366-.062-2.633-.326-3.608-1.301-.975-.975-1.24-2.242-1.301-3.608-.058-1.266-.07-1.646-.07-4.85s.012-3.584.07-4.85c.062-1.366.326-2.633 1.301-3.608.975-.975 2.242-1.24 3.608-1.301 1.266-.058 1.646-.07 4.85-.07m0-2.163c-3.259 0-3.67.014-4.947.072-1.453.066-2.895.402-4.038 1.545-1.143 1.143-1.479 2.585-1.545 4.038-.058 1.277-.072 1.688-.072 4.947s.014 3.67.072 4.947c.066 1.453.402 2.895 1.545 4.038 1.143 1.143 2.585 1.479 4.038 1.545 1.277.058 1.688.072 4.947.072s3.67-.014 4.947-.072c1.453-.066 2.895-.402 4.038-1.545 1.143-1.143 1.479-2.585 1.545-4.038.058-1.277.072-1.688.072-4.947s-.014-3.67-.072-4.947c-.066-1.453-.402-2.895-1.545-4.038-1.143-1.143-2.585-1.479-4.038-1.545-1.277-.058-1.688-.072-4.947-.072zM12 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.162 6.162 6.162 6.162-2.759 6.162-6.162-2.759-6.162-6.162-6.162zm0 10.324c-2.297 0-4.162-1.865-4.162-4.162s1.865-4.162 4.162-4.162 4.162 1.865 4.162 4.162-1.865 4.162-4.162 4.162zm6.406-11.845c-.796 0-1.441.645-1.441 1.441s.645 1.441 1.441 1.441 1.441-.645 1.441-1.441-.645-1.441-1.441-1.441z"/></svg>
+    </a>
+    <a href="https://t.me/rabota_work23" target="_blank" class="social-icon" title="Telegram" tabindex="0">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm4.441 8.754l-1.546 7.287c-.11.54-.54.674-.853.418l-2.267-1.67-.867.529c-.382.185-.784-.232-.571-.58l4.132-3.78c.381-.349.735-.521.202-1.064l-4.765-3.73c-.54-.42-.266-.762.352-.571l9.205 3.62c.54.213.571.84.026 1.415z"/></svg>
+    </a>
+    <a href="tel:+380931051835" class="social-icon" title="Позвонить" tabindex="0">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.24 1.02l-2.2 2.2zm3.48-4.99c-.18 0-.36.07-.49.21l-2.2 2.2c-.14.14-.21.31-.21.49s.07.36.21.49l2.2 2.2c.14.14.31.21.49.21s.36-.07.49-.21l2.2-2.2c.14-.14.21-.31.21-.49s-.07-.36-.21-.49l-2.2-2.2c-.13-.14-.31-.21-.49-.21z"/></svg>
+    </a>
+    <a href="#apply" class="apply-button smooth-scroll" title="Оставить заявку" tabindex="0">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="mr-2"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 14H4V8l8 5 8-5v10zm-8-7L4 6h16l-8 5z"/></svg>
+      Заявка
+    </a>
+  </div>
+
+  <!-- Main Content -->
+  <main>
+    <!-- Main Section -->
+    <section id="main" class="min-h-screen max-h-screen flex items-center justify-center py-10 px-4 overflow-hidden relative">
+      <div class="container mx-auto flex justify-center relative z-0">
+        <div class="why-us-card p-6 rounded-xl max-w-lg" data-aos="fade-up" data-aos-delay="200">
+          <h3 class="text-3xl md:text-4xl font-heading font-bold mb-6 text-center">Почему именно мы?</h3>
+          <p>Наша команда ждёт целеустремлённых сотрудников, готовых к росту и развитию. Мы предлагаем стабильную работу в современном офисе с достойной оплатой, бонусами и карьерными перспективами.</p>
+          <p class="mt-4">Присоединяйся к нам прямо сейчас, оставь заявку и начни путь к высокому доходу, который превзойдёт твои ожидания!</p>
+          <p class="mt-4">Мы ищем амбициозных сотрудников для офисной работы с зарплатой от 50 000 грн, бонусами и жильём для иногородних.</p>
+        </div>
+      </div>
+      <div class="absolute inset-0 flex flex-col items-center justify-center z-10 max-w-full">
+        <h1 class="text-4xl sm:text-5xl md:text-6xl font-heading font-bold mb-8 text-white" data-aos="fade-up" data-aos-duration="1000">TEAM UP</h1>
+        <a href="#apply" class="inline-block bg-primary text-white px-8 py-4 rounded-full hover:bg-secondary smooth-scroll text-lg font-medium main-button" data-aos="fade-up" data-aos-delay="500">Оставить заявку</a>
+      </div>
+    </section>
+
+    <!-- Benefits -->
+    <section id="benefits" class="py-20 bg-background">
+      <div class="container mx-auto px-4">
+        <h2 class="text-3xl md:text-4xl font-heading font-bold text-center mb-12" data-aos="zoom-in">Наши преимущества</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div class="benefit-card p-6 rounded-xl" data-aos="flip-left" data-aos-delay="200">
+            <h3 class="text-xl font-heading font-bold mb-4">Стабильная оплата</h3>
+            <p>Зарплата от 50 000 грн, еженедельные бонусы и премии без потолка. Всё официально и без задержек.</p>
+          </div>
+          <div class="benefit-card p-6 rounded-xl" data-aos="flip-left" data-aos-delay="400">
+            <h3 class="text-xl font-heading font-bold mb-4">Комфортные условия</h3>
+            <p>Современный офис, фиксированный график 5/2, чай/кофе и зона отдыха для твоего удобства.</p>
+          </div>
+          <div class="benefit-card p-6 rounded-xl" data-aos="flip-left" data-aos-delay="600">
+            <h3 class="text-xl font-heading font-bold mb-4">Карьерный рост</h3>
+            <p>Начни с оператора, стань тимлидом или руководителем. Мы продвигаем амбициозных!</p>
+          </div>
+          <div class="benefit-card p-6 rounded-xl" data-aos="flip-left" data-aos-delay="200">
+            <h3 class="text-xl font-heading font-bold mb-4">Жильё для иногородних</h3>
+            <p>Предоставляем жильё, чтобы ты мог сосредоточиться на работе, а не на бытовых вопросах.</p>
+          </div>
+          <div class="benefit-card p-6 rounded-xl" data-aos="flip-left" data-aos-delay="400">
+            <h3 class="text-xl font-heading font-bold mb-4">Обучение и поддержка</h3>
+            <p>Наставники помогут адаптироваться, даже если у тебя нет опыта. Всему научим!</p>
+          </div>
+          <div class="benefit-card p-6 rounded-xl" data-aos="flip-left" data-aos-delay="600">
+            <h3 class="text-xl font-heading font-bold mb-4">Дружный коллектив</h3>
+            <p>Тёплая атмосфера, корпоративы, конкурсы и поддержка команды на каждом этапе.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="py-20 px-4" lang="ru">
+      <div class="container mx-auto">
+        <h2 class="text-3xl md:text-4xl font-heading font-bold text-center mb-12" data-aos="zoom-in">Частые вопросы</h2>
+        <div class="max-w-3xl mx-auto space-y-6">
+          <div class="faq-item bg-background p-6 rounded-xl" data-aos="fade-up" data-aos-delay="200">
+            <button class="w-full text-left text-xl font-heading font-semibold hover:text-accent faq-button" aria-expanded="false">Оказываете ли вы поддержку?</button>
+            <div class="faq-answer hidden mt-4 text-base">
+              <p>Мы ценим каждого сотрудника и создаём комфортные условия для работы и развития:</p>
+              <ul class="list-disc pl-6 mt-2 space-y-2">
+                <li>Обучение и адаптация: наставники помогут, даже если нет опыта.</li>
+                <li>Жильё для иногородних: никаких забот о поиске жилья.</li>
+                <li>Финансовая мотивация: зарплата + бонусы без ограничений.</li>
+                <li>Дружный коллектив: поддержка команды и тёплая атмосфера.</li>
+                <li>Карьерный рост: от оператора до руководителя.</li>
+                <li>Комфортный офис: современное оборудование и зона отдыха.</li>
+                <li>Корпоративы: конкурсы, подарки и мероприятия.</li>
+              </ul>
+            </div>
+          </div>
+          <div class="faq-item bg-background p-6 rounded-xl" data-aos="fade-up" data-aos-delay="400">
+            <button class="w-full text-left text-xl font-heading font-semibold hover:text-accent faq-button" aria-expanded="false">Гарантии безопасности работы?</button>
+            <div class="faq-answer hidden mt-4 text-base">
+              <p>Мы обеспечиваем надёжные условия:</p>
+              <ul class="list-disc pl-6 mt-2 space-y-2">
+                <li>Фиксированная зарплата + бонусы: выплаты без задержек.</li>
+                <li>Комфортный офис: безопасное рабочее место.</li>
+                <li>Обучение и поддержка: наставники помогут адаптироваться.</li>
+                <li>Честные условия: без скрытых платежей или штрафов.</li>
+                <li>Конфиденциальность: твои данные в безопасности.</li>
+              </ul>
+            </div>
+          </div>
+          <div class="faq-item bg-background p-6 rounded-xl" data-aos="fade-up" data-aos-delay="600">
+            <button class="w-full text-left text-xl font-heading font-semibold hover:text-accent faq-button" aria-expanded="false">Есть ли карьерный рост?</button>
+            <div class="faq-answer hidden mt-4 text-base">
+              <p>Да, у нас реальные возможности для роста:</p>
+              <ul class="list-disc pl-6 mt-2 space-y-2">
+                <li>Начни с оператора: полное обучение.</li>
+                <li>Стань тимлидом: веди команду.</li>
+                <li>Расти до руководителя: управляй процессами.</li>
+                <li>Лучших продвигаем быстро!</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Apply -->
+    <section id="apply" class="py-20 bg-background px-4">
+      <div class="container mx-auto text-center">
+        <h2 class="text-3xl md:text-4xl font-heading font-bold mb-12" data-aos="zoom-in">Оставь заявку</h2>
+        <form class="max-w-md mx-auto" id="apply-form" data-aos="fade-up" data-aos-delay="200">
+          <div class="mb-6">
+            <input type="text" id="name" placeholder="Имя" class="w-full p-3 rounded-lg bg-background text-text border border-gray-700 focus:outline-none focus:border-primary">
+          </div>
+          <div class="mb-6">
+            <input type="number" id="age" placeholder="Возраст" class="w-full p-3 rounded-lg bg-background text-text border border-gray-700 focus:outline-none focus:border-primary">
+          </div>
+          <div class="mb-6">
+            <input type="tel" id="phone" placeholder="Телефон" class="w-full p-3 rounded-lg bg-background text-text border border-gray-700 focus:outline-none focus:border-primary">
+          </div>
+          <div class="mb-6">
+            <input type="text" id="city" placeholder="Город" class="w-full p-3 rounded-lg bg-background text-text border border-gray-700 focus:outline-none focus:border-primary">
+          </div>
+          <button type="submit" class="bg-primary text-white px-8 py-4 rounded-full hover:bg-secondary submit-button text-lg font-medium">Отправить заявку</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- Success Modal -->
+  <div id="success-modal" class="hidden fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+    <div class="bg-background p-6 rounded-lg text-white">
+      <p>Заявка успешно отправлена!</p>
+      <button onclick="document.getElementById('success-modal').classList.add('hidden')" class="mt-4 bg-primary px-4 py-2 rounded hover:bg-secondary">Закрыть</button>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-background py-12 px-4">
+    <div class="container mx-auto text-center" data-aos="fade-up">
+      <p class="text-sm mb-4">© 2025 Все права защищены.</p>
+      <p class="text-sm"><a href="/privacy" class="hover:text-accent">Политика конфиденциальности</a></p>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script>
+    // Инициализация AOS
+    AOS.init({
+      duration: 800,
+      easing: 'ease-in-out',
+      once: false,
+    });
+
+    // GSAP анимации
+    gsap.from("#main h1", { opacity: 0, y: -100, rotation: 5, duration: 1, ease: "power2.out" });
+    gsap.from("#main .main-button", { opacity: 0, scale: 0, rotation: -10, duration: 1, delay: 0.5, ease: "elastic.out(1, 0.5)" });
+    gsap.from("#main h3", { opacity: 0, y: 50, duration: 1, delay: 1, ease: "power2.out" });
+    gsap.from("#main p", { opacity: 0, y: 100, scale: 0.9, duration: 1, delay: 1.2, ease: "power2.out" });
+    gsap.from("header", { opacity: 0, y: -50, duration: 1, ease: "power2.out" });
+    gsap.from(".logo img", { opacity: 0, scale: 0, rotation: 180, duration: 1, delay: 0.5, ease: "elastic.out(1, 0.5)" });
+    gsap.from(".bottom-left-panel", { opacity: 0, y: 50, duration: 1, delay: 2, ease: "power2.out" });
+    gsap.from("footer", { opacity: 0, y: 50, duration: 1, delay: 2, ease: "power2.out" });
+
+    // Плавный скролл
+    document.querySelectorAll('.smooth-scroll').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href');
+        document.querySelector(targetId).scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    });
+
+    // Hover-эффекты для карточек
+    document.querySelectorAll('.benefit-card, .why-us-card').forEach(card => {
+      card.addEventListener('mouseenter', () => gsap.to(card, { scale: 1.05, boxShadow: "0 10px 25px rgba(255, 0, 122, 0.5)", duration: 0.3 }));
+      card.addEventListener('mouseleave', () => gsap.to(card, { scale: 1, boxShadow: "0 4px 15px rgba(255, 0, 122, 0.3)", duration: 0.3 }));
+    });
+
+    // Hover-эффект для кнопок и логотипа
+    document.querySelectorAll('.submit-button, .main-button, .nav-button, .social-icon, .apply-button, .logo img').forEach(element => {
+      element.addEventListener('mouseenter', () => gsap.to(element, { scale: 1.05, duration: 0.2, ease: "pulse" }));
+      element.addEventListener('mouseleave', () => gsap.to(element, { scale: 1, duration: 0.2 }));
+    });
+
+    // Preloader
+    window.addEventListener('load', () => {
+      gsap.to("#preloader", { opacity: 0, scale: 0.5, duration: 0.8, ease: "power2.in", onComplete: () => {
+        document.getElementById('preloader').style.display = 'none';
+      }});
+    });
+
+    // FAQ аккордеон
+    document.querySelectorAll('.faq-button').forEach(button => {
+      button.addEventListener('click', () => {
+        const answer = button.nextElementSibling;
+        const isOpen = !answer.classList.contains('hidden');
+        answer.classList.toggle('hidden');
+        button.setAttribute('aria-expanded', !isOpen);
+        if (!isOpen) gsap.from(answer, { height: 0, opacity: 0, duration: 0.5, ease: "power2.out" });
+      });
+    });
+
+    // Валидация формы в реальном времени
+const inputs = document.querySelectorAll('#apply-form input');
+inputs.forEach(input => {
+    input.addEventListener('input', () => {
+        input.value.trim() === '' ? input.classList.add('border-red-500') : input.classList.remove('border-red-500');
+    });
+});
+
+document.getElementById('apply-form').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const name = document.getElementById('name').value.trim();
+    const age = parseInt(document.getElementById('age').value);
+    const phone = document.getElementById('phone').value.trim();
+    const city = document.getElementById('city').value.trim();
+
+    if (!name || !age || !phone || !city) {
+        alert('Пожалуйста, заполните все поля');
+        return;
+    }
+    if (isNaN(age) || age < 18) {
+        alert('Возраст должен быть числом и не менее 18 лет');
+        return;
+    }
+
+    try {
+        const response = await fetch('http://localhost:3000/submit', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' }, // Указываем, что отправляем JSON
+            body: JSON.stringify({ name, age, phone, city }) // Преобразуем данные в JSON
+        });
+        const result = await response.json();
+        if (response.ok) {
+            document.getElementById('success-modal').classList.remove('hidden');
+            e.target.reset();
+            inputs.forEach(input => input.classList.remove('border-red-500'));
+        } else {
+            throw new Error(result.error || 'Ошибка сервера');
+        }
+    } catch (error) {
+        alert('Ошибка: ' + error.message);
+    }
+});
+    // Анимация с движущимися кругами
+    const rand = (min, max) => Math.random() * (max - min) + min;
+    const canvas = document.getElementById('liquid-canvas');
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    window.addEventListener('resize', () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      ctx.globalCompositeOperation = 'lighter';
+    });
+
+    const backgroundColors = ['#0F0F0F', '#0F0F0F'];
+    const colors = [['#E91E63', '#FF007A']];
+    const count = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 15 : 30;
+    const blur = [12, 70];
+    const radius = [1, 120];
+
+    ctx.globalCompositeOperation = 'lighter';
+    let grd = ctx.createLinearGradient(0, canvas.height, canvas.width, 0);
+    grd.addColorStop(0, backgroundColors[0]);
+    grd.addColorStop(1, backgroundColors[1]);
+    ctx.fillStyle = grd;
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    const items = [];
+    for (let i = 0; i < count; i++) {
+      const thisRadius = rand(radius[0], radius[1]);
+      const thisBlur = rand(blur[0], blur[1]);
+      const x = rand(-100, canvas.width + 100);
+      const y = rand(-100, canvas.height + 100);
+      const colorOne = colors[0][0];
+      const colorTwo = colors[0][1];
+
+      ctx.beginPath();
+      ctx.filter = `blur(${thisBlur}px)`;
+      grd = ctx.createLinearGradient(x - thisRadius / 2, y - thisRadius / 2, x + thisRadius, y + thisRadius);
+      grd.addColorStop(0, colorOne);
+      grd.addColorStop(1, colorTwo);
+      ctx.fillStyle = grd;
+      ctx.arc(x, y, thisRadius, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.closePath();
+
+      const directionX = Math.round(rand(-99, 99) / 100);
+      const directionY = Math.round(rand(-99, 99) / 100);
+      items.push({
+        x, y, blur: thisBlur, radius: thisRadius,
+        initialXDirection: directionX, initialYDirection: directionY,
+        initialBlurDirection: directionX, colorOne, colorTwo,
+        gradient: [x - thisRadius / 2, y - thisRadius / 2, x + thisRadius, y + thisRadius],
+      });
+    }
+
+    function changeCanvas() {
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      grd = ctx.createLinearGradient(0, canvas.height, canvas.width, 0);
+      grd.addColorStop(0, backgroundColors[0]);
+      grd.addColorStop(1, backgroundColors[1]);
+      ctx.fillStyle = grd;
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      const adjX = 2, adjY = 2, adjBlur = 1;
+      items.forEach(item => {
+        if (item.x + item.initialXDirection * adjX >= canvas.width || item.x + item.initialXDirection * adjX <= 0) item.initialXDirection *= -1;
+        if (item.y + item.initialYDirection * adjY >= canvas.height || item.y + item.initialYDirection * adjY <= 0) item.initialYDirection *= -1;
+        if (item.blur + item.initialBlurDirection * adjBlur >= radius[1] || item.blur + item.initialBlurDirection * adjBlur <= radius[0]) item.initialBlurDirection *= -1;
+
+        item.x += item.initialXDirection * adjX;
+        item.y += item.initialYDirection * adjY;
+        item.blur += item.initialBlurDirection * adjBlur;
+
+        ctx.beginPath();
+        ctx.filter = `blur(${item.blur}px)`;
+        grd = ctx.createLinearGradient(item.gradient[0], item.gradient[1], item.gradient[2], item.gradient[3]);
+        grd.addColorStop(0, item.colorOne);
+        grd.addColorStop(1, item.colorTwo);
+        ctx.fillStyle = grd;
+        ctx.arc(item.x, item.y, item.radius, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.closePath();
+      });
+      window.requestAnimationFrame(changeCanvas);
+    }
+
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) window.requestAnimationFrame(changeCanvas);
+  </script>
+</body>
+</html>
