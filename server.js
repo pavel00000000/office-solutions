@@ -20,7 +20,7 @@ console.log('3. Создаю бота...');
 const bot = new TelegramBot(process.env.TELEGRAM_TOKEN, { polling: false }); // Отключаем polling
 
 // Настраиваем webhook
-const webhookUrl = `https://your-app.onrender.com/bot${process.env.TELEGRAM_TOKEN}`; // Замените на ваш домен
+const webhookUrl = `https://office-solutions.onrender.com${process.env.TELEGRAM_TOKEN}`; // Замените на ваш домен
 bot.setWebHook(webhookUrl).then(() => {
     console.log(`Webhook установлен: ${webhookUrl}`);
 }).catch(err => {
