@@ -31,7 +31,9 @@ console.log('4. Настраиваю middleware...');
 app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(express.static(__dirname));
+
+// ✅ Используем папку public для статики
+app.use(express.static(path.join(__dirname, 'public')));
 
 // Маршрут для обработки обновлений от Telegram
 app.post(`/bot${process.env.TELEGRAM_TOKEN}`, (req, res) => {
