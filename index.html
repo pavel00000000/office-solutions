@@ -41,7 +41,13 @@
     gtag('js', new Date());
     gtag('config', 'G-XXXXXXXXXX');
   </script>
-  <!-- Стили -->
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Team Up</title>
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;700&display=swap" rel="stylesheet">
   <style>
     #liquid-canvas {
       position: fixed;
@@ -67,15 +73,29 @@
       gap: 12px;
       z-index: 100;
     }
-    .social-icon, .apply-button {
+    .social-icon {
       display: flex;
       align-items: center;
       justify-content: center;
-      width: 48px;
-      height: 48px;
+      width: 56px; /* Увеличено с 48px до 56px */
+      height: 56px; /* Увеличено с 48px до 56px */
       background-color: #1F1F1F;
       border-radius: 50%;
       transition: transform 0.3s ease, background-color 0.3s ease;
+    }
+    .apply-button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: auto;
+      padding: 12px 24px;
+      min-width: 80px;
+      background-color: #1F1F1F;
+      border-radius: 24px;
+      transition: transform 0.3s ease, background-color 0.3s ease;
+      font-size: 14px;
+      font-weight: 500;
+      color: #FFFFFF;
     }
     .social-icon:hover, .apply-button:hover {
       transform: scale(1.1);
@@ -85,18 +105,16 @@
       outline: 2px solid #FF007A;
       outline-offset: 2px;
     }
-    .apply-button {
-      width: auto;
-      padding: 12px 16px;
-      border-radius: 24px;
-      font-size: 14px;
-      font-weight: 500;
-      color: #FFFFFF;
+    .social-icon img {
+      width: 32px; /* Увеличено с 24px до 32px */
+      height: 32px; /* Увеличено с 24px до 32px */
     }
-    .social-icon svg, .apply-button svg {
-      width: 24px;
-      height: 24px;
-      fill: #FFFFFF;
+    .apply-button img {
+      max-width: 100%;
+      max-height: 24px;
+      width: auto;
+      height: auto;
+      object-fit: contain;
     }
     .benefit-card {
       background-color: transparent;
@@ -176,9 +194,26 @@
         left: 10px;
         bottom: 10px;
       }
-      .social-icon, .apply-button {
-        width: 36px;
+      .social-icon {
+        width: 48px; /* Уменьшено с 56px до 48px для мобильных */
+        height: 48px; /* Уменьшено с 56px до 48px для мобильных */
+      }
+      .apply-button {
+        width: auto;
         height: 36px;
+        padding: 8px 20px;
+        min-width: 64px;
+      }
+      .social-icon img {
+        width: 28px; /* Увеличено с 20px до 28px */
+        height: 28px; /* Увеличено с 20px до 28px */
+      }
+      .apply-button img {
+        max-width: 100%;
+        max-height: 20px;
+        width: auto;
+        height: auto;
+        object-fit: contain;
       }
       .nav-button {
         padding: 6px 12px;
@@ -216,23 +251,23 @@
   <!-- Bottom Left Panel -->
   <div class="bottom-left-panel">
     <a href="https://www.instagram.com/rabota_work23?igsh=MWY2cXlhMTNjNGw0OQ==" target="_blank" class="social-icon" title="Instagram" tabindex="0">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.366.062 2.633.326 3.608 1.301.975.975 1.24 2.242 1.301 3.608.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.062 1.366-.326 2.633-1.301 3.608-.975.975-2.242 1.24-3.608 1.301-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.366-.062-2.633-.326-3.608-1.301-.975-.975-1.24-2.242-1.301-3.608-.058-1.266-.07-1.646-.07-4.85s.012-3.584.07-4.85c.062-1.366.326-2.633 1.301-3.608.975-.975 2.242-1.24 3.608-1.301 1.266-.058 1.646-.07 4.85-.07m0-2.163c-3.259 0-3.67.014-4.947.072-1.453.066-2.895.402-4.038 1.545-1.143 1.143-1.479 2.585-1.545 4.038-.058 1.277-.072 1.688-.072 4.947s.014 3.67.072 4.947c.066 1.453.402 2.895 1.545 4.038 1.143 1.143 2.585 1.479 4.038 1.545 1.277.058 1.688.072 4.947.072s3.67-.014 4.947-.072c1.453-.066 2.895-.402 4.038-1.545 1.143-1.143 1.479-2.585 1.545-4.038.058-1.277.072-1.688.072-4.947s-.014-3.67-.072-4.947c-.066-1.453-.402-2.895-1.545-4.038-1.143-1.143-2.585-1.479-4.038-1.545-1.277-.058-1.688-.072-4.947-.072zM12 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.162 6.162 6.162 6.162-2.759 6.162-6.162-2.759-6.162-6.162-6.162zm0 10.324c-2.297 0-4.162-1.865-4.162-4.162s1.865-4.162 4.162-4.162 4.162 1.865 4.162 4.162-1.865 4.162-4.162 4.162zm6.406-11.845c-.796 0-1.441.645-1.441 1.441s.645 1.441 1.441 1.441 1.441-.645 1.441-1.441-.645-1.441-1.441-1.441z"/></svg>
+      <img src="instagram.png" alt="Instagram">
     </a>
     <a href="https://t.me/rabota_work23" target="_blank" class="social-icon" title="Telegram" tabindex="0">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm4.441 8.754l-1.546 7.287c-.11.54-.54.674-.853.418l-2.267-1.67-.867.529c-.382.185-.784-.232-.571-.580l4.132-3.78c.381-.349.735-.521.202-1.064l-4.765-3.73c-.54-.42-.266-.762.352-.571l9.205 3.62c.54.213.571.84.026 1.415z"/></svg>
+      <img src="telegram.png" alt="Telegram">
     </a>
     <a href="tel:+380931051835" class="social-icon" title="Позвонить" tabindex="0">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.24 1.02l-2.2 2.2zm3.48-4.99c-.18 0-.36.07-.49.21l-2.2 2.2c-.14.14-.21.31-.21.49s.07.36.21.49l2.2 2.2c.14.14.31.21.49.21s.36-.07.49-.21l2.2-2.2c.14-.14.21-.31.21-.49s-.07-.36-.21-.49l-2.2-2.2c-.13-.14-.31-.21-.49-.21z"/></svg>
+      <img src="telefne.png" alt="Позвонить">
     </a>
-    <a href="#" id="language-switch" class="social-icon" title="Переключить язык" tabindex="0">
-      RU/UA
+    <a href="#apply" class="social-icon" title="Оставить заявку" tabindex="0">
+      <img src="form.png" alt="Заполнить форму">
     </a>
-    <a href="#apply" class="apply-button smooth-scroll" title="Оставить заявку" tabindex="0">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="mr-2"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 14H4V8l8 5 8-5v10zm-8-7L4 6h16l-8 5z"/></svg>
-      Заявка
+    <a href="#" id="language-switch" class="apply-button smooth-scroll" title="Переключить язык" tabindex="0">
+      <img src="language.png" alt="Сменить язык">
     </a>
   </div>
-
+</body>
+</html>
   <!-- Main Content -->
   <main>
     <!-- Main Section -->
@@ -246,7 +281,6 @@
         <a href="#apply" class="inline-block bg-primary text-white px-8 py-4 rounded-full hover:bg-secondary smooth-scroll text-lg font-medium main-button" data-aos="fade-up" data-aos-delay="800">Оставляй заявку</a>
       </div>
     </section>
-
     <!-- Why Us Section -->
     <section id="why-us" class="py-20 bg-background">
       <div class="container mx-auto px-4">
@@ -258,7 +292,6 @@
         </div>
       </div>
     </section>
-
     <!-- Benefits -->
     <section id="benefits" class="py-20 bg-background">
       <div class="container mx-auto px-4">
@@ -332,7 +365,6 @@
         </div>
       </div>
     </section>
-
     <!-- FAQ -->
     <section id="faq" class="py-20 px-4" lang="ru">
       <div class="container mx-auto">
@@ -381,7 +413,6 @@
         </div>
       </div>
     </section>
-
     <!-- Apply -->
     <section id="apply" class="py-20 bg-background px-4">
       <div class="container mx-auto text-center">
@@ -404,7 +435,6 @@
       </div>
     </section>
   </main>
-
   <!-- Success Modal -->
   <div id="success-modal" class="hidden fixed inset-0 bg-black/50 flex items-center justify-center z-50">
     <div class="bg-background p-6 rounded-lg text-white">
@@ -412,7 +442,6 @@
       <button onclick="document.getElementById('success-modal').classList.add('hidden')" class="mt-4 bg-primary px-4 py-2 rounded hover:bg-secondary">Закрыть</button>
     </div>
   </div>
-
   <!-- Footer -->
   <footer class="bg-background py-12 px-4">
     <div class="container mx-auto text-center" data-aos="fade-up">
@@ -420,7 +449,6 @@
       <p class="text-sm"><a href="/privacy" class="hover:text-accent">Политика конфиденциальности</a></p>
     </div>
   </footer>
-
   <!-- JavaScript -->
   <script>
     // Инициализация AOS
@@ -429,7 +457,6 @@
       easing: 'ease-in-out',
       once: false,
     });
-
     // GSAP анимации
     gsap.from("#main h1", { opacity: 0, y: -100, rotation: 5, duration: 1, ease: "power2.out" });
     gsap.from("#main .main-button", { opacity: 0, scale: 0, rotation: -10, duration: 1, delay: 0.5, ease: "elastic.out(1, 0.5)" });
@@ -438,7 +465,6 @@
     gsap.from(".logo img", { opacity: 0, scale: 0, rotation: 180, duration: 1, delay: 0.5, ease: "elastic.out(1, 0.5)" });
     gsap.from(".bottom-left-panel", { opacity: 0, y: 50, duration: 1, delay: 2, ease: "power2.out" });
     gsap.from("footer", { opacity: 0, y: 50, duration: 1, delay: 2, ease: "power2.out" });
-
     // Плавный скролл
     document.querySelectorAll('.smooth-scroll').forEach(anchor => {
       anchor.addEventListener('click', function (e) {
@@ -447,31 +473,26 @@
         document.querySelector(targetId).scrollIntoView({ behavior: 'smooth', block: 'start' });
       });
     });
-
     // Hover-эффекты для карточек
     document.querySelectorAll('.benefit-card, .why-us-card').forEach(card => {
       card.addEventListener('mouseenter', () => gsap.to(card, { scale: 1.05, boxShadow: "0 10px 25px rgba(255, 0, 122, 0.5)", duration: 0.3 }));
       card.addEventListener('mouseleave', () => gsap.to(card, { scale: 1, boxShadow: "0 4px 15px rgba(255, 0, 122, 0.3)", duration: 0.3 }));
     });
-
     document.querySelectorAll('.benefit-card-vsu').forEach(card => {
       card.addEventListener('mouseenter', () => gsap.to(card, { scale: 1.05, boxShadow: "0 10px 25px rgba(0, 87, 183, 0.5)", duration: 0.3 }));
       card.addEventListener('mouseleave', () => gsap.to(card, { scale: 1, boxShadow: "0 4px 15px rgba(0, 87, 183, 0.3)", duration: 0.3 }));
     });
-
     // Hover-эффект для кнопок и логотипа
     document.querySelectorAll('.submit-button, .main-button, .nav-button, .social-icon, .apply-button, .logo img').forEach(element => {
       element.addEventListener('mouseenter', () => gsap.to(element, { scale: 1.05, duration: 0.2, ease: "pulse" }));
       element.addEventListener('mouseleave', () => gsap.to(element, { scale: 1, duration: 0.2 }));
     });
-
     // Preloader
     window.addEventListener('load', () => {
       gsap.to("#preloader", { opacity: 0, scale: 0.5, duration: 0.8, ease: "power2.in", onComplete: () => {
         document.getElementById('preloader').style.display = 'none';
       }});
     });
-
     // FAQ аккордеон
     document.querySelectorAll('.faq-button').forEach(button => {
       button.addEventListener('click', () => {
@@ -482,7 +503,6 @@
         if (!isOpen) gsap.from(answer, { height: 0, opacity: 0, duration: 0.5, ease: "power2.out" });
       });
     });
-
     // Валидация формы в реальном времени
     const inputs = document.querySelectorAll('#apply-form input');
     inputs.forEach(input => {
@@ -490,14 +510,12 @@
         input.value.trim() === '' ? input.classList.add('border-red-500') : input.classList.remove('border-red-500');
       });
     });
-
     document.getElementById('apply-form').addEventListener('submit', async (e) => {
       e.preventDefault();
       const name = document.getElementById('name').value.trim();
       const age = parseInt(document.getElementById('age').value);
       const phone = document.getElementById('phone').value.trim();
       const city = document.getElementById('city').value.trim();
-
       if (!name || !age || !phone || !city) {
         alert('Пожалуйста, заполните все поля');
         return;
@@ -506,7 +524,6 @@
         alert('Возраст должен быть числом от 16 до 36 лет');
         return;
       }
-
       try {
         const response = await fetch('https://office-solutions.onrender.com/submit', {
           method: 'POST',
@@ -525,33 +542,28 @@
         alert('Ошибка: ' + error.message);
       }
     });
-
     // Анимация с движущимися кругами
     const rand = (min, max) => Math.random() * (max - min) + min;
     const canvas = document.getElementById('liquid-canvas');
     const ctx = canvas.getContext('2d');
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
-
     window.addEventListener('resize', () => {
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
       ctx.globalCompositeOperation = 'lighter';
     });
-
     const backgroundColors = ['#0F0F0F', '#0F0F0F'];
     const colors = [['#E91E63', '#FF007A']];
     const count = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 15 : 30;
     const blur = [12, 70];
     const radius = [1, 120];
-
     ctx.globalCompositeOperation = 'lighter';
     let grd = ctx.createLinearGradient(0, canvas.height, canvas.width, 0);
     grd.addColorStop(0, backgroundColors[0]);
     grd.addColorStop(1, backgroundColors[1]);
     ctx.fillStyle = grd;
     ctx.fillRect(0, 0, canvas.width, canvas.height);
-
     const items = [];
     for (let i = 0; i < count; i++) {
       const thisRadius = rand(radius[0], radius[1]);
@@ -560,7 +572,6 @@
       const y = rand(-100, canvas.height + 100);
       const colorOne = colors[0][0];
       const colorTwo = colors[0][1];
-
       ctx.beginPath();
       ctx.filter = `blur(${thisBlur}px)`;
       grd = ctx.createLinearGradient(x - thisRadius / 2, y - thisRadius / 2, x + thisRadius, y + thisRadius);
@@ -570,7 +581,6 @@
       ctx.arc(x, y, thisRadius, 0, Math.PI * 2);
       ctx.fill();
       ctx.closePath();
-
       const directionX = Math.round(rand(-99, 99) / 100);
       const directionY = Math.round(rand(-99, 99) / 100);
       items.push({
@@ -580,7 +590,6 @@
         gradient: [x - thisRadius / 2, y - thisRadius / 2, x + thisRadius, y + thisRadius],
       });
     }
-
     function changeCanvas() {
       if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
       ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -589,17 +598,14 @@
       grd.addColorStop(1, backgroundColors[1]);
       ctx.fillStyle = grd;
       ctx.fillRect(0, 0, canvas.width, canvas.height);
-
       const adjX = 2, adjY = 2, adjBlur = 1;
       items.forEach(item => {
         if (item.x + item.initialXDirection * adjX >= canvas.width || item.x + item.initialXDirection * adjX <= 0) item.initialXDirection *= -1;
         if (item.y + item.initialYDirection * adjY >= canvas.height || item.y + item.initialYDirection * adjY <= 0) item.initialYDirection *= -1;
         if (item.blur + item.initialBlurDirection * adjBlur >= radius[1] || item.blur + item.initialBlurDirection * adjBlur <= radius[0]) item.initialBlurDirection *= -1;
-
         item.x += item.initialXDirection * adjX;
         item.y += item.initialYDirection * adjY;
         item.blur += item.initialBlurDirection * adjBlur;
-
         ctx.beginPath();
         ctx.filter = `blur(${item.blur}px)`;
         grd = ctx.createLinearGradient(item.gradient[0], item.gradient[1], item.gradient[2], item.gradient[3]);
@@ -612,9 +618,7 @@
       });
       window.requestAnimationFrame(changeCanvas);
     }
-
     if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) window.requestAnimationFrame(changeCanvas);
-
     // Переключение языка
     const translations = {
       ru: {
@@ -656,12 +660,11 @@
         phonePlaceholder: "Телефон",
         cityPlaceholder: "Город",
         submitButton: "Отправить заявку",
-        applyLink: "Заявка",
+      
         footerText: "© 2025 Все права защищены.",
         privacyLink: "Политика конфиденциальности",
         successMessage: "Заявка успешно отправлена!",
         closeButton: "Закрыть",
-        // Переводы для кнопок навигации
         navAbout: "О нас",
         navFaq: "Частые вопросы",
         navApply: "Оставить заявку"
@@ -705,27 +708,22 @@
         phonePlaceholder: "Телефон",
         cityPlaceholder: "Місто",
         submitButton: "Надіслати заявку",
-        applyLink: "Заявка",
+       
         footerText: "© 2025 Усі права захищені.",
         privacyLink: "Політика конфіденційності",
         successMessage: "Заявка успішно надіслана!",
         closeButton: "Закрити",
-        // Переводы для кнопок навигации
         navAbout: "Про нас",
         navFaq: "Часті запитання",
         navApply: "Залишити заявку"
       }
     };
-
     let currentLang = 'ru';
-
     function switchLanguage() {
       currentLang = currentLang === 'ru' ? 'uk' : 'ru';
       document.documentElement.lang = currentLang;
       updateTexts();
-      document.getElementById('language-switch').textContent = currentLang === 'ru' ? 'RU/UA' : 'UA/RU';
     }
-
     function updateTexts() {
       const lang = translations[currentLang];
       document.querySelector('#main p:nth-of-type(1)').textContent = lang.mainTitle;
@@ -771,17 +769,14 @@
       document.querySelector('footer a').textContent = lang.privacyLink;
       document.querySelector('#success-modal p').textContent = lang.successMessage;
       document.querySelector('#success-modal button').textContent = lang.closeButton;
-      // Обновление текста кнопок навигации
       document.querySelector('nav ul li:nth-child(1) a').textContent = lang.navAbout;
       document.querySelector('nav ul li:nth-child(2) a').textContent = lang.navFaq;
       document.querySelector('nav ul li:nth-child(3) a').textContent = lang.navApply;
     }
-
     document.getElementById('language-switch').addEventListener('click', (e) => {
       e.preventDefault();
       switchLanguage();
     });
-
     updateTexts();
   </script>
 </body>
