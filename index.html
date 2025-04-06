@@ -163,14 +163,13 @@
       transform: scale(1.1);
       filter: drop-shadow(0 0 10px rgba(255, 0, 122, 0.5));
     }
-    /* Добавляем базовые стили для секции main, чтобы контент был виден даже без анимаций */
     #main {
       position: relative;
       z-index: 10;
       min-height: 100vh;
     }
     #main h1, #main p, #main .main-button {
-      opacity: 1; /* Устанавливаем начальную видимость */
+      opacity: 1;
     }
     @media (max-width: 640px) {
       .bottom-left-panel {
@@ -224,6 +223,9 @@
     </a>
     <a href="tel:+380931051835" class="social-icon" title="Позвонить" tabindex="0">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.24 1.02l-2.2 2.2zm3.48-4.99c-.18 0-.36.07-.49.21l-2.2 2.2c-.14.14-.21.31-.21.49s.07.36.21.49l2.2 2.2c.14.14.31.21.49.21s.36-.07.49-.21l2.2-2.2c.14-.14.21-.31.21-.49s-.07-.36-.21-.49l-2.2-2.2c-.13-.14-.31-.21-.49-.21z"/></svg>
+    </a>
+    <a href="#" id="language-switch" class="social-icon" title="Переключить язык" tabindex="0">
+      RU/UA
     </a>
     <a href="#apply" class="apply-button smooth-scroll" title="Оставить заявку" tabindex="0">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="mr-2"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 14H4V8l8 5 8-5v10zm-8-7L4 6h16l-8 5z"/></svg>
@@ -282,7 +284,7 @@
           </div>
           <div class="benefit-card p-6 rounded-xl" data-aos="flip-left" data-aos-delay="600">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-12 h-12 fill-primary">
-              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/>
             </svg>
             <div>
               <h3 class="text-xl font-heading font-bold mb-4">Карьерный рост</h3>
@@ -612,6 +614,175 @@
     }
 
     if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) window.requestAnimationFrame(changeCanvas);
+
+    // Переключение языка
+    const translations = {
+      ru: {
+        mainTitle: "Наша команда в поисках менеджера по работе с клиентами.",
+        mainSubtitle: "Работай с нами и выходи на высокий доход",
+        mainDescription: "Обучение, жилье, переезд за наш счет",
+        mainOffice: "Работа в офисе Киева",
+        mainNotRemote: "Не удаленно",
+        applyButton: "Оставляй заявку",
+        whyUsTitle: "Почему именно мы?",
+        whyUsText1: "Наша команда ждёт целеустремлённых сотрудников, готовых к росту и развитию. Мы предлагаем стабильную работу в современном офисе с достойной оплатой, бонусами и карьерными перспективами.",
+        whyUsText2: "Присоединяйся к нам прямо сейчас, оставь заявку и начни путь к высокому доходу, который превзойдёт твои ожидания!",
+        whyUsText3: "Мы ищем амбициозных сотрудников для офисной работы с зарплатой от 50 000 грн, бонусами и жильём для иногородних.",
+        benefitsTitle: "Наши преимущества",
+        benefit1Title: "Стабильная оплата",
+        benefit1Text: "Зарплата от 50 000 грн, еженедельные бонусы и премии без потолка. Всё официально и без задержек.",
+        benefit2Title: "Комфортные условия",
+        benefit2Text: "Современный офис, фиксированный график 5/2, чай/кофе и зона отдыха для твоего удобства.",
+        benefit3Title: "Карьерный рост",
+        benefit3Text: "Начни с оператора, стань тимлидом или руководителем. Мы продвигаем амбициозных!",
+        benefit4Title: "Жильё для иногородних",
+        benefit4Text: "Предоставляем жильё, чтобы ты мог сосредоточиться на работе, а не на бытовых вопросах.",
+        benefit5Title: "Обучение и поддержка",
+        benefit5Text: "Наставники помогут адаптироваться, даже если у тебя нет опыта. Всему научим!",
+        benefit6Title: "Дружный коллектив",
+        benefit6Text: "Тёплая атмосфера, корпоративы, конкурсы и поддержка команды на каждом этапе.",
+        benefit7Title: "Помогаем ВСУ",
+        benefit7Text: "Часть дохода направляем на поддержку Вооружённых Сил Украины.",
+        faqTitle: "Частые вопросы",
+        faq1Question: "Оказываете ли вы поддержку?",
+        faq1Answer: "Мы ценим каждого сотрудника и создаём комфортные условия для работы и развития:\n- Обучение и адаптация: наставники помогут, даже если нет опыта.\n- Жильё для иногородних: никаких забот о поиске жилья.\n- Финансовая мотивация: зарплата + бонусы без ограничений.\n- Дружный коллектив: поддержка команды и тёплая атмосфера.\n- Карьерный рост: от оператора до руководителя.\n- Комфортный офис: современное оборудование и зона отдыха.\n- Корпоративы: конкурсы, подарки и мероприятия.",
+        faq2Question: "Гарантии безопасности работы?",
+        faq2Answer: "Мы обеспечиваем надёжные условия:\n- Фиксированная зарплата + бонусы: выплаты без задержек.\n- Комфортный офис: безопасное рабочее место.\n- Обучение и поддержка: наставники помогут адаптироваться.\n- Честные условия: без скрытых платежей или штрафов.\n- Конфиденциальность: твои данные в безопасности.",
+        faq3Question: "Есть ли карьерный рост?",
+        faq3Answer: "Да, у нас реальные возможности для роста:\n- Начни с оператора: полное обучение.\n- Стань тимлидом: веди команду.\n- Расти до руководителя: управляй процессами.\n- Лучших продвигаем быстро!",
+        applyTitle: "Оставь заявку",
+        namePlaceholder: "Имя",
+        agePlaceholder: "Возраст",
+        phonePlaceholder: "Телефон",
+        cityPlaceholder: "Город",
+        submitButton: "Отправить заявку",
+        applyLink: "Заявка",
+        footerText: "© 2025 Все права защищены.",
+        privacyLink: "Политика конфиденциальности",
+        successMessage: "Заявка успешно отправлена!",
+        closeButton: "Закрыть",
+        // Переводы для кнопок навигации
+        navAbout: "О нас",
+        navFaq: "Частые вопросы",
+        navApply: "Оставить заявку"
+      },
+      uk: {
+        mainTitle: "Наша команда шукає менеджера по роботі з клієнтами.",
+        mainSubtitle: "Працюй з нами та виходь на високий дохід",
+        mainDescription: "Навчання, житло, переїзд за наш рахунок",
+        mainOffice: "Робота в офісі Києва",
+        mainNotRemote: "Не віддалено",
+        applyButton: "Залишай заявку",
+        whyUsTitle: "Чому саме ми?",
+        whyUsText1: "Наша команда чекає цілеспрямованих співробітників, готових до росту та розвитку. Ми пропонуємо стабільну роботу в сучасному офісі з гідною оплатою, бонусами та кар'єрними перспективами.",
+        whyUsText2: "Приєднуйся до нас прямо зараз, залиш заявку та почни шлях до високого доходу, який перевершить твої очікування!",
+        whyUsText3: "Ми шукаємо амбітних співробітників для офісної роботи з зарплатою від 50 000 грн, бонусами та житлом для іногородніх.",
+        benefitsTitle: "Наші переваги",
+        benefit1Title: "Стабільна оплата",
+        benefit1Text: "Зарплата від 50 000 грн, щотижневі бонуси та премії без обмежень. Все офіційно та без затримок.",
+        benefit2Title: "Комфортні умови",
+        benefit2Text: "Сучасний офіс, фіксований графік 5/2, чай/кава та зона відпочинку для твого комфорту.",
+        benefit3Title: "Кар'єрне зростання",
+        benefit3Text: "Почни з оператора, стань тімлідом або керівником. Ми просуваємо амбітних!",
+        benefit4Title: "Житло для іногородніх",
+        benefit4Text: "Надаємо житло, щоб ти міг зосередитися на роботі, а не на побутових питаннях.",
+        benefit5Title: "Навчання та підтримка",
+        benefit5Text: "Наставники допоможуть адаптуватися, навіть якщо у тебе немає досвіду. Всьому навчимо!",
+        benefit6Title: "Дружній колектив",
+        benefit6Text: "Тепла атмосфера, корпоративи, конкурси та підтримка команди на кожному етапі.",
+        benefit7Title: "Допомагаємо ЗСУ",
+        benefit7Text: "Частину доходу спрямовуємо на підтримку Збройних Сил України.",
+        faqTitle: "Часті запитання",
+        faq1Question: "Чи надаєте ви підтримку?",
+        faq1Answer: "Ми цінуємо кожного співробітника та створюємо комфортні умови для роботи й розвитку:\n- Навчання та адаптація: наставники допоможуть, навіть якщо немає досвіду.\n- Житло для іногородніх: жодних турбот про пошук житла.\n- Фінансова мотивація: зарплата + бонуси без обмежень.\n- Дружній колектив: підтримка команди та тепла атмосфера.\n- Кар'єрне зростання: від оператора до керівника.\n- Комфортний офіс: сучасне обладнання та зона відпочинку.\n- Корпоративи: конкурси, подарунки та заходи.",
+        faq2Question: "Гарантії безпеки роботи?",
+        faq2Answer: "Ми забезпечуємо надійні умови:\n- Фіксована зарплата + бонуси: виплати без затримок.\n- Комфортний офіс: безпечне робоче місце.\n- Навчання та підтримка: наставники допоможуть адаптуватися.\n- Чесні умови: без прихованих платежів чи штрафів.\n- Конфіденційність: твої дані в безпеці.",
+        faq3Question: "Чи є кар'єрне зростання?",
+        faq3Answer: "Так, у нас реальні можливості для зростання:\n- Почни з оператора: повне навчання.\n- Стань тімлідом: веди команду.\n- Рости до керівника: керуй процесами.\n- Найкращих просуваємо швидко!",
+        applyTitle: "Залиш заявку",
+        namePlaceholder: "Ім'я",
+        agePlaceholder: "Вік",
+        phonePlaceholder: "Телефон",
+        cityPlaceholder: "Місто",
+        submitButton: "Надіслати заявку",
+        applyLink: "Заявка",
+        footerText: "© 2025 Усі права захищені.",
+        privacyLink: "Політика конфіденційності",
+        successMessage: "Заявка успішно надіслана!",
+        closeButton: "Закрити",
+        // Переводы для кнопок навигации
+        navAbout: "Про нас",
+        navFaq: "Часті запитання",
+        navApply: "Залишити заявку"
+      }
+    };
+
+    let currentLang = 'ru';
+
+    function switchLanguage() {
+      currentLang = currentLang === 'ru' ? 'uk' : 'ru';
+      document.documentElement.lang = currentLang;
+      updateTexts();
+      document.getElementById('language-switch').textContent = currentLang === 'ru' ? 'RU/UA' : 'UA/RU';
+    }
+
+    function updateTexts() {
+      const lang = translations[currentLang];
+      document.querySelector('#main p:nth-of-type(1)').textContent = lang.mainTitle;
+      document.querySelector('#main p:nth-of-type(2)').textContent = lang.mainSubtitle;
+      document.querySelector('#main p:nth-of-type(3)').textContent = lang.mainDescription;
+      document.querySelector('#main p:nth-of-type(4)').textContent = lang.mainOffice;
+      document.querySelector('#main p:nth-of-type(5)').textContent = lang.mainNotRemote;
+      document.querySelector('#main .main-button').textContent = lang.applyButton;
+      document.querySelector('#why-us h3').textContent = lang.whyUsTitle;
+      document.querySelector('#why-us p:nth-of-type(1)').textContent = lang.whyUsText1;
+      document.querySelector('#why-us p:nth-of-type(2)').textContent = lang.whyUsText2;
+      document.querySelector('#why-us p:nth-of-type(3)').textContent = lang.whyUsText3;
+      document.querySelector('#benefits h2').textContent = lang.benefitsTitle;
+      document.querySelectorAll('#benefits .benefit-card h3')[0].textContent = lang.benefit1Title;
+      document.querySelectorAll('#benefits .benefit-card p')[0].textContent = lang.benefit1Text;
+      document.querySelectorAll('#benefits .benefit-card h3')[1].textContent = lang.benefit2Title;
+      document.querySelectorAll('#benefits .benefit-card p')[1].textContent = lang.benefit2Text;
+      document.querySelectorAll('#benefits .benefit-card h3')[2].textContent = lang.benefit3Title;
+      document.querySelectorAll('#benefits .benefit-card p')[2].textContent = lang.benefit3Text;
+      document.querySelectorAll('#benefits .benefit-card h3')[3].textContent = lang.benefit4Title;
+      document.querySelectorAll('#benefits .benefit-card p')[3].textContent = lang.benefit4Text;
+      document.querySelectorAll('#benefits .benefit-card h3')[4].textContent = lang.benefit5Title;
+      document.querySelectorAll('#benefits .benefit-card p')[4].textContent = lang.benefit5Text;
+      document.querySelectorAll('#benefits .benefit-card h3')[5].textContent = lang.benefit6Title;
+      document.querySelectorAll('#benefits .benefit-card p')[5].textContent = lang.benefit6Text;
+      document.querySelector('.benefit-card-vsu h3').textContent = lang.benefit7Title;
+      document.querySelector('.benefit-card-vsu p').textContent = lang.benefit7Text;
+      document.querySelector('#faq h2').textContent = lang.faqTitle;
+      document.querySelectorAll('.faq-item button')[0].textContent = lang.faq1Question;
+      document.querySelectorAll('.faq-item .faq-answer p')[0].textContent = lang.faq1Answer.replace(/\n/g, '\n\n');
+      document.querySelectorAll('.faq-item button')[1].textContent = lang.faq2Question;
+      document.querySelectorAll('.faq-item .faq-answer p')[1].textContent = lang.faq2Answer.replace(/\n/g, '\n\n');
+      document.querySelectorAll('.faq-item button')[2].textContent = lang.faq3Question;
+      document.querySelectorAll('.faq-item .faq-answer p')[2].textContent = lang.faq3Answer.replace(/\n/g, '\n\n');
+      document.querySelector('#apply h2').textContent = lang.applyTitle;
+      document.getElementById('name').placeholder = lang.namePlaceholder;
+      document.getElementById('age').placeholder = lang.agePlaceholder;
+      document.getElementById('phone').placeholder = lang.phonePlaceholder;
+      document.getElementById('city').placeholder = lang.cityPlaceholder;
+      document.querySelector('#apply-form button').textContent = lang.submitButton;
+      document.querySelector('.apply-button').lastChild.nodeValue = lang.applyLink;
+      document.querySelector('footer p:nth-of-type(1)').textContent = lang.footerText;
+      document.querySelector('footer a').textContent = lang.privacyLink;
+      document.querySelector('#success-modal p').textContent = lang.successMessage;
+      document.querySelector('#success-modal button').textContent = lang.closeButton;
+      // Обновление текста кнопок навигации
+      document.querySelector('nav ul li:nth-child(1) a').textContent = lang.navAbout;
+      document.querySelector('nav ul li:nth-child(2) a').textContent = lang.navFaq;
+      document.querySelector('nav ul li:nth-child(3) a').textContent = lang.navApply;
+    }
+
+    document.getElementById('language-switch').addEventListener('click', (e) => {
+      e.preventDefault();
+      switchLanguage();
+    });
+
+    updateTexts();
   </script>
 </body>
 </html>
