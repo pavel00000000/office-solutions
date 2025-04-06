@@ -87,6 +87,7 @@ app.use((err, req, res, next) => {
   res.status(500).json({ error: 'Внутренняя ошибка сервера' });
 });
 
-app.listen(port, () => {
-  console.log(`Сервер запущен на http://localhost:${port}`);
+// 🔥 ВАЖНО: здесь слушаем не localhost, а 0.0.0.0!
+app.listen(port, '0.0.0.0', () => {
+  console.log(`Сервер запущен на http://0.0.0.0:${port}`);
 });
