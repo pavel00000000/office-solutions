@@ -261,17 +261,18 @@
   </div>
 
   <!-- Main Content -->
-  <!-- Main Section -->
-<section id="main" class="min-h-screen flex items-center justify-center py-10 px-4 overflow-hidden relative">
-  <div class="container mx-auto flex flex-col items-center justify-center text-center z-10 mt-[-150px]" style="margin-top: calc(-150px + 20vh);">
-    <p class="text-3xl md:text-4xl font-bold font-sans mb-4">Наша команда в поисках менеджера по работе с клиентами.</p>
-    <p class="text-xl md:text-2xl font-bold font-sans mb-6">Работай с нами и выходи на высокий доход</p>
-    <p class="text-xl md:text-2xl font-bold font-sans mb-8">Обучение, жилье, переезд за наш счет</p>
-    <p class="text-xl md:text-2xl font-bold font-sans mb-8">Работа в офисе Киева</p>
-    <p class="text-xl md:text-2xl font-bold font-sans mb-8">Не удаленно</p>
-    <a href="#apply" class="inline-block bg-primary text-white px-8 py-4 rounded-full hover:bg-secondary smooth-scroll text-lg font-medium main-button">Оставляй заявку</a>
-  </div>
-</section>
+  <main>
+    <!-- Main Section -->
+    <section id="main" class="min-h-screen flex items-center justify-center py-10 px-4 overflow-hidden relative">
+      <div class="container mx-auto flex flex-col items-center justify-center text-center z-10 mt-[-150px]" style="margin-top: calc(-150px + 20vh);">
+        <p class="text-3xl md:text-4xl font-bold font-sans mb-4">Наша команда в поисках менеджера по работе с клиентами.</p>
+        <p class="text-xl md:text-2xl font-bold font-sans mb-6">Работай с нами и выходи на высокий доход</p>
+        <p class="text-xl md:text-2xl font-bold font-sans mb-8">Обучение, жилье, переезд за наш счет</p>
+        <p class="text-xl md:text-2xl font-bold font-sans mb-8">Работа в офисе Киева</p>
+        <p class="text-xl md:text-2xl font-bold font-sans mb-8">Не удаленно</p>
+        <a href="#apply" class="inline-block bg-primary text-white px-8 py-4 rounded-full hover:bg-secondary smooth-scroll text-lg font-medium main-button">Оставляй заявку</a>
+      </div>
+    </section>
 
     <!-- Why Us Section -->
     <section id="why-us" class="py-20 bg-background">
@@ -770,6 +771,31 @@
       switchLanguage();
     });
     updateTexts();
+
+    // Скрытие/показ панели bottom-left-panel в мобильной версии при фокусе на полях формы
+    const bottomPanel = document.querySelector('.bottom-left-panel');
+    const formInputs = document.querySelectorAll('#apply-form input');
+    const mobileMediaQuery = window.matchMedia('(max-width: 640px)');
+
+    formInputs.forEach(input => {
+      input.addEventListener('focus', () => {
+        if (mobileMediaQuery.matches) {
+          bottomPanel.style.display = 'none';
+        }
+      });
+      input.addEventListener('blur', () => {
+        if (mobileMediaQuery.matches) {
+          bottomPanel.style.display = 'flex';
+        }
+      });
+    });
+
+    // Обработка изменения размера экрана
+    mobileMediaQuery.addEventListener('change', (e) => {
+      if (!e.matches) {
+        bottomPanel.style.display = 'flex'; // Показываем панель, если не мобильная версия
+      }
+    });
   </script>
 </body>
 </html>
