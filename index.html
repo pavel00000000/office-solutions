@@ -42,81 +42,6 @@
     gtag('config', 'G-XXXXXXXXXX');
   </script>
   <style>
-
-
-
-/* Определяем анимацию пульсации с внутренним свечением и 3D-эффектом */
-@keyframes pulse {
-  0% {
-    transform: scale(1) translateZ(0); /* Начальная позиция в 3D */
-    box-shadow: 
-      inset 0 0 10px rgba(0, 0, 0, 0.8), /* Внутреннее чёрное свечение */
-      0 4px 8px rgba(0, 0, 0, 0.5); /* Внешняя тень для 3D */
-  }
-  50% {
-    transform: scale(1.05) translateZ(5px); /* Лёгкий подъём в 3D */
-    box-shadow: 
-      inset 0 0 15px rgba(0, 0, 0, 1), /* Усиленное внутреннее свечение */
-      0 6px 12px rgba(0, 0, 0, 0.7); /* Усиленная тень для глубины */
-  }
-  100% {
-    transform: scale(1) translateZ(0); /* Возврат к исходной позиции */
-    box-shadow: 
-      inset 0 0 10px rgba(0, 0, 0, 0.8), /* Внутреннее свечение */
-      0 4px 8px rgba(0, 0, 0, 0.5); /* Внешняя тень */
-  }
-}
-
-/* Применяем анимацию к кнопкам "Оставляй заявку" */
-.main-button {
-  animation: pulse 1.5s infinite ease-in-out;
-  box-shadow: 
-    inset 0 0 10px rgba(0, 0, 0, 0.8), /* Базовое внутреннее свечение */
-    0 4px 8px rgba(0, 0, 0, 0.5); /* Базовая тень для 3D */
-  transform: translateZ(0); /* Устанавливаем начальную 3D-позицию */
-  perspective: 1000px; /* Добавляем перспективу для 3D */
-}
-
-/* Стили для .apply-button (без анимации по умолчанию) */
-.apply-button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: auto;
-  padding: 12px 24px;
-  min-width: 80px;
-  background-color: #1F1F1F;
-  border-radius: 24px;
-  transition: transform 0.3s ease, background-color 0.3s ease;
-  font-size: 14px;
-  font-weight: 500;
-  color: #FFFFFF;
-  box-shadow: 
-    inset 0 0 10px rgba(0, 0, 0, 0.8), /* Базовое внутреннее свечение */
-    0 4px 8px rgba(0, 0, 0, 0.5); /* Базовая тень для 3D */
-  transform: translateZ(0); /* Устанавливаем начальную 3D-позицию */
-  perspective: 1000px; /* Добавляем перспективу для 3D */
-}
-
-/* Убираем анимацию с кнопки смены языка */
-#language-switch {
-  animation: none; /* Отключаем пульсацию */
-}
-
-/* Отключаем анимацию для пользователей с настройкой уменьшенного движения */
-@media (prefers-reduced-motion: reduce) {
-  .main-button, .apply-button {
-    animation: none;
-    box-shadow: 
-      inset 0 0 5px rgba(0, 0, 0, 0.5), /* Статичное внутреннее свечение */
-      0 2px 4px rgba(0, 0, 0, 0.3); /* Статичная тень */
-    transform: translateZ(0); /* Без анимации, но с 3D */
-  }
-  #language-switch {
-    animation: none; /* Уже отключено, но для единообразия */
-  }
-}
-
     #liquid-canvas {
       position: fixed;
       top: 0;
@@ -221,8 +146,8 @@
       box-shadow: 0 10px 25px rgba(255, 0, 122, 0.5);
     }
     .why-us-card .icon {
-      font-size: 1.5rem;
-      margin-right: 8px;
+      font-size: 1.5rem; /* Размер иконок */
+      margin-right: 8px; /* Отступ справа */
       vertical-align: middle;
     }
     .border-red-500 {
@@ -233,8 +158,8 @@
       align-items: center;
       justify-content: center;
       padding: 8px 16px;
-      background-color: #000000;
-      color: #FFFFFF;
+      background-color: #000000; /* Черный фон */
+      color: #FFFFFF; /* Белый текст */
       border-radius: 24px;
       font-size: 14px;
       font-weight: 500;
@@ -262,12 +187,6 @@
     }
     #main h1, #main p, #main .main-button {
       opacity: 1;
-    }
-    /* Стили для секции "Почему именно мы?" */
-    .why-us-card p {
-      display: flex;
-      align-items: center;
-      margin-bottom: 12px;
     }
     @media (max-width: 640px) {
       .bottom-left-panel {
@@ -303,21 +222,7 @@
         height: 40px;
       }
       .why-us-card .icon {
-        font-size: 1.2rem;
-      }
-      /* Улучшенное выравнивание для мобильной версии */
-      .why-us-card {
-        padding: 16px;
-      }
-      .why-us-card p {
-        display: flex;
-        align-items: flex-start;
-        margin-bottom: 16px;
-        line-height: 1.5;
-      }
-      .why-us-card .icon {
-        margin-right: 12px;
-        flex-shrink: 0;
+        font-size: 1.2rem; /* Уменьшаем иконки на мобильных */
       }
     }
   </style>
@@ -383,17 +288,17 @@
       <div class="container mx-auto px-4">
         <div class="why-us-card p-6 rounded-xl max-w-lg mx-auto" data-aos="fade-up" data-aos-delay="200">
           <h3 class="text-3xl md:text-4xl font-heading font-bold mb-6 text-center">Почему именно мы?</h3>
-          <p><span class="icon">👥</span> Наша команда ждёт целеустремлённых сотрудников.</p>
+          <p><span class="icon">👥</span> Наша команда ждёт целеустремлённых сотрудников./p>
           <p><span class="icon">📈</span> Рост и развитие — мы поддерживаем твои амбиции.</p>
           <p><span class="icon">🛡️</span> Стабильная работа в надёжной компании.</p>
           <p><span class="icon">🏙️</span> Современный офис с комфортными условиями.</p>
           <p><span class="icon">💰</span> Достойная оплата — зарплата от 50 000 грн.</p>
           <p><span class="icon">🎁</span> Бонусы без потолка для твоих достижений.</p>
           <p><span class="icon">🎯</span> Карьерные перспективы — расти с нами.</p>
-          <p><span class="icon">📝</span> Присоединяйся к нам прямо сейчас, оставляй заявку.</p>
+          <p class="mt-4"><span class="icon">📝</span> Присоединяйся к нам прямо сейчас, оставляй заявку.</p>
           <p><span class="icon">🏠</span> Жильё для иногородних — мы позаботимся о тебе.</p>
           <p><span class="icon">💹</span> Высокий доход — твои усилия окупятся.</p>
-          <p><span class="icon">👥</span> Мы ищем амбициозных сотрудников для офисной работы с зарплатой от 50 000 грн, бонусами и жильём для иногородних.</p>
+          <p class="mt-4"><span class="icon">👥</span> Мы ищем амбициозных сотрудников для офисной работы с зарплатой от 50 000 грн, бонусами и жильём для иногородних.</p>
         </div>
       </div>
     </section>
@@ -652,111 +557,68 @@
     });
     // Анимация с движущимися кругами
     const rand = (min, max) => Math.random() * (max - min) + min;
-const canvas = document.getElementById('liquid-canvas');
-const ctx = canvas.getContext('2d');
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
-
-window.addEventListener('resize', () => {
+    const canvas = document.getElementById('liquid-canvas');
+    const ctx = canvas.getContext('2d');
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
+    window.addEventListener('resize', () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      ctx.globalCompositeOperation = 'lighter';
+    });
+    const backgroundColors = ['#0F0F0F', '#0F0F0F'];
+    const colors = [['#E91E63', '#FF007A']];
+    const count = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 15 : 30;
+    const blur = [12, 70];
+    const radius = [1, 120];
     ctx.globalCompositeOperation = 'lighter';
-});
-
-function calculateCircleCount() {
-    const isReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    return isReducedMotion ? 15 : 30;
-}
-
-const backgroundColors = ['#0F0F0F', '#0F0F0F'];
-const colors = [['#E91E63', '#FF007A']];
-let count = calculateCircleCount();
-const blurRange = [12, 70];
-const radiusRange = [20, 120];
-
-ctx.globalCompositeOperation = 'lighter';
-let grd = ctx.createLinearGradient(0, canvas.height, canvas.width, 0);
-grd.addColorStop(0, backgroundColors[0]);
-grd.addColorStop(1, backgroundColors[1]);
-ctx.fillStyle = grd;
-ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-const items = [];
-function initializeItems() {
-    items.length = 0;
-    count = calculateCircleCount();
-    
-    for (let i = 0; i < count; i++) {
-        const z = rand(0, 1);
-        const thisRadius = radiusRange[0] + (radiusRange[1] - radiusRange[0]) * z;
-        const thisBlur = blurRange[0] + (blurRange[1] - blurRange[0]) * (1 - z);
-        const x = rand(-100, canvas.width + 100);
-        const y = rand(-100, canvas.height + 100);
-        const colorOne = colors[0][0];
-        const colorTwo = colors[0][1];
-
-        ctx.beginPath();
-        ctx.filter = `blur(${thisBlur}px)`;
-        grd = ctx.createLinearGradient(x - thisRadius / 2, y - thisRadius / 2, x + thisRadius, y + thisRadius);
-        grd.addColorStop(0, colorOne);
-        grd.addColorStop(1, colorTwo);
-        ctx.fillStyle = grd;
-        ctx.arc(x, y, thisRadius, 0, Math.PI * 2);
-        ctx.fill();
-        ctx.closePath();
-
-        const directionX = Math.round(rand(-99, 99) / 100);
-        const directionY = Math.round(rand(-99, 99) / 100);
-        const directionZ = rand(-0.02, 0.02);
-
-        items.push({
-            x, y, z, blur: thisBlur, radius: thisRadius,
-            initialXDirection: directionX, initialYDirection: directionY, initialZDirection: directionZ,
-            colorOne, colorTwo,
-            gradient: [x - thisRadius / 2, y - thisRadius / 2, x + thisRadius, y + thisRadius],
-        });
-    }
-}
-
-initializeItems();
-
-window.addEventListener('resize', () => {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-    ctx.globalCompositeOperation = 'lighter';
-    initializeItems();
-});
-
-function changeCanvas() {
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    grd = ctx.createLinearGradient(0, canvas.height, canvas.width, 0);
+    let grd = ctx.createLinearGradient(0, canvas.height, canvas.width, 0);
     grd.addColorStop(0, backgroundColors[0]);
     grd.addColorStop(1, backgroundColors[1]);
     ctx.fillStyle = grd;
     ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-    // Нормализуем скорость относительно размера экрана
-    const baseSpeed = 2; // Базовая скорость для эталонного размера (например, 1920x1080)
-    const referenceWidth = 1920; // Эталонная ширина
-    const referenceHeight = 1080; // Эталонная высота
-    const adjX = baseSpeed * (canvas.width / referenceWidth); // Скорость по X пропорциональна ширине
-    const adjY = baseSpeed * (canvas.height / referenceHeight); // Скорость по Y пропорциональна высоте
-    const adjZ = 0.01;
-
-    items.forEach(item => {
-        item.z += item.initialZDirection * adjZ;
-        if (item.z >= 1 || item.z <= 0) item.initialZDirection *= -1;
-        item.z = Math.max(0, Math.min(1, item.z));
-
-        item.radius = radiusRange[0] + (radiusRange[1] - radiusRange[0]) * item.z;
-        item.blur = blurRange[0] + (blurRange[1] - blurRange[0]) * (1 - item.z);
-
+    const items = [];
+    for (let i = 0; i < count; i++) {
+      const thisRadius = rand(radius[0], radius[1]);
+      const thisBlur = rand(blur[0], blur[1]);
+      const x = rand(-100, canvas.width + 100);
+      const y = rand(-100, canvas.height + 100);
+      const colorOne = colors[0][0];
+      const colorTwo = colors[0][1];
+      ctx.beginPath();
+      ctx.filter = `blur(${thisBlur}px)`;
+      grd = ctx.createLinearGradient(x - thisRadius / 2, y - thisRadius / 2, x + thisRadius, y + thisRadius);
+      grd.addColorStop(0, colorOne);
+      grd.addColorStop(1, colorTwo);
+      ctx.fillStyle = grd;
+      ctx.arc(x, y, thisRadius, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.closePath();
+      const directionX = Math.round(rand(-99, 99) / 100);
+      const directionY = Math.round(rand(-99, 99) / 100);
+      items.push({
+        x, y, blur: thisBlur, radius: thisRadius,
+        initialXDirection: directionX, initialYDirection: directionY,
+        initialBlurDirection: directionX, colorOne, colorTwo,
+        gradient: [x - thisRadius / 2, y - thisRadius / 2, x + thisRadius, y + thisRadius],
+      });
+    }
+    function changeCanvas() {
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      grd = ctx.createLinearGradient(0, canvas.height, canvas.width, 0);
+      grd.addColorStop(0, backgroundColors[0]);
+      grd.addColorStop(1, backgroundColors[1]);
+      ctx.fillStyle = grd;
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      const adjX = 2, adjY = 2, adjBlur = 1;
+      items.forEach(item => {
         if (item.x + item.initialXDirection * adjX >= canvas.width || item.x + item.initialXDirection * adjX <= 0) item.initialXDirection *= -1;
         if (item.y + item.initialYDirection * adjY >= canvas.height || item.y + item.initialYDirection * adjY <= 0) item.initialYDirection *= -1;
+        if (item.blur + item.initialBlurDirection * adjBlur >= radius[1] || item.blur + item.initialBlurDirection * adjBlur <= radius[0]) item.initialBlurDirection *= -1;
         item.x += item.initialXDirection * adjX;
         item.y += item.initialYDirection * adjY;
-
+        item.blur += item.initialBlurDirection * adjBlur;
         ctx.beginPath();
         ctx.filter = `blur(${item.blur}px)`;
         grd = ctx.createLinearGradient(item.gradient[0], item.gradient[1], item.gradient[2], item.gradient[3]);
@@ -766,12 +628,9 @@ function changeCanvas() {
         ctx.arc(item.x, item.y, item.radius, 0, Math.PI * 2);
         ctx.fill();
         ctx.closePath();
-    });
-
-    window.requestAnimationFrame(changeCanvas);
-}
-
-changeCanvas();
+      });
+      window.requestAnimationFrame(changeCanvas);
+    }
     if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) window.requestAnimationFrame(changeCanvas);
     // Переключение языка
     const translations = {
@@ -838,7 +697,7 @@ changeCanvas();
         mainNotRemote: "Не віддалено",
         applyButton: "Залишай заявку",
         whyUsTitle: "Чому саме ми?",
-        whyUsText1: "👥 Наша команда чекає цілеспрямованих співробітників.",
+        whyUsText1: "👥  Наша команда чекає цілеспрямованих співробітників.",
         whyUsText2: "📈 Ріст і розвиток — ми підтримуємо твої амбіції.",
         whyUsText3: "🛡️ Стабільна робота в надійній компанії.",
         whyUsText4: "🏙️ Сучасний офіс з комфортними умовами.",
@@ -975,7 +834,7 @@ changeCanvas();
     // Обработка изменения размера экрана
     mobileMediaQuery.addEventListener('change', (e) => {
       if (!e.matches) {
-        bottomPanel.style.display = 'flex';
+        bottomPanel.style.display = 'flex'; // Показываем панель, если не мобильная версия
       }
     });
   </script>
