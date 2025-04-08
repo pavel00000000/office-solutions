@@ -42,6 +42,81 @@
     gtag('config', 'G-XXXXXXXXXX');
   </script>
   <style>
+
+
+
+/* Определяем анимацию пульсации с внутренним свечением и 3D-эффектом */
+@keyframes pulse {
+  0% {
+    transform: scale(1) translateZ(0); /* Начальная позиция в 3D */
+    box-shadow: 
+      inset 0 0 10px rgba(0, 0, 0, 0.8), /* Внутреннее чёрное свечение */
+      0 4px 8px rgba(0, 0, 0, 0.5); /* Внешняя тень для 3D */
+  }
+  50% {
+    transform: scale(1.05) translateZ(5px); /* Лёгкий подъём в 3D */
+    box-shadow: 
+      inset 0 0 15px rgba(0, 0, 0, 1), /* Усиленное внутреннее свечение */
+      0 6px 12px rgba(0, 0, 0, 0.7); /* Усиленная тень для глубины */
+  }
+  100% {
+    transform: scale(1) translateZ(0); /* Возврат к исходной позиции */
+    box-shadow: 
+      inset 0 0 10px rgba(0, 0, 0, 0.8), /* Внутреннее свечение */
+      0 4px 8px rgba(0, 0, 0, 0.5); /* Внешняя тень */
+  }
+}
+
+/* Применяем анимацию к кнопкам "Оставляй заявку" */
+.main-button {
+  animation: pulse 1.5s infinite ease-in-out;
+  box-shadow: 
+    inset 0 0 10px rgba(0, 0, 0, 0.8), /* Базовое внутреннее свечение */
+    0 4px 8px rgba(0, 0, 0, 0.5); /* Базовая тень для 3D */
+  transform: translateZ(0); /* Устанавливаем начальную 3D-позицию */
+  perspective: 1000px; /* Добавляем перспективу для 3D */
+}
+
+/* Стили для .apply-button (без анимации по умолчанию) */
+.apply-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: auto;
+  padding: 12px 24px;
+  min-width: 80px;
+  background-color: #1F1F1F;
+  border-radius: 24px;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  font-size: 14px;
+  font-weight: 500;
+  color: #FFFFFF;
+  box-shadow: 
+    inset 0 0 10px rgba(0, 0, 0, 0.8), /* Базовое внутреннее свечение */
+    0 4px 8px rgba(0, 0, 0, 0.5); /* Базовая тень для 3D */
+  transform: translateZ(0); /* Устанавливаем начальную 3D-позицию */
+  perspective: 1000px; /* Добавляем перспективу для 3D */
+}
+
+/* Убираем анимацию с кнопки смены языка */
+#language-switch {
+  animation: none; /* Отключаем пульсацию */
+}
+
+/* Отключаем анимацию для пользователей с настройкой уменьшенного движения */
+@media (prefers-reduced-motion: reduce) {
+  .main-button, .apply-button {
+    animation: none;
+    box-shadow: 
+      inset 0 0 5px rgba(0, 0, 0, 0.5), /* Статичное внутреннее свечение */
+      0 2px 4px rgba(0, 0, 0, 0.3); /* Статичная тень */
+    transform: translateZ(0); /* Без анимации, но с 3D */
+  }
+  #language-switch {
+    animation: none; /* Уже отключено, но для единообразия */
+  }
+}
+
     #liquid-canvas {
       position: fixed;
       top: 0;
