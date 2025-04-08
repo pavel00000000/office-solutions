@@ -245,6 +245,27 @@
         flex-shrink: 0;
       }
     }
+    /* Добавляем анимацию пульсации */
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.05);
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
+    .main-button, .apply-button {
+      animation: pulse 0.5s infinite ease-in-out;
+    }
+    /* Отключаем анимацию для пользователей, предпочитающих уменьшенное движение */
+    @media (prefers-reduced-motion: reduce) {
+      .main-button, .apply-button {
+        animation: none;
+      }
+    }
   </style>
 </head>
 <body class="bg-background text-text">
@@ -302,7 +323,6 @@
         <a href="#apply" class="inline-block bg-primary text-white px-8 py-4 rounded-full hover:bg-secondary smooth-scroll text-lg font-medium main-button">Оставляй заявку</a>
       </div>
     </section>
-
     <!-- Why Us Section -->
     <section id="why-us" class="py-20 bg-background">
       <div class="container mx-auto px-4">
@@ -577,41 +597,41 @@
     });
     // Анимация с движущимися кругами
     const rand = (min, max) => Math.random() * (max - min) + min;
-const canvas = document.getElementById('liquid-canvas');
-const ctx = canvas.getContext('2d');
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
-
-window.addEventListener('resize', () => {
+    const canvas = document.getElementById('liquid-canvas');
+    const ctx = canvas.getContext('2d');
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
+
+    window.addEventListener('resize', () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      ctx.globalCompositeOperation = 'lighter';
+    });
+
+    function calculateCircleCount() {
+      const isReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      return isReducedMotion ? 15 : 30;
+    }
+
+    const backgroundColors = ['#0F0F0F', '#0F0F0F'];
+    const colors = [['#E91E63', '#FF007A']];
+    let count = calculateCircleCount();
+    const blurRange = [12, 70];
+    const radiusRange = [20, 120];
+
     ctx.globalCompositeOperation = 'lighter';
-});
+    let grd = ctx.createLinearGradient(0, canvas.height, canvas.width, 0);
+    grd.addColorStop(0, backgroundColors[0]);
+    grd.addColorStop(1, backgroundColors[1]);
+    ctx.fillStyle = grd;
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-function calculateCircleCount() {
-    const isReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    return isReducedMotion ? 15 : 30;
-}
+    const items = [];
+    function initializeItems() {
+      items.length = 0;
+      count = calculateCircleCount();
 
-const backgroundColors = ['#0F0F0F', '#0F0F0F'];
-const colors = [['#E91E63', '#FF007A']];
-let count = calculateCircleCount();
-const blurRange = [12, 70];
-const radiusRange = [20, 120];
-
-ctx.globalCompositeOperation = 'lighter';
-let grd = ctx.createLinearGradient(0, canvas.height, canvas.width, 0);
-grd.addColorStop(0, backgroundColors[0]);
-grd.addColorStop(1, backgroundColors[1]);
-ctx.fillStyle = grd;
-ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-const items = [];
-function initializeItems() {
-    items.length = 0;
-    count = calculateCircleCount();
-    
-    for (let i = 0; i < count; i++) {
+      for (let i = 0; i < count; i++) {
         const z = rand(0, 1);
         const thisRadius = radiusRange[0] + (radiusRange[1] - radiusRange[0]) * z;
         const thisBlur = blurRange[0] + (blurRange[1] - blurRange[0]) * (1 - z);
@@ -635,41 +655,40 @@ function initializeItems() {
         const directionZ = rand(-0.02, 0.02);
 
         items.push({
-            x, y, z, blur: thisBlur, radius: thisRadius,
-            initialXDirection: directionX, initialYDirection: directionY, initialZDirection: directionZ,
-            colorOne, colorTwo,
-            gradient: [x - thisRadius / 2, y - thisRadius / 2, x + thisRadius, y + thisRadius],
+          x, y, z, blur: thisBlur, radius: thisRadius,
+          initialXDirection: directionX, initialYDirection: directionY, initialZDirection: directionZ,
+          colorOne, colorTwo,
+          gradient: [x - thisRadius / 2, y - thisRadius / 2, x + thisRadius, y + thisRadius],
         });
+      }
     }
-}
 
-initializeItems();
-
-window.addEventListener('resize', () => {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-    ctx.globalCompositeOperation = 'lighter';
     initializeItems();
-});
 
-function changeCanvas() {
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    grd = ctx.createLinearGradient(0, canvas.height, canvas.width, 0);
-    grd.addColorStop(0, backgroundColors[0]);
-    grd.addColorStop(1, backgroundColors[1]);
-    ctx.fillStyle = grd;
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    window.addEventListener('resize', () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      ctx.globalCompositeOperation = 'lighter';
+      initializeItems();
+    });
 
-    // Нормализуем скорость относительно размера экрана
-    const baseSpeed = 2; // Базовая скорость для эталонного размера (например, 1920x1080)
-    const referenceWidth = 1920; // Эталонная ширина
-    const referenceHeight = 1080; // Эталонная высота
-    const adjX = baseSpeed * (canvas.width / referenceWidth); // Скорость по X пропорциональна ширине
-    const adjY = baseSpeed * (canvas.height / referenceHeight); // Скорость по Y пропорциональна высоте
-    const adjZ = 0.01;
+    function changeCanvas() {
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      grd = ctx.createLinearGradient(0, canvas.height, canvas.width, 0);
+      grd.addColorStop(0, backgroundColors[0]);
+      grd.addColorStop(1, backgroundColors[1]);
+      ctx.fillStyle = grd;
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-    items.forEach(item => {
+      const baseSpeed = 2;
+      const referenceWidth = 1920;
+      const referenceHeight = 1080;
+      const adjX = baseSpeed * (canvas.width / referenceWidth);
+      const adjY = baseSpeed * (canvas.height / referenceHeight);
+      const adjZ = 0.01;
+
+      items.forEach(item => {
         item.z += item.initialZDirection * adjZ;
         if (item.z >= 1 || item.z <= 0) item.initialZDirection *= -1;
         item.z = Math.max(0, Math.min(1, item.z));
@@ -691,12 +710,12 @@ function changeCanvas() {
         ctx.arc(item.x, item.y, item.radius, 0, Math.PI * 2);
         ctx.fill();
         ctx.closePath();
-    });
+      });
 
-    window.requestAnimationFrame(changeCanvas);
-}
+      window.requestAnimationFrame(changeCanvas);
+    }
 
-changeCanvas();
+    changeCanvas();
     if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) window.requestAnimationFrame(changeCanvas);
     // Переключение языка
     const translations = {
@@ -708,17 +727,17 @@ changeCanvas();
         mainNotRemote: "Не удаленно",
         applyButton: "Оставляй заявку",
         whyUsTitle: "Почему именно мы?",
-        whyUsText1: "👥 Наша команда ждёт целеустремлённых сотрудников.",
-        whyUsText2: "📈 Рост и развитие — мы поддерживаем твои амбиции.",
-        whyUsText3: "🛡️ Стабильная работа в надёжной компании.",
-        whyUsText4: "🏙️ Современный офис с комфортными условиями.",
-        whyUsText5: "💰 Достойная оплата — зарплата от 50 000 грн.",
-        whyUsText6: "🎁 Бонусы без потолка для твоих достижений.",
-        whyUsText7: "🎯 Карьерные перспективы — расти с нами.",
-        whyUsText8: "📝 Присоединяйся к нам прямо сейчас, оставляй заявку",
-        whyUsText9: "🏠 Жильё для иногородних — мы позаботимся о тебе.",
-        whyUsText10: "💹 Высокий доход — твои усилия окупятся.",
-        whyUsText11: "👥 Мы ищем амбициозных сотрудников для офисной работы с зарплатой от 50 000 грн, бонусами и жильём для иногородних.",
+        whyUsText1: " Наша команда ждёт целеустремлённых сотрудников.",
+        whyUsText2: " Рост и развитие — мы поддерживаем твои амбиции.",
+        whyUsText3: " Стабильная работа в надёжной компании.",
+        whyUsText4: " Современный офис с комфортными условиями.",
+        whyUsText5: " Достойная оплата — зарплата от 50 000 грн.",
+        whyUsText6: " Бонусы без потолка для твоих достижений.",
+        whyUsText7: " Карьерные перспективы — расти с нами.",
+        whyUsText8: " Присоединяйся к нам прямо сейчас, оставляй заявку",
+        whyUsText9: " Жильё для иногородних — мы позаботимся о тебе.",
+        whyUsText10: " Высокий дохід — твои усилия окупятся.",
+        whyUsText11: " Мы ищем амбициозных сотрудников для офисной работы с зарплатой от 50 000 грн, бонусами и жильём для иногородних.",
         benefitsTitle: "Наши преимущества",
         benefit1Title: "Стабильная оплата",
         benefit1Text: "Зарплата от 50 000 грн, еженедельные бонусы и премии без потолка. Всё официально и без задержек.",
@@ -763,17 +782,17 @@ changeCanvas();
         mainNotRemote: "Не віддалено",
         applyButton: "Залишай заявку",
         whyUsTitle: "Чому саме ми?",
-        whyUsText1: "👥 Наша команда чекає цілеспрямованих співробітників.",
-        whyUsText2: "📈 Ріст і розвиток — ми підтримуємо твої амбіції.",
-        whyUsText3: "🛡️ Стабільна робота в надійній компанії.",
-        whyUsText4: "🏙️ Сучасний офіс з комфортними умовами.",
-        whyUsText5: "💰 Гідна оплата — зарплата від 50 000 грн.",
-        whyUsText6: "🎁 Бонуси без стелі для твоїх досягнень.",
-        whyUsText7: "🎯 Кар'єрні перспективи — рости з нами.",
-        whyUsText8: "📝 Приєднуйся до нас прямо зараз, залишай заявку",
-        whyUsText9: "🏠 Житло для іногородніх — ми подбаємо про тебе.",
-        whyUsText10: "💹 Високий дохід — твої зусилля окупляться.",
-        whyUsText11: "👥 Ми шукаємо амбітних співробітників для офісної роботи з зарплатою від 50 000 грн, бонусами та житлом для іногородніх.",
+        whyUsText1: " Наша команда чекає цілеспрямованих співробітників.",
+        whyUsText2: " Ріст і розвиток — ми підтримуємо твої амбіції.",
+        whyUsText3: " Стабільна робота в надійній компанії.",
+        whyUsText4: " Сучасний офіс з комфортними умовами.",
+        whyUsText5: " Гідна оплата — зарплата від 50 000 грн.",
+        whyUsText6: " Бонуси без стелі для твоїх досягнень.",
+        whyUsText7: " Кар'єрні перспективи — рости з нами.",
+        whyUsText8: " Приєднуйся до нас прямо зараз, залишай заявку",
+        whyUsText9: " Житло для іногородніх — ми подбаємо про тебе.",
+        whyUsText10: " Високий дохід — твої зусилля окупляться.",
+        whyUsText11: " Ми шукаємо амбітних співробітників для офісної роботи з зарплатою від 50 000 грн, бонусами та житлом для іногородніх.",
         benefitsTitle: "Наші переваги",
         benefit1Title: "Стабільна оплата",
         benefit1Text: "Зарплата від 50 000 грн, щотижневі бонуси та премії без обмежень. Все офіційно та без затримок.",
@@ -826,17 +845,17 @@ changeCanvas();
       document.querySelector('#main p:nth-of-type(5)').textContent = lang.mainNotRemote;
       document.querySelector('#main .main-button').textContent = lang.applyButton;
       document.querySelector('#why-us h3').textContent = lang.whyUsTitle;
-      document.querySelector('#why-us p:nth-of-type(1)').innerHTML = `<span class="icon">👥</span> ${lang.whyUsText1.split('👥 ')[1]}`;
-      document.querySelector('#why-us p:nth-of-type(2)').innerHTML = `<span class="icon">📈</span> ${lang.whyUsText2.split('📈 ')[1]}`;
-      document.querySelector('#why-us p:nth-of-type(3)').innerHTML = `<span class="icon">🛡️</span> ${lang.whyUsText3.split('🛡️ ')[1]}`;
-      document.querySelector('#why-us p:nth-of-type(4)').innerHTML = `<span class="icon">🏙️</span> ${lang.whyUsText4.split('🏙️ ')[1]}`;
-      document.querySelector('#why-us p:nth-of-type(5)').innerHTML = `<span class="icon">💰</span> ${lang.whyUsText5.split('💰 ')[1]}`;
-      document.querySelector('#why-us p:nth-of-type(6)').innerHTML = `<span class="icon">🎁</span> ${lang.whyUsText6.split('🎁 ')[1]}`;
-      document.querySelector('#why-us p:nth-of-type(7)').innerHTML = `<span class="icon">🎯</span> ${lang.whyUsText7.split('🎯 ')[1]}`;
-      document.querySelector('#why-us p:nth-of-type(8)').innerHTML = `<span class="icon">📝</span> ${lang.whyUsText8.split('📝 ')[1]}`;
-      document.querySelector('#why-us p:nth-of-type(9)').innerHTML = `<span class="icon">🏠</span> ${lang.whyUsText9.split('🏠 ')[1]}`;
-      document.querySelector('#why-us p:nth-of-type(10)').innerHTML = `<span class="icon">💹</span> ${lang.whyUsText10.split('💹 ')[1]}`;
-      document.querySelector('#why-us p:nth-of-type(11)').innerHTML = `<span class="icon">👥</span> ${lang.whyUsText11.split('👥 ')[1]}`;
+      document.querySelector('#why-us p:nth-of-type(1)').innerHTML = `<span class="icon"></span> ${lang.whyUsText1.split(' ')[1]}`;
+      document.querySelector('#why-us p:nth-of-type(2)').innerHTML = `<span class="icon"></span> ${lang.whyUsText2.split(' ')[1]}`;
+      document.querySelector('#why-us p:nth-of-type(3)').innerHTML = `<span class="icon"></span> ${lang.whyUsText3.split(' ')[1]}`;
+      document.querySelector('#why-us p:nth-of-type(4)').innerHTML = `<span class="icon"></span> ${lang.whyUsText4.split(' ')[1]}`;
+      document.querySelector('#why-us p:nth-of-type(5)').innerHTML = `<span class="icon"></span> ${lang.whyUsText5.split(' ')[1]}`;
+      document.querySelector('#why-us p:nth-of-type(6)').innerHTML = `<span class="icon"></span> ${lang.whyUsText6.split(' ')[1]}`;
+      document.querySelector('#why-us p:nth-of-type(7)').innerHTML = `<span class="icon"></span> ${lang.whyUsText7.split(' ')[1]}`;
+      document.querySelector('#why-us p:nth-of-type(8)').innerHTML = `<span class="icon"></span> ${lang.whyUsText8.split(' ')[1]}`;
+      document.querySelector('#why-us p:nth-of-type(9)').innerHTML = `<span class="icon"></span> ${lang.whyUsText9.split(' ')[1]}`;
+      document.querySelector('#why-us p:nth-of-type(10)').innerHTML = `<span class="icon"></span> ${lang.whyUsText10.split(' ')[1]}`;
+      document.querySelector('#why-us p:nth-of-type(11)').innerHTML = `<span class="icon"></span> ${lang.whyUsText11.split(' ')[1]}`;
       document.querySelector('#benefits h2').textContent = lang.benefitsTitle;
       document.querySelectorAll('#benefits .benefit-card h3')[0].textContent = lang.benefit1Title;
       document.querySelectorAll('#benefits .benefit-card p')[0].textContent = lang.benefit1Text;
