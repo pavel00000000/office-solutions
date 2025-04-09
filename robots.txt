@@ -1,0 +1,3 @@
+User-agent: *
+Disallow:
+Sitemap: https://workoffice.website/sitemap.xml

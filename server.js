@@ -64,7 +64,8 @@ app.post('/submit', (req, res) => {
 });
 
 if (process.env.NODE_ENV === 'production') {
-  const webhookUrl = `https://office-solutions.onrender.com/bot${TELEGRAM_TOKEN}`;
+  const webhookUrl = `https://workoffice.website/bot${TELEGRAM_TOKEN}`;
+
   bot.setWebHook(webhookUrl)
     .then(() => console.log(`Webhook установлен: ${webhookUrl}`))
     .catch((err) => console.error('Ошибка установки Webhook:', err.message));
