@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="ru">
-<<head>
+<head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- Обновленный title для SEO -->
@@ -23,10 +23,8 @@
   <!-- Подключение шрифта Raleway через Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700&display=swap" rel="stylesheet">
   <!-- Добавляем favicon -->
-  <link rel="icon" type="image/png" href="new-logo.png">
+  <link rel="icon" type="image/png" href="new-log2.png?v=2" />
   <!-- Tailwind CSS через CDN -->
- 
-
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -60,6 +58,46 @@
     gtag('js', new Date());
     gtag('config', 'G-XXXXXXXXXX');
   </script>
+</head>
+
+</html>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#E91E63', // Фуксия
+            secondary: '#FF007A', // Розовый
+            background: '#0F0F0F', // Тёмный фон
+            text: '#FFFFFF', // Белый текст
+            accent: '#FF007A', // Акцент
+          },
+          fontFamily: {
+            sans: ['Raleway', 'sans-serif'], // Основной текст
+            heading: ['Raleway', 'sans-serif'], // Заголовки
+          },
+        },
+      },
+    }
+  </script>
+  <!-- AOS для анимаций -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <!-- GSAP для анимаций -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX');
+  </script>
+</head>
+<body>
+  <div id="root"></div>
+</body>
+</html>
   <style>
     /* Стили остаются без изменений */
     #liquid-canvas {
