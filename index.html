@@ -45,17 +45,6 @@
       },
     }
   </script>
-
-<!-- Добавляем новый тег Google -->
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-16993371247"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'AW-16993371247');
-  </script>
-
   <!-- AOS для анимаций -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
@@ -69,46 +58,6 @@
     gtag('js', new Date());
     gtag('config', 'G-XXXXXXXXXX');
   </script>
-</head>
-
-</html>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            primary: '#E91E63', // Фуксия
-            secondary: '#FF007A', // Розовый
-            background: '#0F0F0F', // Тёмный фон
-            text: '#FFFFFF', // Белый текст
-            accent: '#FF007A', // Акцент
-          },
-          fontFamily: {
-            sans: ['Raleway', 'sans-serif'], // Основной текст
-            heading: ['Raleway', 'sans-serif'], // Заголовки
-          },
-        },
-      },
-    }
-  </script>
-  <!-- AOS для анимаций -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-  <!-- GSAP для анимаций -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
-  <!-- Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-XXXXXXXXXX');
-  </script>
-</head>
-<body>
-  <div id="root"></div>
-</body>
-</html>
   <style>
     /* Стили остаются без изменений */
     #liquid-canvas {
@@ -343,7 +292,6 @@
     <!-- Main Section -->
     <section id="main" class="min-h-screen flex items-center justify-center py-10 px-4 overflow-hidden relative">
       <div class="container mx-auto flex flex-col items-center justify-center text-center z-10 mt-[-150px]" style="margin-top: calc(-150px + 20vh);">
-        <!-- Заменил первый <p> на <h1> для SEO -->
         <h1 class="text-3xl md:text-4xl font-bold font-sans mb-4">Наша команда в поисках менеджера по работе с клиентами.</h1>
         <p class="text-xl md:text-2xl font-bold font-sans mb-6">Работай с нами и выходи на высокий доход</p>
         <p class="text-xl md:text-2xl font-bold font-sans mb-8">Обучение, жилье, переезд за наш счет</p>
@@ -455,7 +403,6 @@
           <div class="faq-item bg-background p-6 rounded-xl" data-aos="fade-up" data-aos-delay="200">
             <button class="w-full text-left text-xl font-heading font-semibold hover:text-accent faq-button" aria-expanded="false">Оказываете ли вы поддержку?</button>
             <div class="faq-answer hidden mt-4 text-base">
-              <p>Мы ценим каждого сотрудника и создаём комфортные условия для работы и развития:</p>
               <ul class="list-disc pl-6 mt-2 space-y-2">
                 <li>Обучение и адаптация: наставники помогут, даже если нет опыта.</li>
                 <li>Жильё для иногородних: никаких забот о поиске жилья.</li>
@@ -470,7 +417,6 @@
           <div class="faq-item bg-background p-6 rounded-xl" data-aos="fade-up" data-aos-delay="400">
             <button class="w-full text-left text-xl font-heading font-semibold hover:text-accent faq-button" aria-expanded="false">Гарантии безопасности работы?</button>
             <div class="faq-answer hidden mt-4 text-base">
-              <p>Мы обеспечиваем надёжные условия:</p>
               <ul class="list-disc pl-6 mt-2 space-y-2">
                 <li>Фиксированная зарплата + бонусы: выплаты без задержек.</li>
                 <li>Комфортный офис: безопасное рабочее место.</li>
@@ -483,7 +429,6 @@
           <div class="faq-item bg-background p-6 rounded-xl" data-aos="fade-up" data-aos-delay="600">
             <button class="w-full text-left text-xl font-heading font-semibold hover:text-accent faq-button" aria-expanded="false">Есть ли карьерный рост?</button>
             <div class="faq-answer hidden mt-4 text-base">
-              <p>Да, у нас реальные возможности для роста:</p>
               <ul class="list-disc pl-6 mt-2 space-y-2">
                 <li>Начни с оператора: полное обучение.</li>
                 <li>Стань тимлидом: веди команду.</li>
@@ -609,7 +554,6 @@
       }
       try {
         const response = await fetch('https://workoffice.website/submit', {
-
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ name, age, phone, city })
@@ -741,11 +685,30 @@
         benefit7Text: "Часть дохода направляем на поддержку Вооружённых Сил Украины.",
         faqTitle: "Частые вопросы",
         faq1Question: "Оказываете ли вы поддержку?",
-        faq1Answer: "Мы ценим каждого сотрудника и создаём комфортные условия для работы и развития:\n- Обучение и адаптация: наставники помогут, даже если нет опыта.\n- Жильё для иногородних: никаких забот о поиске жилья.\n- Финансовая мотивация: зарплата + бонусы без ограничений.\n- Дружный коллектив: поддержка команды и тёплая атмосфера.\n- Карьерный рост: от оператора до руководителя.\n- Комфортный офис: современное оборудование и зона отдыха.\n- Корпоративы: конкурсы, подарки и мероприятия.",
+        faq1Answer: [
+          "Обучение и адаптация: наставники помогут, даже если нет опыта.",
+          "Жильё для иногородних: никаких забот о поиске жилья.",
+          "Финансовая мотивация: зарплата + бонусы без ограничений.",
+          "Дружный коллектив: поддержка команды и тёплая атмосфера.",
+          "Карьерный рост: от оператора до руководителя.",
+          "Комфортный офис: современное оборудование и зона отдыха.",
+          "Корпоративы: конкурсы, подарки и мероприятия."
+        ],
         faq2Question: "Гарантии безопасности работы?",
-        faq2Answer: "Мы обеспечиваем надёжные условия:\n- Фиксированная зарплата + бонусы: выплаты без задержек.\n- Комфортный офис: безопасное рабочее место.\n- Обучение и поддержка: наставники помогут адаптироваться.\n- Честные условия: без скрытых платежей или штрафов.\n- Конфиденциальность: твои данные в безопасности.",
+        faq2Answer: [
+          "Фиксированная зарплата + бонусы: выплаты без задержек.",
+          "Комфортный офис: безопасное рабочее место.",
+          "Обучение и поддержка: наставники помогут адаптироваться.",
+          "Честные условия: без скрытых платежей или штрафов.",
+          "Конфиденциальность: твои данные в безопасности."
+        ],
         faq3Question: "Есть ли карьерный рост?",
-        faq3Answer: "Да, у нас реальные возможности для роста:\n- Начни с оператора: полное обучение.\n- Стань тимлидом: веди команду.\n- Расти до руководителя: управляй процессами.\n- Лучших продвигаем быстро!",
+        faq3Answer: [
+          "Начни с оператора: полное обучение.",
+          "Стань тимлидом: веди команду.",
+          "Расти до руководителя: управляй процессами.",
+          "Лучших продвигаем быстро!"
+        ],
         applyTitle: "Оставь заявку",
         namePlaceholder: "Имя",
         agePlaceholder: "Возраст",
@@ -796,11 +759,30 @@
         benefit7Text: "Частину доходу спрямовуємо на підтримку Збройних Сил України.",
         faqTitle: "Часті запитання",
         faq1Question: "Чи надаєте ви підтримку?",
-        faq1Answer: "Ми цінуємо кожного співробітника та створюємо комфортні умови для роботи й розвитку:\n- Навчання та адаптація: наставники допоможуть, навіть якщо немає досвіду.\n- Житло для іногородніх: жодних турбот про пошук житла.\n- Фінансова мотивація: зарплата + бонуси без обмежень.\n- Дружній колектив: підтримка команди та тепла атмосфера.\n- Кар'єрне зростання: від оператора до керівника.\n- Комфортний офіс: сучасне обладнання та зона відпочинку.\n- Корпоративи: конкурси, подарунки та заходи.",
+        faq1Answer: [
+          "Навчання та адаптація: наставники допоможуть, навіть якщо немає досвіду.",
+          "Житло для іногородніх: жодних турбот про пошук житла.",
+          "Фінансова мотивація: зарплата + бонуси без обмежень.",
+          "Дружній колектив: підтримка команди та тепла атмосфера.",
+          "Кар'єрне зростання: від оператора до керівника.",
+          "Комфортний офіс: сучасне обладнання та зона відпочинку.",
+          "Корпоративи: конкурси, подарунки та заходи."
+        ],
         faq2Question: "Гарантії безпеки роботи?",
-        faq2Answer: "Ми забезпечуємо надійні умови:\n- Фіксована зарплата + бонуси: виплати без затримок.\n- Комфортний офіс: безпечне робоче місце.\n- Навчання та підтримка: наставники допоможуть адаптуватися.\n- Чесні умови: без прихованих платежів чи штрафів.\n- Конфіденційність: твої дані в безпеці.",
+        faq2Answer: [
+          "Фіксована зарплата + бонуси: виплати без затримок.",
+          "Комфортний офіс: безпечне робоче місце.",
+          "Навчання та підтримка: наставники допоможуть адаптуватися.",
+          "Чесні умови: без прихованих платежів чи штрафів.",
+          "Конфіденційність: твої дані в безпеці."
+        ],
         faq3Question: "Чи є кар'єрне зростання?",
-        faq3Answer: "Так, у нас реальні можливості для зростання:\n- Почни з оператора: повне навчання.\n- Стань тімлідом: веди команду.\n- Рости до керівника: керуй процесами.\n- Найкращих просуваємо швидко!",
+        faq3Answer: [
+          "Почни з оператора: повне навчання.",
+          "Стань тімлідом: веди команду.",
+          "Рости до керівника: керуй процесами.",
+          "Найкращих просуваємо швидко!"
+        ],
         applyTitle: "Залиш заявку",
         namePlaceholder: "Ім'я",
         agePlaceholder: "Вік",
@@ -859,11 +841,20 @@
       document.querySelector('.benefit-card-vsu p').textContent = lang.benefit7Text;
       document.querySelector('#faq h2').textContent = lang.faqTitle;
       document.querySelectorAll('.faq-item button')[0].textContent = lang.faq1Question;
-      document.querySelectorAll('.faq-item .faq-answer p')[0].textContent = lang.faq1Answer.replace(/\n/g, '\n\n');
+      const faq1Items = document.querySelectorAll('.faq-item:nth-of-type(1) .faq-answer li');
+      lang.faq1Answer.forEach((text, index) => {
+        if (faq1Items[index]) faq1Items[index].textContent = text;
+      });
       document.querySelectorAll('.faq-item button')[1].textContent = lang.faq2Question;
-      document.querySelectorAll('.faq-item .faq-answer p')[1].textContent = lang.faq2Answer.replace(/\n/g, '\n\n');
+      const faq2Items = document.querySelectorAll('.faq-item:nth-of-type(2) .faq-answer li');
+      lang.faq2Answer.forEach((text, index) => {
+        if (faq2Items[index]) faq2Items[index].textContent = text;
+      });
       document.querySelectorAll('.faq-item button')[2].textContent = lang.faq3Question;
-      document.querySelectorAll('.faq-item .faq-answer p')[2].textContent = lang.faq3Answer.replace(/\n/g, '\n\n');
+      const faq3Items = document.querySelectorAll('.faq-item:nth-of-type(3) .faq-answer li');
+      lang.faq3Answer.forEach((text, index) => {
+        if (faq3Items[index]) faq3Items[index].textContent = text;
+      });
       document.querySelector('#apply h2').textContent = lang.applyTitle;
       document.getElementById('name').placeholder = lang.namePlaceholder;
       document.getElementById('age').placeholder = lang.agePlaceholder;
