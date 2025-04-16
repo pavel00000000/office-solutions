@@ -58,6 +58,14 @@
     gtag('js', new Date());
     gtag('config', 'G-XXXXXXXXXX');
   </script>
+  <!-- Google Ads Global Site Tag -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-16993371247"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'AW-16993371247');
+  </script>
   <style>
     /* Стили остаются без изменений */
     #liquid-canvas {
@@ -155,7 +163,7 @@
     }
     .why-us-card {
       background-color: #0F0F0F;
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba _(255, 255, 255, 0.1);
       box-shadow: 0 4px 15px rgba(255, 0, 122, 0.3);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
@@ -398,7 +406,7 @@
     <!-- FAQ -->
     <section id="faq" class="py-20 px-4" lang="ru">
       <div class="container mx-auto">
-        <h2 class="text-3xl md:text-4xl font-heading font-bold text-center mb-12" data-aos="zoom-in">Частые вопросы</h2>
+        <h2 class=" inverters-3xl md:text-4xl font-heading font-bold text-center mb-12" data-aos="zoom-in">Частые вопросы</h2>
         <div class="max-w-3xl mx-auto space-y-6">
           <div class="faq-item bg-background p-6 rounded-xl" data-aos="fade-up" data-aos-delay="200">
             <button class="w-full text-left text-xl font-heading font-semibold hover:text-accent faq-button" aria-expanded="false">Оказываете ли вы поддержку?</button>
@@ -561,6 +569,7 @@
         const result = await response.json();
         if (response.ok) {
           document.getElementById('success-modal').classList.remove('hidden');
+          gtag('event', 'conversion', {'send_to': 'AW-16993371247/jkHXCICjlrgaEO-Iiac_'});
           e.target.reset();
           inputs.forEach(input => input.classList.remove('border-red-500'));
         } else {
