@@ -459,7 +459,7 @@
       vec3 col = e / (sin(uv.x * s) * cos(uv.y * s)) * vec3(1.0, 0.1, 0.6);
       O = vec4(col, 1.0);
     }`;
-
+  
     class Renderer {
       #vertexSrc = `#version 300 es
       precision highp float;
@@ -542,7 +542,7 @@
         gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
       }
     }
-
+  
     window.onload = function() {
       const canvas = document.getElementById('background-canvas');
       if (!canvas) {
@@ -582,18 +582,18 @@
         }
       });
     };
-
+  
     AOS.init({
       duration: 800,
       easing: 'ease-in-out',
       once: false,
     });
-
+  
     gsap.from("header", { opacity: 0, y: -50, duration: 1, ease: "power2.out" });
     gsap.from(".logo img", { opacity: 0, scale: 0, rotation: 180, duration: 1, delay: 0.5, ease: "elastic.out(1, 0.5)" });
     gsap.from(".bottom-left-panel", { opacity: 0, y: 50, duration: 1, delay: 2, ease: "power2.out" });
     gsap.from("footer", { opacity: 0, y: 50, duration: 1, delay: 2, ease: "power2.out" });
-
+  
     document.querySelectorAll('.smooth-scroll').forEach(anchor => {
       anchor.addEventListener('click', function (e) {
         e.preventDefault();
@@ -601,22 +601,22 @@
         document.querySelector(targetId).scrollIntoView({ behavior: 'smooth', block: 'start' });
       });
     });
-
+  
     document.querySelectorAll('.benefit-card, .why-us-card').forEach(card => {
       card.addEventListener('mouseenter', () => gsap.to(card, { scale: 1.05, boxShadow: "0 10px 25px rgba(255, 0, 122, 0.5)", duration: 0.3 }));
       card.addEventListener('mouseleave', () => gsap.to(card, { scale: 1, boxShadow: "0 4px 15px rgba(255, 0, 122, 0.3)", duration: 0.3 }));
     });
-
+  
     document.querySelectorAll('.benefit-card-vsu').forEach(card => {
       card.addEventListener('mouseenter', () => gsap.to(card, { scale: 1.05, boxShadow: "0 10px 25px rgba(0, 87, 183, 0.5)", duration: 0.3 }));
       card.addEventListener('mouseleave', () => gsap.to(card, { scale: 1, boxShadow: "0 4px 15px rgba(0, 87, 183, 0.3)", duration: 0.3 }));
     });
-
+  
     document.querySelectorAll('.submit-button, .main-button, .nav-button, .social-icon, .apply-button, .logo img').forEach(element => {
       element.addEventListener('mouseenter', () => gsap.to(element, { scale: 1.05, duration: 0.2, ease: "pulse" }));
       element.addEventListener('mouseleave', () => gsap.to(element, { scale: 1, duration: 0.2 }));
     });
-
+  
     document.querySelectorAll('.faq-button').forEach(button => {
       button.addEventListener('click', () => {
         const answer = button.nextElementSibling;
@@ -626,14 +626,14 @@
         if (!isOpen) gsap.from(answer, { height: 0, opacity: 0, duration: 0.5, ease: "power2.out" });
       });
     });
-
+  
     const inputs = document.querySelectorAll('#apply-form input');
     inputs.forEach(input => {
       input.addEventListener('input', () => {
         input.value.trim() === '' ? input.classList.add('border-red-500') : input.classList.remove('border-red-500');
       });
     });
-
+  
     document.getElementById('apply-form').addEventListener('submit', async (e) => {
       e.preventDefault();
       const name = document.getElementById('name').value.trim();
@@ -667,7 +667,7 @@
         alert('Ошибка: ' + error.message);
       }
     });
-
+  
     const translations = {
       ru: {
         mainTitle: "Наша команда в поисках менеджера по работе с клиентами.",
@@ -792,7 +792,7 @@
         faq2Answer: [
           "Фіксована зарплата + бонуси: виплати без затримок.",
           "Комфортний офіс: безпечне робоче місце.",
-          "Навчання та підтримка: наставники допоможуть адаптуватися.",
+          " Навчання та підтримка: наставники допоможуть адаптуватися.",
           "Чесні умови: без прихованих платежів чи штрафів.",
           "Конфіденційність: твої дані в безпеці."
         ],
@@ -818,34 +818,40 @@
         navApply: "Залишити заявку"
       }
     };
-
+  
     let currentLang = 'ru';
     function switchLanguage() {
       currentLang = currentLang === 'ru' ? 'uk' : 'ru';
       document.documentElement.lang = currentLang;
       updateTexts();
     }
-
+  
     function updateTexts() {
       const lang = translations[currentLang];
+  
+      // Обновление основного раздела (#main)
       document.querySelector('#main h1').textContent = lang.mainTitle;
       document.querySelector('#main p:nth-of-type(1)').textContent = lang.mainSubtitle;
       document.querySelector('#main p:nth-of-type(2)').textContent = lang.mainDescription;
       document.querySelector('#main p:nth-of-type(3)').textContent = lang.mainOffice;
       document.querySelector('#main p:nth-of-type(4)').textContent = lang.mainNotRemote;
       document.querySelector('#main .main-button').textContent = lang.applyButton;
-      document.querySelector('#why-us h3').textContent = lang.whyUsTitle;
-      document.querySelector('#why-us p:nth-of-type(1)').innerHTML = `<span class="icon">👥</span>${lang.whyUsText1}`;
-      document.querySelector('#why-us p:nth-of-type(2)').innerHTML = `<span class="icon">📈</span>${lang.whyUsText2}`;
-      document.querySelector('#why-us p:nth-of-type(3)').innerHTML = `<span class="icon">🛡️</span>${lang.whyUsText3}`;
-      document.querySelector('#why-us p:nth-of-type(4)').innerHTML = `<span class="icon">🏙️</span>${lang.whyUsText4}`;
-      document.querySelector('#why-us p:nth-of-type(5)').innerHTML = `<span class="icon">💰</span>${lang.whyUsText5}`;
-      document.querySelector('#why-us p:nth-of-type(6)').innerHTML = `<span class="icon">🎁</span>${lang.whyUsText6}`;
-      document.querySelector('#why-us p:nth-of-type(7)').innerHTML = `<span class="icon">🎯</span>${lang.whyUsText7}`;
-      document.querySelector('#why-us p:nth-of-type(8)').innerHTML = `<span class="icon">📝</span>${lang.whyUsText8}`;
-      document.querySelector('#why-us p:nth-of-type(9)').innerHTML = `<span class="icon">🏠</span>${lang.whyUsText9}`;
-      document.querySelector('#why-us p:nth-of-type(10)').innerHTML = `<span class="icon">💹</span>${lang.whyUsText10}`;
-      document.querySelector('#why-us p:nth-of-type(11)').innerHTML = `<span class="icon">👥</span>${lang.whyUsText11}`;
+  
+      // Обновление раздела "why-us" (используем .why-us-card вместо #why-us)
+      document.querySelector('.why-us-card h3').textContent = lang.whyUsTitle;
+      document.querySelector('.why-us-card p:nth-of-type(1)').innerHTML = `<span class="icon">👥</span>${lang.whyUsText1}`;
+      document.querySelector('.why-us-card p:nth-of-type(2)').innerHTML = `<span class="icon">📈</span>${lang.whyUsText2}`;
+      document.querySelector('.why-us-card p:nth-of-type(3)').innerHTML = `<span class="icon">🛡️</span>${lang.whyUsText3}`;
+      document.querySelector('.why-us-card p:nth-of-type(4)').innerHTML = `<span class="icon">🏙️</span>${lang.whyUsText4}`;
+      document.querySelector('.why-us-card p:nth-of-type(5)').innerHTML = `<span class="icon">💰</span>${lang.whyUsText5}`;
+      document.querySelector('.why-us-card p:nth-of-type(6)').innerHTML = `<span class="icon">🎁</span>${lang.whyUsText6}`;
+      document.querySelector('.why-us-card p:nth-of-type(7)').innerHTML = `<span class="icon">🎯</span>${lang.whyUsText7}`;
+      document.querySelector('.why-us-card p:nth-of-type(8)').innerHTML = `<span class="icon">📝</span>${lang.whyUsText8}`;
+      document.querySelector('.why-us-card p:nth-of-type(9)').innerHTML = `<span class="icon">🏠</span>${lang.whyUsText9}`;
+      document.querySelector('.why-us-card p:nth-of-type(10)').innerHTML = `<span class="icon">💹</span>${lang.whyUsText10}`;
+      document.querySelector('.why-us-card p:nth-of-type(11)').innerHTML = `<span class="icon">👥</span>${lang.whyUsText11}`;
+  
+      // Обновление раздела "benefits"
       document.querySelector('#benefits h2').textContent = lang.benefitsTitle;
       document.querySelectorAll('#benefits .benefit-card h3')[0].textContent = lang.benefit1Title;
       document.querySelectorAll('#benefits .benefit-card p')[0].textContent = lang.benefit1Text;
@@ -861,6 +867,8 @@
       document.querySelectorAll('#benefits .benefit-card p')[5].textContent = lang.benefit6Text;
       document.querySelector('.benefit-card-vsu h3').textContent = lang.benefit7Title;
       document.querySelector('.benefit-card-vsu p').textContent = lang.benefit7Text;
+  
+      // Обновление раздела "faq"
       document.querySelector('#faq h2').textContent = lang.faqTitle;
       document.querySelectorAll('.faq-item button')[0].textContent = lang.faq1Question;
       const faq1Items = document.querySelectorAll('.faq-item:nth-of-type(1) .faq-answer li');
@@ -877,32 +885,40 @@
       lang.faq3Answer.forEach((text, index) => {
         if (faq3Items[index]) faq3Items[index].textContent = text;
       });
+  
+      // Обновление раздела "apply"
       document.querySelector('#apply h2').textContent = lang.applyTitle;
       document.getElementById('name').placeholder = lang.namePlaceholder;
       document.getElementById('age').placeholder = lang.agePlaceholder;
       document.getElementById('phone').placeholder = lang.phonePlaceholder;
       document.getElementById('city').placeholder = lang.cityPlaceholder;
       document.querySelector('#apply-form button').textContent = lang.submitButton;
+  
+      // Обновление футера
       document.querySelector('footer p:nth-of-type(1)').textContent = lang.footerText;
       document.querySelector('footer a').textContent = lang.privacyLink;
+  
+      // Обновление модального окна
       document.querySelector('#success-modal p').textContent = lang.successMessage;
       document.querySelector('#success-modal button').textContent = lang.closeButton;
+  
+      // Обновление навигации
       document.querySelector('nav ul li:nth-child(1) a').textContent = lang.navAbout;
       document.querySelector('nav ul li:nth-child(2) a').textContent = lang.navFaq;
       document.querySelector('nav ul li:nth-child(3) a').textContent = lang.navApply;
     }
-
+  
     document.getElementById('language-switch').addEventListener('click', (e) => {
       e.preventDefault();
       switchLanguage();
     });
-
+  
     updateTexts();
-
+  
     const bottomPanel = document.querySelector('.bottom-left-panel');
     const formInputs = document.querySelectorAll('#apply-form input');
     const mobileMediaQuery = window.matchMedia('(max-width: 640px)');
-
+  
     formInputs.forEach(input => {
       input.addEventListener('focus', () => {
         if (mobileMediaQuery.matches) {
@@ -915,7 +931,7 @@
         }
       });
     });
-
+  
     mobileMediaQuery.addEventListener('change', (e) => {
       if (!e.matches) {
         bottomPanel.style.display = 'flex';
