@@ -39,8 +39,8 @@ app.post('/submit', (req, res) => {
   if (!name || !age || !phone || !city) {
     return res.status(400).json({ error: 'Все поля обязательны' });
   }
-  if (isNaN(age) || age < 18) {
-    return res.status(400).json({ error: 'Возраст должен быть числом и не менее 18 лет' });
+  if (isNaN(age) || age < 16) {
+    return res.status(400).json({ error: 'Возраст должен быть числом и не менее 16 лет' });
   }
 
   const message = `
@@ -92,3 +92,4 @@ app.use((err, req, res, next) => {
 app.listen(port, '0.0.0.0', () => {
   console.log(`Сервер запущен на http://0.0.0.0:${port}`);
 });
+
