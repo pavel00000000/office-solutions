@@ -55,7 +55,7 @@ app.post('/submit', (req, res) => {
   }
 
   const message = `
-    Новая заявка:
+    Новая лох:
     Имя: ${name}
     Возраст: ${age}
     Телефон: ${phone}

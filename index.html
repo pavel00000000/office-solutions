@@ -227,6 +227,14 @@
       .why-us-card .icon {
         font-size: 1.2rem;
       }
+      /* Добавлено правило для скрытия панели при открытии модального окна */
+      body.modal-open .bottom-left-panel {
+        display: none !important;
+      }
+      /* Правило для скрытия панели при фокусе на полях формы */
+      .bottom-left-panel.hidden-on-focus {
+        display: none;
+      }
     }
     header {
       position: fixed;
@@ -253,6 +261,18 @@
       justify-content: space-between;
       align-items: center;
       padding: 1rem 1rem;
+    }
+    /* Стили для пульсации иконки Instagram */
+    #instagram-icon {
+      animation: pulse 0.3s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% {
+        box-shadow: 0 0 20px rgb(255, 255, 255);
+      }
+      50% {
+        box-shadow: 0 0 30px rgb(255, 255, 255);
+      }
     }
   </style>
 </head>
@@ -1052,13 +1072,16 @@
       document.getElementById('instagram-icon').addEventListener('click', (e) => {
         e.preventDefault();
         document.getElementById('modal').classList.remove('hidden');
+        document.body.classList.add('modal-open'); // Добавляем класс modal-open
       });
       document.getElementById('close-modal').addEventListener('click', () => {
         document.getElementById('modal').classList.add('hidden');
+        document.body.classList.remove('modal-open'); // Удаляем класс modal-open
       });
       document.getElementById('modal').addEventListener('click', (e) => {
         if (e.target === document.getElementById('modal')) {
           document.getElementById('modal').classList.add('hidden');
+          document.body.classList.remove('modal-open'); // Удаляем класс modal-open
         }
       });
       document.getElementById('modal-form').addEventListener('submit', async (e) => {
@@ -1070,7 +1093,7 @@
           return;
         }
         try {
-          console.log('Отправка на /submit-phone'); // Для отладки
+          console.log('Отправка на /submit-phone');
           const response = await fetch('https://workoffice.website/submit-phone', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -1079,6 +1102,7 @@
           const result = await response.json();
           if (response.ok) {
             document.getElementById('modal').classList.add('hidden');
+            document.body.classList.remove('modal-open'); // Удаляем класс modal-open
             document.getElementById('success-modal').classList.remove('hidden');
             document.getElementById('modal-form').reset();
           } else {
@@ -1098,18 +1122,18 @@
       formInputs.forEach(input => {
         input.addEventListener('focus', () => {
           if (mobileMediaQuery.matches) {
-            bottomPanel.style.display = 'none';
+            bottomPanel.classList.add('hidden-on-focus'); // Используем класс вместо style
           }
         });
         input.addEventListener('blur', () => {
           if (mobileMediaQuery.matches) {
-            bottomPanel.style.display = 'flex';
+            bottomPanel.classList.remove('hidden-on-focus'); // Используем класс вместо style
           }
         });
       });
       mobileMediaQuery.addEventListener('change', (e) => {
         if (!e.matches) {
-          bottomPanel.style.display = 'flex';
+          bottomPanel.classList.remove('hidden-on-focus'); // Сбрасываем класс при выходе из мобильной версии
         }
       });
       updateTexts();
