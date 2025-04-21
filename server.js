@@ -34,6 +34,7 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'index.html'));
 });
 
+// Обработка основной формы заявки
 app.post('/submit', (req, res) => {
   const { name, age, phone, city } = req.body;
 
@@ -62,6 +63,33 @@ app.post('/submit', (req, res) => {
     Дата: ${new Date().toLocaleString('ru-RU')}
   `;
 
+  bot.sendMessage(CHAT_ID, message)
+    .then(() => {
+      console.log('Сообщение успешно отправлено в Telegram');
+      res.status(200).json({ success: true });
+    })
+    .catch((error) => {
+      console.error('Ошибка отправки в Telegram:', error.message);
+      res.status(500).json({ error: 'Ошибка сервера' });
+    });
+});
+
+// Обработка формы из модального окна (только номер телефона)
+app.post('/submit-phone', (req, res) => {
+  console.log('Полученные данные:', req.body); // Логирование для отладки
+  const { phone } = req.body;
+  if (!phone) {
+    return res.status(400).json({ error: 'Номер телефона обязателен' });
+  }
+  const phoneRegex = /^\+38\d{10}$/;
+  if (!phoneRegex.test(phone)) {
+    return res.status(400).json({ error: 'Номер телефона должен начинаться с +38 и содержать ровно 12 цифр (например, +380 XX XXX XX XX)' });
+  }
+  const message = `
+    Владос братишка перезвони этому уюбку в течении 30 мин. :
+    Телефон: ${phone}
+    Дата: ${new Date().toLocaleString('ru-RU')}
+  `;
   bot.sendMessage(CHAT_ID, message)
     .then(() => {
       console.log('Сообщение успешно отправлено в Telegram');

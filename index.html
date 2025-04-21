@@ -40,7 +40,7 @@
   <style>
     body {
       font-family: 'Raleway', sans-serif;
-      margin: 0; /* Убираем стандартные отступы */
+      margin: 0;
     }
     h1, h2, h3 {
       font-family: 'Raleway', sans-serif;
@@ -60,7 +60,7 @@
       justify-content: center;
       width: 56px;
       height: 56px;
-      background-color: #00000000;
+      background-color: #ffffff;
       border-radius: 50%;
       transition: transform 0.3s ease, background-color 0.3s ease;
     }
@@ -76,11 +76,11 @@
       transition: transform 0.3s ease, background-color 0.3s ease;
       font-size: 14px;
       font-weight: 500;
-      color: #ffffff;
+      color: #cd1b7d;
     }
     .social-icon:hover, .apply-button:hover {
       transform: scale(1.1);
-      background-color: #f7eef2;
+      background-color: #d8196f;
     }
     .social-icon:focus, .apply-button:focus, .faq-button:focus, .nav-button:focus {
       outline: 2px solid #e31b89;
@@ -228,35 +228,26 @@
         font-size: 1.2rem;
       }
     }
-
-    /* Обновленные стили для хедера */
     header {
       position: fixed;
       top: 0;
       width: 100%;
       z-index: 50;
-      background: url('i.png') center/cover no-repeat; /* Основной фон */
-      background-color: rgba(0, 0, 0, 0.5); /* Полупрозрачный черный для контраста */
-      height: 80px; /* Устанавливаем высоту хедера */
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Мягкая тень для глубины */
+      background: url('i.png') center/cover no-repeat;
+      background-color: rgba(0, 0, 0, 0.5);
+      height: 80px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     }
-
-    /* Добавляем элемент для плавного перехода */
     header::after {
       content: '';
       position: absolute;
-      bottom: -20px; /* Расширяем область перехода ниже хедера */
+      bottom: -20px;
       left: 0;
       width: 100%;
       height: 20px;
-      background: linear-gradient(
-        to bottom,
-        rgba(0, 0, 0, 0) 0%, /* Цвет совпадает с фоном хедера */
-        transparent 100% /* Плавный переход к прозрачности */
-      );
-      pointer-events: none; /* Чтобы элемент не мешал взаимодействию */
+      background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, transparent 100%);
+      pointer-events: none;
     }
-
     nav {
       display: flex;
       justify-content: space-between;
@@ -272,8 +263,7 @@
   </div>
   <header>
     <nav class="container mx-auto flex justify-between items-center py-4 px-4 md:px-0">
-      <div class="logo">
-      </div>
+      <div class="logo"></div>
       <ul class="flex space-x-4 md:space-x-6">
         <li><a id="nav-about" href="#benefits" class="nav-button smooth-scroll">О нас</a></li>
         <li><a id="nav-faq" href="#faq" class="nav-button smooth-scroll">Частые вопросы</a></li>
@@ -282,6 +272,9 @@
     </nav>
   </header>
   <div class="bottom-left-panel">
+    <a class="social-icon" title="Instagram" tabindex="0" id="instagram-icon">
+      <img src="ic.gif" alt="Instagram">
+    </a>
     <a href="https://www.instagram.com/rabota_work23?igsh=MWY2cXlhMTNjNGw0OQ==" target="_blank" class="social-icon" title="Instagram" tabindex="0">
       <img src="instagram.png" alt="Instagram">
     </a>
@@ -298,6 +291,17 @@
       <img src="language.png" alt="Переключить язык" class="mr-2">
       <span id="language-text">UA</span>
     </a>
+  </div>
+  <div id="modal" class="hidden fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+    <div class="bg-background p-6 rounded-lg text-white max-w-sm w-full">
+      <h2 class="text-2xl font-bold mb-4">Оставьте свой номер</h2>
+      <p class="mb-4">HR менеджер свяжется с вами в течение 30 минут</p>
+      <form id="modal-form">
+        <input type="tel" id="modal-phone" placeholder="Ваш номер телефона" class="w-full p-3 rounded-lg bg-background text-text border border-gray-700 focus:outline-none focus:border-primary mb-4">
+        <button type="submit" class="bg-primary text-white px-8 py-4 rounded-full hover:bg-secondary w-full">Отправить</button>
+      </form>
+      <button id="close-modal" class="mt-4 text-sm underline">Закрыть</button>
+    </div>
   </div>
   <main>
     <section id="main" class="min-h-screen flex items-center justify-center py-10 px-4 overflow-hidden relative">
@@ -318,7 +322,6 @@
         <img src="imej2.png" alt="Изображение" class="benefits-image w-full h-auto" style="max-width: 100%; transform: scaleY(1.5) translateY(-10%);">
         <div class="why-us-card w-full" data-aos="fade-up" data-aos-delay="200">
           <h3 class="text-3xl md:text-4xl font-heading font-bold mb-6 text-center">Почему именно мы?</h3>
-          
           <p><i class="fas fa-users icon"></i> Наша команда ждёт целеустремлённых сотрудников.</p>
           <p><i class="fas fa-chart-line icon"></i> Рост и развитие — мы поддерживаем твои амбиции.</p>
           <p><i class="fas fa-shield-alt icon"></i> Стабильная работа в надёжной компании.</p>
@@ -486,11 +489,11 @@
       theme: {
         extend: {
           colors: {
-            primary: '#E91E63', // Фуксия
-            secondary: '#FF007A', // Розовый
-            background: '#0F0F0F', // Тёмный фон
-            text: '#FFFFFF', // Белый текст
-            accent: '#FF007A', // Акцент
+            primary: '#E91E63',
+            secondary: '#FF007A',
+            background: '#0F0F0F',
+            text: '#FFFFFF',
+            accent: '#FF007A',
           },
           fontFamily: {
             sans: ['Raleway', 'sans-serif'],
@@ -676,7 +679,12 @@
         navAbout: "О нас",
         navFaq: "Частые вопросы",
         navApply: "Оставить заявку",
-        languageButton: "UA"
+        languageButton: "UA",
+        modalTitle: "Оставьте свой номер",
+        modalMessage: "HR менеджер свяжется с вами в течение 30 минут",
+        modalPhonePlaceholder: "Ваш номер телефона",
+        modalSubmitButton: "Отправить",
+        modalCloseButton: "Закрыть"
       },
       uk: {
         mainTitle: "Наша команда шукає менеджера по роботі з клієнтами.",
@@ -751,7 +759,12 @@
         navAbout: "Про нас",
         navFaq: "Часті запитання",
         navApply: "Залишити заявку",
-        languageButton: "RU"
+        languageButton: "RU",
+        modalTitle: "Залиште свій номер",
+        modalMessage: "HR менеджер зв'яжеться з вами протягом 30 хвилин",
+        modalPhonePlaceholder: "Ваш номер телефону",
+        modalSubmitButton: "Надіслати",
+        modalCloseButton: "Закрити"
       }
     };
 
@@ -766,8 +779,6 @@
 
     function updateTexts() {
       const lang = translations[currentLang];
-
-      // Обновление #main
       document.querySelector('#main .why-us-card h1').textContent = lang.mainTitle;
       const mainParagraphs = document.querySelectorAll('#main .why-us-card p');
       mainParagraphs[0].textContent = lang.mainSubtitle;
@@ -775,8 +786,6 @@
       mainParagraphs[2].textContent = lang.mainOffice;
       mainParagraphs[3].textContent = lang.mainNotRemote;
       document.querySelector('#main .main-button').textContent = lang.applyButton;
-
-      // Обновление #benefits .why-us-card
       const whyUsCardBenefits = document.querySelector('#benefits .why-us-card');
       if (whyUsCardBenefits) {
         whyUsCardBenefits.querySelector('h3').textContent = lang.whyUsTitle;
@@ -793,12 +802,10 @@
         paragraphs[9].innerHTML = `<i class="fas fa-wallet icon"></i>${lang.whyUsText10}`;
         paragraphs[10].innerHTML = `<i class="fas fa-users icon"></i>${lang.whyUsText11}`;
       }
-
-      // Обновление .benefit-card и .benefit-card-vsu
       const benefitCards = document.querySelectorAll('.benefit-card');
       benefitCards[0].querySelector('h3').textContent = lang.benefit1Title;
       benefitCards[0].querySelector('p').textContent = lang.benefit1Text;
-      benefitCards[1].querySelector('h3').textContent = lang.benglyphat2Title;
+      benefitCards[1].querySelector('h3').textContent = lang.benefit2Title;
       benefitCards[1].querySelector('p').textContent = lang.benefit2Text;
       benefitCards[2].querySelector('h3').textContent = lang.benefit3Title;
       benefitCards[2].querySelector('p').textContent = lang.benefit3Text;
@@ -811,8 +818,6 @@
       document.querySelector('.benefit-card-vsu h3').textContent = lang.benefit7Title;
       document.querySelector('.benefit-card-vsu p').textContent = lang.benefit7Text;
       document.querySelector('.container.mx-auto > h2').textContent = lang.benefitsTitle;
-
-      // Обновление #faq
       document.querySelector('#faq h2').textContent = lang.faqTitle;
       const faqItems = document.querySelectorAll('.faq-item');
       faqItems[0].querySelector('button').textContent = lang.faq1Question;
@@ -824,27 +829,24 @@
       faqItems[2].querySelector('button').textContent = lang.faq3Question;
       const faq3Items = faqItems[2].querySelectorAll('.faq-answer li');
       lang.faq3Answer.forEach((text, index) => { if (faq3Items[index]) faq3Items[index].textContent = text; });
-
-      // Обновление #apply
       document.querySelector('#apply h2').textContent = lang.applyTitle;
       document.getElementById('name').placeholder = lang.namePlaceholder;
       document.getElementById('age').placeholder = lang.agePlaceholder;
       document.getElementById('phone').placeholder = lang.phonePlaceholder;
       document.getElementById('city').placeholder = lang.cityPlaceholder;
       document.querySelector('#apply-form button').textContent = lang.submitButton;
-
-      // Обновление футера
       document.querySelector('footer p:nth-of-type(1)').textContent = lang.footerText;
       document.querySelector('footer a').textContent = lang.privacyLink;
-
-      // Обновление модального окна
       document.querySelector('#success-modal p').textContent = lang.successMessage;
       document.querySelector('#success-modal button').textContent = lang.closeButton;
-
-      // Обновление навигации
       document.getElementById('nav-about').textContent = lang.navAbout;
       document.getElementById('nav-faq').textContent = lang.navFaq;
       document.getElementById('nav-apply').textContent = lang.navApply;
+      if (document.querySelector('#modal h2')) document.querySelector('#modal h2').textContent = lang.modalTitle;
+      if (document.querySelector('#modal p')) document.querySelector('#modal p').textContent = lang.modalMessage;
+      if (document.getElementById('modal-phone')) document.getElementById('modal-phone').placeholder = lang.modalPhonePlaceholder;
+      if (document.querySelector('#modal-form button')) document.querySelector('#modal-form button').textContent = lang.modalSubmitButton;
+      if (document.getElementById('close-modal')) document.getElementById('close-modal').textContent = lang.modalCloseButton;
     }
 
     // Initialize WebGL and Animations
@@ -886,21 +888,15 @@
           document.getElementById('preloader').style.display = 'none';
         }
       });
-
-      // AOS Initialization
       AOS.init({
         duration: 800,
         easing: 'ease-in-out',
         once: false,
       });
-
-      // GSAP Animations
       gsap.from("header", { opacity: 0, y: -50, duration: 1, ease: "power2.out" });
       gsap.from(".logo img", { opacity: 0, scale: 0, rotation: 180, duration: 1, delay: 0.5, ease: "elastic.out(1, 0.5)" });
       gsap.from(".bottom-left-panel", { opacity: 0, y: 50, duration: 1, delay: 2, ease: "power2.out" });
       gsap.from("footer", { opacity: 0, y: 50, duration: 1, delay: 2, ease: "power2.out" });
-
-      // Smooth Scroll
       document.querySelectorAll('.smooth-scroll').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
           e.preventDefault();
@@ -910,196 +906,195 @@
           }
         });
       });
-
-      // Эффекты наведения для карточек .benefit-card и .why-us-card
-document.querySelectorAll('.benefit-card, .why-us-card').forEach(card => {
-  card.addEventListener('mouseenter', () => gsap.to(card, { 
-    scale: 1.05, 
-    boxShadow: "0 12px 30px rgba(255, 255, 255, 0.7), 0 0 10px rgba(255, 255, 255, 0.4)", 
-    duration: 0.3 
-  }));
-  card.addEventListener('mouseleave', () => gsap.to(card, { 
-    scale: 1, 
-    boxShadow: "0 6px 20px rgba(255, 255, 255, 0.3)", 
-    duration: 0.3 
-  }));
-});
-
-// Эффекты наведения для карточек .benefit-card-vsu
-document.querySelectorAll('.benefit-card-vsu').forEach(card => {
-  card.addEventListener('mouseenter', () => gsap.to(card, { 
-    scale: 1.05, 
-    boxShadow: "0 12px 30px rgba(255, 255, 255, 0.7), 0 0 10px rgba(255, 255, 255, 0.4)", 
-    duration: 0.3 
-  }));
-  card.addEventListener('mouseleave', () => gsap.to(card, { 
-    scale: 1, 
-    boxShadow: "0 6px 20px rgba(255, 255, 255, 0.3)", 
-    duration: 0.3 
-  }));
-});
-
-
-      // Button Hover Effects
+      document.querySelectorAll('.benefit-card, .why-us-card').forEach(card => {
+        card.addEventListener('mouseenter', () => gsap.to(card, { 
+          scale: 1.05, 
+          boxShadow: "0 12px 30px rgba(255, 255, 255, 0.7), 0 0 10px rgba(255, 255, 255, 0.4)", 
+          duration: 0.3 
+        }));
+        card.addEventListener('mouseleave', () => gsap.to(card, { 
+          scale: 1, 
+          boxShadow: "0 6px 20px rgba(255, 255, 255, 0.3)", 
+          duration: 0.3 
+        }));
+      });
+      document.querySelectorAll('.benefit-card-vsu').forEach(card => {
+        card.addEventListener('mouseenter', () => gsap.to(card, { 
+          scale: 1.05, 
+          boxShadow: "0 12px 30px rgba(255, 255, 255, 0.7), 0 0 10px rgba(255, 255, 255, 0.4)", 
+          duration: 0.3 
+        }));
+        card.addEventListener('mouseleave', () => gsap.to(card, { 
+          scale: 1, 
+          boxShadow: "0 6px 20px rgba(255, 255, 255, 0.3)", 
+          duration: 0.3 
+        }));
+      });
       document.querySelectorAll('.submit-button, .main-button, .nav-button, .social-icon, .apply-button, .logo img').forEach(element => {
         element.addEventListener('mouseenter', () => gsap.to(element, { scale: 1.05, duration: 0.2, ease: "pulse" }));
         element.addEventListener('mouseleave', () => gsap.to(element, { scale: 1, duration: 0.2 }));
       });
-
-   
-      
-
-document.querySelectorAll('.faq-button').forEach(button => {
-  // Добавляем начальную стилизацию для кнопки (белое свечение)
-  button.style.transition = 'transform 0.3s ease, box-shadow 0.3s ease';
-  button.style.cursor = 'pointer';
-
-  button.addEventListener('click', () => {
-    const answer = button.nextElementSibling;
-    const isOpen = !answer.classList.contains('hidden');
-
-    // Переключение видимости ответа
-    answer.classList.toggle('hidden');
-    button.setAttribute('aria-expanded', !isOpen);
-
-    // Анимация для открытия
-    if (!isOpen) {
-      gsap.fromTo(
-        answer,
-        { height: 0, opacity: 0, scale: 0.95 },
-        { 
-          height: 'auto', 
-          opacity: 1, 
-          scale: 1, 
-          duration: 0.5, 
-          ease: 'power2.out',
-          onComplete: () => {
-            // Добавляем легкое свечение для ответа
-            gsap.to(answer, {
-              boxShadow: '0 0 15px rgba(255, 255, 255, 0.5)',
+      document.querySelectorAll('.faq-button').forEach(button => {
+        button.style.transition = 'transform 0.3s ease, box-shadow 0.3s ease';
+        button.style.cursor = 'pointer';
+        button.addEventListener('click', () => {
+          const answer = button.nextElementSibling;
+          const isOpen = !answer.classList.contains('hidden');
+          answer.classList.toggle('hidden');
+          button.setAttribute('aria-expanded', !isOpen);
+          if (!isOpen) {
+            gsap.fromTo(
+              answer,
+              { height: 0, opacity: 0, scale: 0.95 },
+              { 
+                height: 'auto', 
+                opacity: 1, 
+                scale: 1, 
+                duration: 0.5, 
+                ease: 'power2.out',
+                onComplete: () => {
+                  gsap.to(answer, {
+                    boxShadow: '0 0 15px rgba(255, 255, 255, 0.5)',
+                    duration: 0.3,
+                    ease: 'power1.out'
+                  });
+                }
+              }
+            );
+            gsap.to(button, {
+              scale: 1.05,
+              boxShadow: '0 0 15px rgba(255, 255, 255, 0.7)',
               duration: 0.3,
-              ease: 'power1.out'
+              ease: 'power2.out',
+              yoyo: true,
+              repeat: 1
+            });
+          } else {
+            gsap.to(answer, {
+              height: 0,
+              opacity: 0,
+              scale: 0.95,
+              duration: 0.3,
+              ease: 'power2.in',
+              onComplete: () => {
+                answer.style.boxShadow = 'none';
+              }
+            });
+            gsap.to(button, {
+              scale: 1,
+              boxShadow: '0 0 5px rgba(255, 255, 255, 0.3)',
+              duration: 0.3,
+              ease: 'power2.out'
             });
           }
-        }
-      );
-
-      // Эффект масштабирования кнопки при открытии
-      gsap.to(button, {
-        scale: 1.05,
-        boxShadow: '0 0 15px rgba(255, 255, 255, 0.7)', // Белое свечение
-        duration: 0.3,
-        ease: 'power2.out',
-        yoyo: true,
-        repeat: 1
+        });
+        button.addEventListener('mouseenter', () => {
+          gsap.to(button, {
+            boxShadow: '0 0 20px rgba(255, 255, 255, 0.9)',
+            scale: 1.03,
+            duration: 0.3,
+            ease: 'power2.out'
+          });
+        });
+        button.addEventListener('mouseleave', () => {
+          gsap.to(button, {
+            boxShadow: '0 0 5px rgba(255, 255, 255, 0.3)',
+            scale: 1,
+            duration: 0.3,
+            ease: 'power2.out'
+          });
+        });
       });
-    } else {
-      // Анимация для закрытия
-      gsap.to(answer, {
-        height: 0,
-        opacity: 0,
-        scale: 0.95,
-        duration: 0.3,
-        ease: 'power2.in',
-        onComplete: () => {
-          answer.style.boxShadow = 'none'; // Убираем свечение при закрытии
-        }
-      });
-
-      // Возвращаем кнопку в исходное состояние
-      gsap.to(button, {
-        scale: 1,
-        boxShadow: '0 0 5px rgba(255, 255, 255, 0.3)', // Легкое свечение
-        duration: 0.3,
-        ease: 'power2.out'
-      });
-    }
-  });
-
-  // Эффект наведения для кнопки
-  button.addEventListener('mouseenter', () => {
-    gsap.to(button, {
-      boxShadow: '0 0 20px rgba(255, 255, 255, 0.9)', // Яркое белое свечение
-      scale: 1.03,
-      duration: 0.3,
-      ease: 'power2.out'
-    });
-  });
-
-  button.addEventListener('mouseleave', () => {
-    gsap.to(button, {
-      boxShadow: '0 0 5px rgba(255, 255, 255, 0.3)', // Легкое свечение
-      scale: 1,
-      duration: 0.3,
-      ease: 'power2.out'
-    });
-  });
-});
-      // Form Input Validation
       const inputs = document.querySelectorAll('#apply-form input');
       inputs.forEach(input => {
         input.addEventListener('input', () => {
           input.value.trim() === '' ? input.classList.add('border-red-500') : input.classList.remove('border-red-500');
         });
       });
-
       document.getElementById('apply-form').addEventListener('submit', async (e) => {
-  e.preventDefault();
-  const name = document.getElementById('name').value.trim();
-  const age = parseInt(document.getElementById('age').value);
-  const phone = document.getElementById('phone').value.trim();
-  const city = document.getElementById('city').value.trim();
-
-  // Проверка заполненности всех полей
-  if (!name || !age || !phone || !city) {
-    alert('Пожалуйста, заполните все поля');
-    return;
-  }
-
-  // Проверка возраста
-  if (isNaN(age) || age < 16 || age > 36) {
-    alert('Возраст должен быть числом от 16 до 36 лет');
-    return;
-  }
-
-  // Проверка номера телефона: должен начинаться с +38 и содержать ровно 12 цифр
-  const phoneRegex = /^\+38\d{10}$/;
-  if (!phoneRegex.test(phone)) {
-    alert('Номер телефона должен начинаться с +38 и содержать ровно 12 цифр (например, +380 XX-XXX-XX-XX)');
-    return;
-  }
-
-  try {
-    const response = await fetch('https://workoffice.website/submit', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ name, age, phone, city })
-    });
-    const result = await response.json();
-    if (response.ok) {
-      document.getElementById('success-modal').classList.remove('hidden');
-      gtag('event', 'conversion', {'send_to': 'AW-16993371247/jkHXCICjlrgaEO-Iiac_'});
-      e.target.reset();
-      inputs.forEach(input => input.classList.remove('border-red-500'));
-    } else {
-      throw new Error(result.error || 'Ошибка сервера');
-    }
-  } catch (error) {
-    alert('Ошибка: ' + error.message);
-  }
-});
-
-      // Language Switch Event
+        e.preventDefault();
+        const name = document.getElementById('name').value.trim();
+        const age = parseInt(document.getElementById('age').value);
+        const phone = document.getElementById('phone').value.trim();
+        const city = document.getElementById('city').value.trim();
+        if (!name || !age || !phone || !city) {
+          alert('Пожалуйста, заполните все поля');
+          return;
+        }
+        if (isNaN(age) || age < 16 || age > 36) {
+          alert('Возраст должен быть числом от 16 до 36 лет');
+          return;
+        }
+        const phoneRegex = /^\+38\d{10}$/;
+        if (!phoneRegex.test(phone)) {
+          alert('Номер телефона должен начинаться с +38 и содержать ровно 12 цифр (например, +380 XX-XXX-XX-XX)');
+          return;
+        }
+        try {
+          const response = await fetch('https://workoffice.website/submit', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ name, age, phone, city })
+          });
+          const result = await response.json();
+          if (response.ok) {
+            document.getElementById('success-modal').classList.remove('hidden');
+            gtag('event', 'conversion', {'send_to': 'AW-16993371247/jkHXCICjlrgaEO-Iiac_'});
+            e.target.reset();
+            inputs.forEach(input => input.classList.remove('border-red-500'));
+          } else {
+            throw new Error(result.error || 'Ошибка сервера');
+          }
+        } catch (error) {
+          alert('Ошибка: ' + error.message);
+        }
+      });
+      document.getElementById('instagram-icon').addEventListener('click', (e) => {
+        e.preventDefault();
+        document.getElementById('modal').classList.remove('hidden');
+      });
+      document.getElementById('close-modal').addEventListener('click', () => {
+        document.getElementById('modal').classList.add('hidden');
+      });
+      document.getElementById('modal').addEventListener('click', (e) => {
+        if (e.target === document.getElementById('modal')) {
+          document.getElementById('modal').classList.add('hidden');
+        }
+      });
+      document.getElementById('modal-form').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const phone = document.getElementById('modal-phone').value.trim();
+        const phoneRegex = /^\+38\d{10}$/;
+        if (!phoneRegex.test(phone)) {
+          alert('Номер телефона должен начинаться с +38 и содержать ровно 12 цифр (например, +380 XX-XXX-XX-XX)');
+          return;
+        }
+        try {
+          console.log('Отправка на /submit-phone'); // Для отладки
+          const response = await fetch('https://workoffice.website/submit-phone', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ phone })
+          });
+          const result = await response.json();
+          if (response.ok) {
+            document.getElementById('modal').classList.add('hidden');
+            document.getElementById('success-modal').classList.remove('hidden');
+            document.getElementById('modal-form').reset();
+          } else {
+            throw new Error(result.error || 'Ошибка сервера');
+          }
+        } catch (error) {
+          alert('Ошибка: ' + error.message);
+        }
+      });
       document.getElementById('language-switch').addEventListener('click', (e) => {
         e.preventDefault();
         switchLanguage();
       });
-
-      // Bottom Panel Mobile Behavior
       const bottomPanel = document.querySelector('.bottom-left-panel');
       const formInputs = document.querySelectorAll('#apply-form input');
       const mobileMediaQuery = window.matchMedia('(max-width: 640px)');
-
       formInputs.forEach(input => {
         input.addEventListener('focus', () => {
           if (mobileMediaQuery.matches) {
@@ -1112,14 +1107,11 @@ document.querySelectorAll('.faq-button').forEach(button => {
           }
         });
       });
-
       mobileMediaQuery.addEventListener('change', (e) => {
         if (!e.matches) {
           bottomPanel.style.display = 'flex';
         }
       });
-
-      // Initialize Texts
       updateTexts();
     };
   </script>
