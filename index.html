@@ -21,7 +21,9 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/7.12.1/polyfill.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.7/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.7/ScrollTrigger.min.js"></script>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-CPKX9M6STW"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -227,11 +229,9 @@
       .why-us-card .icon {
         font-size: 1.2rem;
       }
-      /* Добавлено правило для скрытия панели при открытии модального окна */
       body.modal-open .bottom-left-panel {
         display: none !important;
       }
-      /* Правило для скрытия панели при фокусе на полях формы */
       .bottom-left-panel.hidden-on-focus {
         display: none;
       }
@@ -262,7 +262,6 @@
       align-items: center;
       padding: 1rem 1rem;
     }
-    /* Стили для пульсации иконки Instagram */
     #instagram-icon {
       animation: pulse 0.3s infinite;
     }
@@ -277,6 +276,7 @@
   </style>
 </head>
 <body class="bg-background text-text">
+  <div id="background-fallback" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; background: linear-gradient(to bottom, #0F0F0F, #1A1A1A);"></div>
   <canvas id="background-canvas" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;"></canvas>
   <div id="preloader" class="fixed inset-0 bg-background flex items-center justify-center z-50">
     <div class="animate-spin rounded-full h-24 w-24 border-t-2 border-b-2 border-primary"></div>
@@ -553,7 +553,9 @@
         this.canvas = canvas;
         this.scale = scale;
         this.gl = canvas.getContext("webgl2");
-        this.gl.viewport(0, 0, canvas.width * scale, canvas.height * scale);
+        if (this.gl) {
+          this.gl.viewport(0, 0, canvas.width * scale, canvas.height * scale);
+        }
       }
       updateShader(source) {
         this.reset();
@@ -563,7 +565,9 @@
       }
       updateScale(scale) {
         this.scale = scale;
-        this.gl.viewport(0, 0, this.canvas.width * scale, this.canvas.height * scale);
+        if (this.gl) {
+          this.gl.viewport(0, 0, this.canvas.width * scale, this.canvas.height * scale);
+        }
       }
       compile(shader, source) {
         const gl = this.gl;
@@ -727,27 +731,27 @@
         whyUsText11: "Ми шукаємо амбітних співробітників для офісної роботи з зарплатою від 50 000 грн, бонусами та житлом для іногородніх.",
         benefitsTitle: "Наші переваги",
         benefit1Title: "Стабільна оплата",
-        benefit1Text: "Зарплата від 50 000 грн, щотижневі бонуси та премії без обмежень. Все офіційно та без затримок.",
+        benefit1Text: "Зарплата від 50 000 грн, щотижневі бонуси та премії без стелі. Все офіційно та без затримок.",
         benefit2Title: "Комфортні умови",
-        benefit2Text: "Сучасний офіс, фіксований графік 5/2, чай/кава та зона відпочинку для твого комфорту.",
-        benefit3Title: "Кар'єрне зростання",
+        benefit2Text: "Сучасний офіс, фіксований графік 5/2, чай/кава та зона відпочинку для твого зручності.",
+        benefit3Title: "Кар'єрний ріст",
         benefit3Text: "Почни з оператора, стань тімлідом або керівником. Ми просуваємо амбітних!",
         benefit4Title: "Житло для іногородніх",
         benefit4Text: "Надаємо житло, щоб ти міг зосередитися на роботі, а не на побутових питаннях.",
         benefit5Title: "Навчання та підтримка",
         benefit5Text: "Наставники допоможуть адаптуватися, навіть якщо у тебе немає досвіду. Всьому навчимо!",
-        benefit6Title: "Дружній колектив",
+        benefit6Title: "Дружний колектив",
         benefit6Text: "Тепла атмосфера, корпоративи, конкурси та підтримка команди на кожному етапі.",
         benefit7Title: "Допомагаємо ЗСУ",
-        benefit7Text: "Частину доходу спрямовуємо на підтримку Збройних Сил України.",
+        benefit7Text: "Частину доходу направляємо на підтримку Збройних Сил України.",
         faqTitle: "Часті запитання",
         faq1Question: "Чи надаєте ви підтримку?",
         faq1Answer: [
           "Навчання та адаптація: наставники допоможуть, навіть якщо немає досвіду.",
           "Житло для іногородніх: жодних турбот про пошук житла.",
-          "Фінансова мотивація: зарплата + бонуси без обмежень.",
-          "Дружній колектив: підтримка команди та тепла атмосфера.",
-          "Кар'єрне зростання: від оператора до керівника.",
+          "Фінансова мотивація: зарплата + бонуси без стелі.",
+          "Дружний колектив: підтримка команди та тепла атмосфера.",
+          "Кар'єрний ріст: від оператора до керівника.",
           "Комфортний офіс: сучасне обладнання та зона відпочинку.",
           "Корпоративи: конкурси, подарунки та заходи."
         ],
@@ -756,10 +760,10 @@
           "Фіксована зарплата + бонуси: виплати без затримок.",
           "Комфортний офіс: безпечне робоче місце.",
           "Навчання та підтримка: наставники допоможуть адаптуватися.",
-          "Чесні умови: без прихованих платежів чи штрафів.",
+          "Чесні умови: без прихованих платежів або штрафів.",
           "Конфіденційність: твої дані в безпеці."
         ],
-        faq3Question: "Чи є кар'єрне зростання?",
+        faq3Question: "Чи є кар'єрний ріст?",
         faq3Answer: [
           "Почни з оператора: повне навчання.",
           "Стань тімлідом: веди команду.",
@@ -772,7 +776,7 @@
         phonePlaceholder: "Телефон +380",
         cityPlaceholder: "Місто",
         submitButton: "Надіслати заявку",
-        footerText: "© 2025 Усі права захищені.",
+        footerText: "© 2025 Всі права захищені.",
         privacyLink: "Політика конфіденційності",
         successMessage: "Заявка успішно надіслана!",
         closeButton: "Закрити",
@@ -872,33 +876,41 @@
     // Initialize WebGL and Animations
     window.onload = function() {
       const canvas = document.getElementById('background-canvas');
-      if (!canvas) {
-        console.error('Canvas не найден');
+      const fallback = document.getElementById('background-fallback');
+      
+      if (!canvas || !fallback) {
+        console.error('Canvas или fallback элемент не найден');
         return;
       }
+
       const gl = canvas.getContext('webgl2');
-      if (!gl) {
-        alert('Ваш браузер не поддерживает WebGL2. Обновите браузер.');
-        return;
+      if (gl) {
+        fallback.style.display = 'none';
+        const dpr = Math.max(1, window.devicePixelRatio);
+        const renderer = new Renderer(canvas, dpr);
+        renderer.updateShader(fragmentShaderSource);
+        renderer.setup();
+        renderer.init();
+
+        const resize = () => {
+          const { innerWidth: width, innerHeight: height } = window;
+          canvas.width = width * dpr;
+          canvas.height = height * dpr;
+          renderer.updateScale(dpr);
+        };
+        resize();
+        window.addEventListener('resize', resize);
+
+        const loop = (now) => {
+          renderer.render(now);
+          requestAnimationFrame(loop);
+        };
+        loop(0);
+      } else {
+        canvas.style.display = 'none';
+        fallback.style.display = 'block';
       }
-      const dpr = Math.max(1, window.devicePixelRatio);
-      const renderer = new Renderer(canvas, dpr);
-      renderer.updateShader(fragmentShaderSource);
-      renderer.setup();
-      renderer.init();
-      const resize = () => {
-        const { innerWidth: width, innerHeight: height } = window;
-        canvas.width = width * dpr;
-        canvas.height = height * dpr;
-        renderer.updateScale(dpr);
-      };
-      resize();
-      window.addEventListener('resize', resize);
-      const loop = (now) => {
-        renderer.render(now);
-        requestAnimationFrame(loop);
-      };
-      loop(0);
+
       gsap.to("#preloader", {
         opacity: 0,
         scale: 0.5,
@@ -1072,16 +1084,16 @@
       document.getElementById('instagram-icon').addEventListener('click', (e) => {
         e.preventDefault();
         document.getElementById('modal').classList.remove('hidden');
-        document.body.classList.add('modal-open'); // Добавляем класс modal-open
+        document.body.classList.add('modal-open');
       });
       document.getElementById('close-modal').addEventListener('click', () => {
         document.getElementById('modal').classList.add('hidden');
-        document.body.classList.remove('modal-open'); // Удаляем класс modal-open
+        document.body.classList.remove('modal-open');
       });
       document.getElementById('modal').addEventListener('click', (e) => {
         if (e.target === document.getElementById('modal')) {
           document.getElementById('modal').classList.add('hidden');
-          document.body.classList.remove('modal-open'); // Удаляем класс modal-open
+          document.body.classList.remove('modal-open');
         }
       });
       document.getElementById('modal-form').addEventListener('submit', async (e) => {
@@ -1102,7 +1114,7 @@
           const result = await response.json();
           if (response.ok) {
             document.getElementById('modal').classList.add('hidden');
-            document.body.classList.remove('modal-open'); // Удаляем класс modal-open
+            document.body.classList.remove('modal-open');
             document.getElementById('success-modal').classList.remove('hidden');
             document.getElementById('modal-form').reset();
           } else {
@@ -1122,18 +1134,18 @@
       formInputs.forEach(input => {
         input.addEventListener('focus', () => {
           if (mobileMediaQuery.matches) {
-            bottomPanel.classList.add('hidden-on-focus'); // Используем класс вместо style
+            bottomPanel.classList.add('hidden-on-focus');
           }
         });
         input.addEventListener('blur', () => {
           if (mobileMediaQuery.matches) {
-            bottomPanel.classList.remove('hidden-on-focus'); // Используем класс вместо style
+            bottomPanel.classList.remove('hidden-on-focus');
           }
         });
       });
       mobileMediaQuery.addEventListener('change', (e) => {
         if (!e.matches) {
-          bottomPanel.classList.remove('hidden-on-focus'); // Сбрасываем класс при выходе из мобильной версии
+          bottomPanel.classList.remove('hidden-on-focus');
         }
       });
       updateTexts();
