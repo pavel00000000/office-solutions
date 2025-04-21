@@ -78,14 +78,14 @@
       transition: transform 0.3s ease, background-color 0.3s ease;
       font-size: 14px;
       font-weight: 500;
-      color: #cd1b7d;
+      color: #ff0000;
     }
     .social-icon:hover, .apply-button:hover {
       transform: scale(1.1);
-      background-color: #d8196f;
+      background-color: #ff0000;
     }
     .social-icon:focus, .apply-button:focus, .faq-button:focus, .nav-button:focus {
-      outline: 2px solid #e31b89;
+      outline: 2px solid #ff0000;
       outline-offset: 2px;
     }
     .social-icon img {
@@ -111,7 +111,7 @@
     }
     .benefit-card:hover {
       transform: scale(1.05);
-      box-shadow: 0 10px 25px rgb(243, 241, 242);
+      box-shadow: 0 10px 25px rgb(255, 255, 255);
     }
     .benefit-card-vsu {
       background: linear-gradient(to bottom, #0057B7, #FFD700);
@@ -136,14 +136,14 @@
     }
     .why-us-card:hover {
       transform: scale(1.05);
-      box-shadow: 0 10px 25px rgb(214, 40, 107);
+      box-shadow: 0 10px 25px rgb(255, 0, 0);
     }
     .why-us-card .icon {
       font-size: 1.5rem;
       margin-right: 8px;
       vertical-align: middle;
       display: inline-block;
-      color: #FF007A;
+      color: #ff0000;
     }
     .border-red-500 {
       border-color: #FF0000;
@@ -164,7 +164,7 @@
     }
     .nav-button:hover {
       transform: scale(1.05);
-      box-shadow: 0 4px 15px rgb(186, 56, 136);
+      box-shadow: 0 4px 15px rgb(255, 0, 0);
     }
     .logo img {
       width: auto;
@@ -273,6 +273,17 @@
         box-shadow: 0 0 30px rgb(255, 255, 255);
       }
     }
+
+    body {
+    font-family: 'Raleway', sans-serif;
+    margin: 0;
+  }
+  /* ... другие стили ... */
+
+  /* Новый стиль для иконки в benefit-card-vsu */
+  .benefit-card-vsu svg {
+    fill: #FF0000 !important;
+  }
   </style>
 </head>
 <body class="bg-background text-text">
@@ -318,7 +329,7 @@
       <p class="mb-4">HR менеджер свяжется с вами в течение 30 минут</p>
       <form id="modal-form">
         <input type="tel" id="modal-phone" placeholder="Ваш номер телефона +380" class="w-full p-3 rounded-lg bg-background text-text border border-gray-700 focus:outline-none focus:border-primary mb-4">
-        <button type="submit" class="bg-primary text-white px-8 py-4 rounded-full hover:bg-secondary w-full">Отправить</button>
+        <button type="submit" class="bg-primary text-black px-8 py-4 rounded-full hover:bg-secondary w-full">Отправить</button>
       </form>
       <button id="close-modal" class="mt-4 text-sm underline">Закрыть</button>
     </div>
@@ -333,7 +344,7 @@
           <p class="text-xl md:text-2xl font-bold font-sans mb-8">Обучение, жилье, переезд за наш счет</p>
           <p class="text-xl md:text-2xl font-bold font-sans mb-8">Работа в офисе Киева</p>
           <p class="text-xl md:text-2xl font-bold font-sans mb-8">Не удаленно</p>
-          <a href="#apply" class="inline-block bg-primary text-white px-8 py-4 rounded-full hover:bg-secondary smooth-scroll text-lg font-medium main-button">Оставляй заявку</a>
+          <a href="#apply" class="inline-block bg-primary text-black px-8 py-4 rounded-full hover:bg-secondary smooth-scroll text-lg font-medium main-button">Оставить заявку</a>
         </div>
       </div>
     </section>
@@ -410,6 +421,7 @@
           <path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/>
         </svg>
         <div>
+          
           <h3 class="text-xl font-heading font-bold mb-4">Дружный коллектив</h3>
           <p>Тёплая атмосфера, корпоративы, конкурсы и поддержка команды на каждом этапе.</p>
         </div>
@@ -417,7 +429,7 @@
     </div>
     <div class="flex justify-center mt-8">
       <div class="benefit-card-vsu max-w-sm" data-aos="flip-left" data-aos-delay="800">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-12 h-12 fill-white">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-12 h-12" style="fill: #FF0000;">
           <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/>
         </svg>
         <div>
@@ -487,7 +499,7 @@
         <div class="mb-6">
           <input type="text" id="city" placeholder="Город" class="w-full p-3 rounded-lg bg-background text-text border border-gray-700 focus:outline-none focus:border-primary">
         </div>
-        <button type="submit" class="bg-primary text-white px-8 py-4 rounded-full hover:bg-secondary submit-button text-lg font-medium">Отправить заявку</button>
+        <a href="#apply" class="inline-block bg-primary text-black px-8 py-4 rounded-full hover:bg-secondary smooth-scroll text-lg font-medium main-button">Оставить заявку</a>
       </form>
     </div>
   </section>
@@ -506,22 +518,22 @@
   <script>
     // Tailwind config
     tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            primary: '#E91E63',
-            secondary: '#FF007A',
-            background: '#0F0F0F',
-            text: '#FFFFFF',
-            accent: '#FF007A',
-          },
-          fontFamily: {
-            sans: ['Raleway', 'sans-serif'],
-            heading: ['Raleway', 'sans-serif'],
-          },
-        },
+  theme: {
+    extend: {
+      colors: {
+        primary: '#FFFFFF', // Changed from red to white
+        secondary: '#FF0000', // Changed from pink to red
+        background: '#0F0F0F',
+        text: '#FFFFFF',
+        accent: '#FF007A',
       },
-    };
+      fontFamily: {
+        sans: ['Raleway', 'sans-serif'],
+        heading: ['Raleway', 'sans-serif'],
+      },
+    },
+  },
+};
 
     // WebGL Fragment Shader
     const fragmentShaderSource = `#version 300 es
@@ -536,7 +548,7 @@
     void main() {
       vec2 uv = (FC - 0.5 * R) / MN;
       float s = 12.0, e = 9e-4;
-      vec3 col = e / (sin(uv.x * s) * cos(uv.y * s)) * vec3(1.0, 0.1, 0.6);
+      vec3 col = e / (sin(uv.x * s) * cos(uv.y * s)) * vec3(1.0, 0.0, 0.0);
       O = vec4(col, 1.0);
     }`;
 
@@ -912,131 +924,132 @@
       }
 
       gsap.to("#preloader", {
+  opacity: 0,
+  scale: 0.5,
+  duration: 0.8,
+  ease: "power2.in",
+  onComplete: () => {
+    document.getElementById('preloader').style.display = 'none';
+  }
+});
+AOS.init({
+  duration: 800,
+  easing: 'ease-in-out',
+  once: false,
+});
+gsap.from("header", { opacity: 0, y: -50, duration: 1, ease: "power2.out" });
+gsap.from(".logo img", { opacity: 0, scale: 0, rotation: 180, duration: 1, delay: 0.5, ease: "elastic.out(1, 0.5)" });
+gsap.from(".bottom-left-panel", { opacity: 0, y: 50, duration: 1, delay: 2, ease: "power2.out" });
+gsap.from("footer", { opacity: 0, y: 50, duration: 1, delay: 2, ease: "power2.out" });
+document.querySelectorAll('.smooth-scroll').forEach(anchor => {
+  anchor.addEventListener('click', function (e) {
+    e.preventDefault();
+    const targetId = this.getAttribute('href');
+    if (targetId && targetId !== '#') {
+      document.querySelector(targetId).scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+});
+document.querySelectorAll('.benefit-card, .why-us-card').forEach(card => {
+  card.addEventListener('mouseenter', () => gsap.to(card, { 
+    scale: 1.05, 
+    boxShadow: "0 12px 30px rgba(255, 0, 0, 0.7), 0 0 10px rgba(255, 0, 0, 0.4)", 
+    duration: 0.3 
+  }));
+  card.addEventListener('mouseleave', () => gsap.to(card, { 
+    scale: 1, 
+    boxShadow: "0 6px 20px rgba(255, 0, 0, 0.3)", 
+    duration: 0.3 
+  }));
+});
+document.querySelectorAll('.benefit-card-vsu').forEach(card => {
+  card.addEventListener('mouseenter', () => gsap.to(card, { 
+    scale: 1.05, 
+    boxShadow: "0 12px 30px rgba(255, 0, 0, 0.7), 0 0 10px rgba(255, 0, 0, 0.4)", 
+    duration: 0.3 
+  }));
+  card.addEventListener('mouseleave', () => gsap.to(card, { 
+    scale: 1, 
+    boxShadow: "0 6px 20px rgba(255, 0, 0, 0.3)", 
+    duration: 0.3 
+  }));
+});
+document.querySelectorAll('.submit-button, .main-button, .nav-button, .social-icon, .apply-button, .logo img').forEach(element => {
+  element.addEventListener('mouseenter', () => gsap.to(element, { scale: 1.05, duration: 0.2, ease: "pulse" }));
+  element.addEventListener('mouseleave', () => gsap.to(element, { scale: 1, duration: 0.2 }));
+});
+document.querySelectorAll('.faq-button').forEach(button => {
+  button.style.transition = 'transform 0.3s ease, box-shadow 0.3s ease';
+  button.style.cursor = 'pointer';
+  button.addEventListener('click', () => {
+    const answer = button.nextElementSibling;
+    const isOpen = !answer.classList.contains('hidden');
+    answer.classList.toggle('hidden');
+    button.setAttribute('aria-expanded', !isOpen);
+    if (!isOpen) {
+      gsap.fromTo(
+        answer,
+        { height: 0, opacity: 0, scale: 0.95 },
+        { 
+          height: 'auto', 
+          opacity: 1, 
+          scale: 1, 
+          duration: 0.5, 
+          ease: 'power2.out',
+          onComplete: () => {
+            gsap.to(answer, {
+              boxShadow: '0 0 15px rgba(255, 0, 0, 0.5)',
+              duration: 0.3,
+              ease: 'power1.out'
+            });
+          }
+        }
+      );
+      gsap.to(button, {
+        scale: 1.05,
+        boxShadow: '0 0 15px rgba(255, 0, 0, 0.7)',
+        duration: 0.3,
+        ease: 'power2.out',
+        yoyo: true,
+        repeat: 1
+      });
+    } else {
+      gsap.to(answer, {
+        height: 0,
         opacity: 0,
-        scale: 0.5,
-        duration: 0.8,
-        ease: "power2.in",
+        scale: 0.95,
+        duration: 0.3,
+        ease: 'power2.in',
         onComplete: () => {
-          document.getElementById('preloader').style.display = 'none';
+          answer.style.boxShadow = 'none';
         }
       });
-      AOS.init({
-        duration: 800,
-        easing: 'ease-in-out',
-        once: false,
+      gsap.to(button, {
+        scale: 1,
+        boxShadow: '0 0 5px rgba(255, 0, 0, 0.3)',
+        duration: 0.3,
+        ease: 'power2.out'
       });
-      gsap.from("header", { opacity: 0, y: -50, duration: 1, ease: "power2.out" });
-      gsap.from(".logo img", { opacity: 0, scale: 0, rotation: 180, duration: 1, delay: 0.5, ease: "elastic.out(1, 0.5)" });
-      gsap.from(".bottom-left-panel", { opacity: 0, y: 50, duration: 1, delay: 2, ease: "power2.out" });
-      gsap.from("footer", { opacity: 0, y: 50, duration: 1, delay: 2, ease: "power2.out" });
-      document.querySelectorAll('.smooth-scroll').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-          e.preventDefault();
-          const targetId = this.getAttribute('href');
-          if (targetId && targetId !== '#') {
-            document.querySelector(targetId).scrollIntoView({ behavior: 'smooth', block: 'start' });
-          }
-        });
-      });
-      document.querySelectorAll('.benefit-card, .why-us-card').forEach(card => {
-        card.addEventListener('mouseenter', () => gsap.to(card, { 
-          scale: 1.05, 
-          boxShadow: "0 12px 30px rgba(255, 255, 255, 0.7), 0 0 10px rgba(255, 255, 255, 0.4)", 
-          duration: 0.3 
-        }));
-        card.addEventListener('mouseleave', () => gsap.to(card, { 
-          scale: 1, 
-          boxShadow: "0 6px 20px rgba(255, 255, 255, 0.3)", 
-          duration: 0.3 
-        }));
-      });
-      document.querySelectorAll('.benefit-card-vsu').forEach(card => {
-        card.addEventListener('mouseenter', () => gsap.to(card, { 
-          scale: 1.05, 
-          boxShadow: "0 12px 30px rgba(255, 255, 255, 0.7), 0 0 10px rgba(255, 255, 255, 0.4)", 
-          duration: 0.3 
-        }));
-        card.addEventListener('mouseleave', () => gsap.to(card, { 
-          scale: 1, 
-          boxShadow: "0 6px 20px rgba(255, 255, 255, 0.3)", 
-          duration: 0.3 
-        }));
-      });
-      document.querySelectorAll('.submit-button, .main-button, .nav-button, .social-icon, .apply-button, .logo img').forEach(element => {
-        element.addEventListener('mouseenter', () => gsap.to(element, { scale: 1.05, duration: 0.2, ease: "pulse" }));
-        element.addEventListener('mouseleave', () => gsap.to(element, { scale: 1, duration: 0.2 }));
-      });
-      document.querySelectorAll('.faq-button').forEach(button => {
-        button.style.transition = 'transform 0.3s ease, box-shadow 0.3s ease';
-        button.style.cursor = 'pointer';
-        button.addEventListener('click', () => {
-          const answer = button.nextElementSibling;
-          const isOpen = !answer.classList.contains('hidden');
-          answer.classList.toggle('hidden');
-          button.setAttribute('aria-expanded', !isOpen);
-          if (!isOpen) {
-            gsap.fromTo(
-              answer,
-              { height: 0, opacity: 0, scale: 0.95 },
-              { 
-                height: 'auto', 
-                opacity: 1, 
-                scale: 1, 
-                duration: 0.5, 
-                ease: 'power2.out',
-                onComplete: () => {
-                  gsap.to(answer, {
-                    boxShadow: '0 0 15px rgba(255, 255, 255, 0.5)',
-                    duration: 0.3,
-                    ease: 'power1.out'
-                  });
-                }
-              }
-            );
-            gsap.to(button, {
-              scale: 1.05,
-              boxShadow: '0 0 15px rgba(255, 255, 255, 0.7)',
-              duration: 0.3,
-              ease: 'power2.out',
-              yoyo: true,
-              repeat: 1
-            });
-          } else {
-            gsap.to(answer, {
-              height: 0,
-              opacity: 0,
-              scale: 0.95,
-              duration: 0.3,
-              ease: 'power2.in',
-              onComplete: () => {
-                answer.style.boxShadow = 'none';
-              }
-            });
-            gsap.to(button, {
-              scale: 1,
-              boxShadow: '0 0 5px rgba(255, 255, 255, 0.3)',
-              duration: 0.3,
-              ease: 'power2.out'
-            });
-          }
-        });
-        button.addEventListener('mouseenter', () => {
-          gsap.to(button, {
-            boxShadow: '0 0 20px rgba(255, 255, 255, 0.9)',
-            scale: 1.03,
-            duration: 0.3,
-            ease: 'power2.out'
-          });
-        });
-        button.addEventListener('mouseleave', () => {
-          gsap.to(button, {
-            boxShadow: '0 0 5px rgba(255, 255, 255, 0.3)',
-            scale: 1,
-            duration: 0.3,
-            ease: 'power2.out'
-          });
-        });
-      });
+    }
+  });
+  button.addEventListener('mouseenter', () => {
+    gsap.to(button, {
+      boxShadow: '0 0 20px rgba(255, 0, 0, 0.9)',
+      scale: 1.03,
+      duration: 0.3,
+      ease: 'power2.out'
+    });
+  });
+  button.addEventListener('mouseleave', () => {
+    gsap.to(button, {
+      boxShadow: '0 0 5px rgba(255, 0, 0, 0.3)',
+      scale: 1,
+      duration: 0.3,
+      ease: 'power2.out'
+    });
+  });
+});
+
       const inputs = document.querySelectorAll('#apply-form input');
       inputs.forEach(input => {
         input.addEventListener('input', () => {
