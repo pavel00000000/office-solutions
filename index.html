@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Работа в Киеве: менеджер по работе с клиентами | Team Up</title>
+  <title id="page-title">Работа в Киеве: менеджер по работе с клиентами | Team Up</title>
   <meta name="description" content="Присоединяйтесь к нашей команде в Киеве! Офисная работа с зарплатой от 50 000 грн + бонусы. Жилье и переезд за счет компании.">
   <meta name="keywords" content="работа в Киеве, менеджер по работе с клиентами, офисная работа, высокая зарплата, бонусы, жилье для иногородних">
   <meta property="og:title" content="Работа в Киеве: менеджер по работе с клиентами | Team Up">
@@ -38,7 +38,6 @@
     gtag('js', new Date());
     gtag('config', 'AW-16993371247');
   </script>
-  
   <style>
     body {
       font-family: 'Raleway', sans-serif;
@@ -273,17 +272,9 @@
         box-shadow: 0 0 30px rgb(255, 255, 255);
       }
     }
-
-    body {
-    font-family: 'Raleway', sans-serif;
-    margin: 0;
-  }
-  /* ... другие стили ... */
-
-  /* Новый стиль для иконки в benefit-card-vsu */
-  .benefit-card-vsu svg {
-    fill: #FF0000 !important;
-  }
+    .benefit-card-vsu svg {
+      fill: #FF0000 !important;
+    }
   </style>
 </head>
 <body class="bg-background text-text">
@@ -303,33 +294,33 @@
     </nav>
   </header>
   <div class="bottom-left-panel">
-    <a class="social-icon" title="Instagram" tabindex="0" id="instagram-icon">
-      <img src="ic.gif" alt="Instagram">
+    <a class="social-icon" id="instagram-icon1" title="Instagram" tabindex="0">
+      <img src="ic.gif" alt="Instagram" id="instagram-alt1">
     </a>
-    <a href="https://www.instagram.com/rabota_work23?igsh=MWY2cXlhMTNjNGw0OQ==" target="_blank" class="social-icon" title="Instagram" tabindex="0">
-      <img src="instagram.png" alt="Instagram">
+    <a href="https://www.instagram.com/rabota_work23?igsh=MWY2cXlhMTNjNGw0OQ==" target="_blank" class="social-icon" id="instagram-icon2" title="Instagram" tabindex="0">
+      <img src="instagram.png" alt="Instagram" id="instagram-alt2">
     </a>
-    <a href="https://t.me/rabota_work23" target="_blank" class="social-icon" title="Telegram" tabindex="0">
-      <img src="telegram.png" alt="Telegram">
+    <a href="https://t.me/rabota_work23" target="_blank" class="social-icon" id="telegram-icon" title="Telegram" tabindex="0">
+      <img src="telegram.png" alt="Telegram" id="telegram-alt">
     </a>
-    <a href="tel:+380955978816" class="social-icon" title="Позвонить" tabindex="0">
-      <img src="telefne.png" alt="Позвонить">
+    <a href="tel:+380955978816" class="social-icon" id="call-icon" title="Позвонить" tabindex="0">
+      <img src="telefne.png" alt="Позвонить" id="call-alt">
     </a>
-    <a href="#apply" class="social-icon" title="Оставить заявку" tabindex="0">
-      <img src="form.png" alt="Заполнить форму">
+    <a href="#apply" class="social-icon" id="form-icon" title="Оставить заявку" tabindex="0">
+      <img src="form.png" alt="Заполнить форму" id="form-alt">
     </a>
     <a href="#" id="language-switch" class="apply-button" title="Переключить язык" tabindex="0">
-      <img src="language.png" alt="Переключить язык" class="mr-2">
+      <img src="language.png" alt="Переключить язык" class="mr-2" id="language-alt">
       <span id="language-text">UA</span>
     </a>
   </div>
   <div id="modal" class="hidden fixed inset-0 bg-black/50 flex items-center justify-center z-50">
     <div class="bg-background p-6 rounded-lg text-white max-w-sm w-full">
-      <h2 class="text-2xl font-bold mb-4">Оставьте свой номер</h2>
-      <p class="mb-4">HR менеджер свяжется с вами в течение 30 минут</p>
+      <h2 class="text-2xl font-bold mb-4" id="modal-title">Оставьте свой номер</h2>
+      <p class="mb-4" id="modal-message">HR менеджер свяжется с вами в течение 30 минут</p>
       <form id="modal-form">
         <input type="tel" id="modal-phone" placeholder="Ваш номер телефона +380" class="w-full p-3 rounded-lg bg-background text-text border border-gray-700 focus:outline-none focus:border-primary mb-4">
-        <button type="submit" class="bg-primary text-black px-8 py-4 rounded-full hover:bg-secondary w-full">Отправить</button>
+        <button type="submit" class="bg-primary text-black px-8 py-4 rounded-full hover:bg-secondary w-full" id="modal-submit-button">Отправить</button>
       </form>
       <button id="close-modal" class="mt-4 text-sm underline">Закрыть</button>
     </div>
@@ -339,12 +330,12 @@
       <div class="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 items-center text-center z-10 mt-[-150px]" style="margin-top: calc(-150px + 20vh);">
         <img src="image.png" alt="Изображение" class="main-image w-full h-auto" style="max-width: 100%;">
         <div class="why-us-card w-full">
-          <h1 class="text-3xl md:text-4xl font-bold font-sans mb-4">Наша команда в поисках менеджера по работе с клиентами.</h1>
-          <p class="text-xl md:text-2xl font-bold font-sans mb-6">Работай с нами и выходи на высокий доход</p>
-          <p class="text-xl md:text-2xl font-bold font-sans mb-8">Обучение, жилье, переезд за наш счет</p>
-          <p class="text-xl md:text-2xl font-bold font-sans mb-8">Работа в офисе Киева</p>
-          <p class="text-xl md:text-2xl font-bold font-sans mb-8">Не удаленно</p>
-          <a href="#apply" class="inline-block bg-primary text-black px-8 py-4 rounded-full hover:bg-secondary smooth-scroll text-lg font-medium main-button">Оставить заявку</a>
+          <h1 class="text-3xl md:text-4xl font-bold font-sans mb-4" id="main-title">Наша команда в поисках менеджера по работе с клиентами.</h1>
+          <p class="text-xl md:text-2xl font-bold font-sans mb-6" id="main-subtitle">Работай с нами и выходи на высокий доход</p>
+          <p class="text-xl md:text-2xl font-bold font-sans mb-8" id="main-description">Обучение, жилье, переезд за наш счет</p>
+          <p class="text-xl md:text-2xl font-bold font-sans mb-8" id="main-office">Работа в офисе Киева</p>
+          <p class="text-xl md:text-2xl font-bold font-sans mb-8" id="main-not-remote">Не удаленно</p>
+          <a href="#apply" class="inline-block bg-primary text-black px-8 py-4 rounded-full hover:bg-secondary smooth-scroll text-lg font-medium main-button" id="apply-button">Оставить заявку</a>
         </div>
       </div>
     </section>
@@ -352,32 +343,32 @@
       <div class="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
         <img src="imej2.png" alt="Изображение" class="benefits-image w-full h-auto" style="max-width: 100%; transform: scaleY(1.5) translateY(-10%);">
         <div class="why-us-card w-full" data-aos="fade-up" data-aos-delay="200">
-          <h3 class="text-3xl md:text-4xl font-heading font-bold mb-6 text-center">Почему именно мы?</h3>
-          <p><i class="fas fa-users icon"></i> Наша команда ждёт целеустремлённых сотрудников.</p>
-          <p><i class="fas fa-chart-line icon"></i> Рост и развитие — мы поддерживаем твои амбиции.</p>
-          <p><i class="fas fa-shield-alt icon"></i> Стабильная работа в надёжной компании.</p>
-          <p><i class="fas fa-building icon"></i> Современный офис с комфортными условиями.</p>
-          <p><i class="fas fa-money-bill-wave icon"></i> Достойная оплата — зарплата от 50 000 грн.</p>
-          <p><i class="fas fa-gift icon"></i> Бонусы без потолка для твоих достижений.</p>
-          <p><i class="fas fa-bullseye icon"></i> Карьерные перспективы — расти с нами.</p>
-          <p><i class="fas fa-file-alt icon"></i> Присоединяйся к нам прямо сейчас, оставляй заявку.</p>
-          <p><i class="fas fa-home icon"></i> Жильё для иногородних — мы позаботимся о тебе.</p>
-          <p><i class="fas fa-wallet icon"></i> Высокий доход — твои усилия окупятся.</p>
-          <p><i class="fas fa-users icon"></i> Мы ищем амбициозных сотрудников для офисной работы с зарплатой от 50 000 грн, бонусами и жильём для иногородних.</p>
+          <h3 class="text-3xl md:text-4xl font-heading font-bold mb-6 text-center" id="why-us-title">Почему именно мы?</h3>
+          <p id="why-us-text1"><i class="fas fa-users icon"></i> Наша команда ждёт целеустремлённых сотрудников.</p>
+          <p id="why-us-text2"><i class="fas fa-chart-line icon"></i> Рост и развитие — мы поддерживаем твои амбиции.</p>
+          <p id="why-us-text3"><i class="fas fa-shield-alt icon"></i> Стабильная работа в надёжной компании.</p>
+          <p id="why-us-text4"><i class="fas fa-building icon"></i> Современный офис с комфортными условиями.</p>
+          <p id="why-us-text5"><i class="fas fa-money-bill-wave icon"></i> Достойная оплата — зарплата от 50 000 грн.</p>
+          <p id="why-us-text6"><i class="fas fa-gift icon"></i> Бонусы без потолка для твоих достижений.</p>
+          <p id="why-us-text7"><i class="fas fa-bullseye icon"></i> Карьерные перспективы — расти с нами.</p>
+          <p id="why-us-text8"><i class="fas fa-file-alt icon"></i> Присоединяйся к нам прямо сейчас, оставляй заявку.</p>
+          <p id="why-us-text9"><i class="fas fa-home icon"></i> Жильё для иногородних — мы позаботимся о тебе.</p>
+          <p id="why-us-text10"><i class="fas fa-wallet icon"></i> Высокий доход — твои усилия окупятся.</p>
+          <p id="why-us-text11"><i class="fas fa-users icon"></i> Мы ищем амбициозных сотрудников для офисной работы с зарплатой от 50 000 грн, бонусами и жильём для иногородних.</p>
         </div>
       </div>
     </section>
   </main>
   <div class="container mx-auto">
-    <h2 class="text-3xl md:text-4xl font-heading font-bold text-center mb-12" data-aos="zoom-in">Наши преимущества</h2>
+    <h2 class="text-3xl md:text-4xl font-heading font-bold text-center mb-12" data-aos="zoom-in" id="benefits-title">Наши преимущества</h2>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
       <div class="benefit-card" data-aos="flip-left" data-aos-delay="200">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-12 h-12 fill-primary">
           <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
         </svg>
         <div>
-          <h3 class="text-xl font-heading font-bold mb-4">Стабильная оплата</h3>
-          <p>Зарплата от 50 000 грн, еженедельные бонусы и премии без потолка. Всё официально и без задержек.</p>
+          <h3 class="text-xl font-heading font-bold mb-4" id="benefit1-title">Стабильная оплата</h3>
+          <p id="benefit1-text">Зарплата от 50 000 грн, еженедельные бонусы и премии без потолка. Всё официально и без задержек.</p>
         </div>
       </div>
       <div class="benefit-card" data-aos="flip-left" data-aos-delay="400">
@@ -385,8 +376,8 @@
           <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/>
         </svg>
         <div>
-          <h3 class="text-xl font-heading font-bold mb-4">Комфортные условия</h3>
-          <p>Современный офис, фиксированный график 5/2, чай/кофе и зона отдыха для твоего удобства.</p>
+          <h3 class="text-xl font-heading font-bold mb-4" id="benefit2-title">Комфортные условия</h3>
+          <p id="benefit2-text">Современный офис, фиксированный график 5/2, чай/кофе и зона отдыха для твоего удобства.</p>
         </div>
       </div>
       <div class="benefit-card" data-aos="flip-left" data-aos-delay="600">
@@ -394,8 +385,8 @@
           <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/>
         </svg>
         <div>
-          <h3 class="text-xl font-heading font-bold mb-4">Карьерный рост</h3>
-          <p>Начни с оператора, стань тимлидом или руководителем. Мы продвигаем амбициозных!</p>
+          <h3 class="text-xl font-heading font-bold mb-4" id="benefit3-title">Карьерный рост</h3>
+          <p id="benefit3-text">Начни с оператора, стань тимлидом или руководителем. Мы продвигаем амбициозных!</p>
         </div>
       </div>
       <div class="benefit-card" data-aos="flip-left" data-aos-delay="200">
@@ -403,8 +394,8 @@
           <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
         </svg>
         <div>
-          <h3 class="text-xl font-heading font-bold mb-4">Жильё для иногородних</h3>
-          <p>Предоставляем жильё, чтобы ты мог сосредоточиться на работе, а не на бытовых вопросах.</p>
+          <h3 class="text-xl font-heading font-bold mb-4" id="benefit4-title">Жильё для иногородних</h3>
+          <p id="benefit4-text">Предоставляем жильё, чтобы ты мог сосредоточиться на работе, а не на бытовых вопросах.</p>
         </div>
       </div>
       <div class="benefit-card" data-aos="flip-left" data-aos-delay="400">
@@ -412,8 +403,8 @@
           <path d="M20 2H4c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-9 18h-1v-1h1v1zm3-3h-4v-1h4v1zm3-3h-7v-1h7v1zm0-3h-7v-1h7v1zm-1-4c0 1.1-.9 2-2 2s-2-.9-2-2 .9-2 2-2 2 .9 2 2z"/>
         </svg>
         <div>
-          <h3 class="text-xl font-heading font-bold mb-4">Обучение и поддержка</h3>
-          <p>Наставники помогут адаптироваться, даже если у тебя нет опыта. Всему научим!</p>
+          <h3 class="text-xl font-heading font-bold mb-4" id="benefit5-title">Обучение и поддержка</h3>
+          <p id="benefit5-text">Наставники помогут адаптироваться, даже если у тебя нет опыта. Всему научим!</p>
         </div>
       </div>
       <div class="benefit-card" data-aos="flip-left" data-aos-delay="600">
@@ -421,9 +412,8 @@
           <path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/>
         </svg>
         <div>
-          
-          <h3 class="text-xl font-heading font-bold mb-4">Дружный коллектив</h3>
-          <p>Тёплая атмосфера, корпоративы, конкурсы и поддержка команды на каждом этапе.</p>
+          <h3 class="text-xl font-heading font-bold mb-4" id="benefit6-title">Дружный коллектив</h3>
+          <p id="benefit6-text">Тёплая атмосфера, корпоративы, конкурсы и поддержка команды на каждом этапе.</p>
         </div>
       </div>
     </div>
@@ -433,50 +423,50 @@
           <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/>
         </svg>
         <div>
-          <h3 class="text-xl font-heading font-bold mb-4 text-white">Помогаем ВСУ</h3>
-          <p class="text-white">Часть дохода направляем на поддержку Вооружённых Сил Украины.</p>
+          <h3 class="text-xl font-heading font-bold mb-4 text-white" id="benefit7-title">Помогаем ВСУ</h3>
+          <p class="text-white" id="benefit7-text">Часть дохода направляем на поддержку Вооружённых Сил Украины.</p>
         </div>
       </div>
     </div>
   </div>
   <section id="faq" class="py-20 px-4">
     <div class="container mx-auto">
-      <h2 class="text-3xl md:text-4xl font-heading font-bold text-center mb-12" data-aos="zoom-in">Частые вопросы</h2>
+      <h2 class="text-3xl md:text-4xl font-heading font-bold text-center mb-12" data-aos="zoom-in" id="faq-title">Частые вопросы</h2>
       <div class="max-w-3xl mx-auto space-y-6">
         <div class="faq-item bg-background p-6 rounded-xl" data-aos="fade-up" data-aos-delay="200">
-          <button class="w-full text-left text-xl font-heading font-semibold hover:text-accent faq-button" aria-expanded="false">Оказываете ли вы поддержку?</button>
-          <div class="faq-answer hidden mt-4 text-base">
+          <button class="w-full text-left text-xl font-heading font-semibold hover:text-accent faq-button" aria-expanded="false" id="faq1-question">Оказываете ли вы поддержку?</button>
+          <div class="faq-answer hidden mt-4 text-base" id="faq1-answer">
             <ul class="list-disc pl-6 mt-2 space-y-2">
-              <li>Обучение и адаптация: наставники помогут, даже если нет опыта.</li>
-              <li>Жильё для иногородних: никаких забот о поиске жилья.</li>
-              <li>Финансовая мотивация: зарплата + бонусы без ограничений.</li>
-              <li>Дружный коллектив: поддержка команды и тёплая атмосфера.</li>
-              <li>Карьерный рост: от оператора до руководителя.</li>
-              <li>Комфортный офис: современное оборудование и зона отдыха.</li>
-              <li>Корпоративы: конкурсы, подарки и мероприятия.</li>
+              <li id="faq1-answer1">Обучение и адаптация: наставники помогут, даже если нет опыта.</li>
+              <li id="faq1-answer2">Жильё для иногородних: никаких забот о поиске жилья.</li>
+              <li id="faq1-answer3">Финансовая мотивация: зарплата + бонусы без ограничений.</li>
+              <li id="faq1-answer4">Дружный коллектив: поддержка команды и тёплая атмосфера.</li>
+              <li id="faq1-answer5">Карьерный рост: от оператора до руководителя.</li>
+              <li id="faq1-answer6">Комфортный офис: современное оборудование и зона отдыха.</li>
+              <li id="faq1-answer7">Корпоративы: конкурсы, подарки и мероприятия.</li>
             </ul>
           </div>
         </div>
         <div class="faq-item bg-background p-6 rounded-xl" data-aos="fade-up" data-aos-delay="400">
-          <button class="w-full text-left text-xl font-heading font-semibold hover:text-accent faq-button" aria-expanded="false">Гарантии безопасности работы?</button>
-          <div class="faq-answer hidden mt-4 text-base">
+          <button class="w-full text-left text-xl font-heading font-semibold hover:text-accent faq-button" aria-expanded="false" id="faq2-question">Гарантии безопасности работы?</button>
+          <div class="faq-answer hidden mt-4 text-base" id="faq2-answer">
             <ul class="list-disc pl-6 mt-2 space-y-2">
-              <li>Фиксированная зарплата + бонусы: выплаты без задержек.</li>
-              <li>Комфортный офис: безопасное рабочее место.</li>
-              <li>Обучение и поддержка: наставники помогут адаптироваться.</li>
-              <li>Честные условия: без скрытых платежей или штрафов.</li>
-              <li>Конфиденциальность: твои данные в безопасности.</li>
+              <li id="faq2-answer1">Фиксированная зарплата + бонусы: выплаты без задержек.</li>
+              <li id="faq2-answer2">Комфортный офис: безопасное рабочее место.</li>
+              <li id="faq2-answer3">Обучение и поддержка: наставники помогут адаптироваться.</li>
+              <li id="faq2-answer4">Честные условия: без скрытых платежей или штрафов.</li>
+              <li id="faq2-answer5">Конфиденциальность: твои данные в безопасности.</li>
             </ul>
           </div>
         </div>
         <div class="faq-item bg-background p-6 rounded-xl" data-aos="fade-up" data-aos-delay="600">
-          <button class="w-full text-left text-xl font-heading font-semibold hover:text-accent faq-button" aria-expanded="false">Есть ли карьерный рост?</button>
-          <div class="faq-answer hidden mt-4 text-base">
+          <button class="w-full text-left text-xl font-heading font-semibold hover:text-accent faq-button" aria-expanded="false" id="faq3-question">Есть ли карьерный рост?</button>
+          <div class="faq-answer hidden mt-4 text-base" id="faq3-answer">
             <ul class="list-disc pl-6 mt-2 space-y-2">
-              <li>Начни с оператора: полное обучение.</li>
-              <li>Стань тимлидом: веди команду.</li>
-              <li>Расти до руководителя: управляй процессами.</li>
-              <li>Лучших продвигаем быстро!</li>
+              <li id="faq3-answer1">Начни с оператора: полное обучение.</li>
+              <li id="faq3-answer2">Стань тимлидом: веди команду.</li>
+              <li id="faq3-answer3">Расти до руководителя: управляй процессами.</li>
+              <li id="faq3-answer4">Лучших продвигаем быстро!</li>
             </ul>
           </div>
         </div>
@@ -485,7 +475,7 @@
   </section>
   <section id="apply" class="py-20 px-4">
     <div class="container mx-auto text-center">
-      <h2 class="text-3xl md:text-4xl font-heading font-bold mb-12" data-aos="zoom-in">Оставь заявку</h2>
+      <h2 class="text-3xl md:text-4xl font-heading font-bold mb-12" data-aos="zoom-in" id="apply-title">Оставь заявку</h2>
       <form class="max-w-md mx-auto" id="apply-form" data-aos="fade-up" data-aos-delay="200">
         <div class="mb-6">
           <input type="text" id="name" placeholder="Имя" class="w-full p-3 rounded-lg bg-background text-text border border-gray-700 focus:outline-none focus:border-primary">
@@ -499,41 +489,41 @@
         <div class="mb-6">
           <input type="text" id="city" placeholder="Город" class="w-full p-3 rounded-lg bg-background text-text border border-gray-700 focus:outline-none focus:border-primary">
         </div>
-        <a href="#apply" class="inline-block bg-primary text-black px-8 py-4 rounded-full hover:bg-secondary smooth-scroll text-lg font-medium main-button">Оставить заявку</a>
+        <button type="submit" class="bg-primary text-black px-8 py-4 rounded-full hover:bg-secondary w-full" id="submit-button">Отправить заявку</button>
       </form>
     </div>
   </section>
   <div id="success-modal" class="hidden fixed inset-0 bg-black/50 flex items-center justify-center z-50">
     <div class="bg-background p-6 rounded-lg text-white">
-      <p>Заявка успешно отправлена!</p>
-      <button onclick="document.getElementById('success-modal').classList.add('hidden')" class="mt-4 bg-primary px-4 py-2 rounded hover:bg-secondary">Закрыть</button>
+      <p id="success-message">Заявка успешно отправлена!</p>
+      <button id="close-success-button" class="mt-4 bg-primary px-4 py-2 rounded hover:bg-secondary">Закрыть</button>
     </div>
   </div>
   <footer class="py-8 px-4 bg-background/90">
     <div class="container mx-auto text-center" data-aos="fade-up">
-      <p class="text-sm mb-4">© 2025 Все права защищены.</p>
-      <p class="text-sm"><a href="/privacy.html" class="hover:text-accent">Политика конфиденциальности</a></p>
+      <p class="text-sm mb-4" id="footer-text">© 2025 Все права защищены.</p>
+      <p class="text-sm"><a href="/privacy.html" class="hover:text-accent" id="privacy-link">Политика конфиденциальности</a></p>
     </div>
   </footer>
   <script>
     // Tailwind config
     tailwind.config = {
-  theme: {
-    extend: {
-      colors: {
-        primary: '#FFFFFF', // Changed from red to white
-        secondary: '#FF0000', // Changed from pink to red
-        background: '#0F0F0F',
-        text: '#FFFFFF',
-        accent: '#FF007A',
+      theme: {
+        extend: {
+          colors: {
+            primary: '#FFFFFF',
+            secondary: '#FF0000',
+            background: '#0F0F0F',
+            text: '#FFFFFF',
+            accent: '#FF007A',
+          },
+          fontFamily: {
+            sans: ['Raleway', 'sans-serif'],
+            heading: ['Raleway', 'sans-serif'],
+          },
+        },
       },
-      fontFamily: {
-        sans: ['Raleway', 'sans-serif'],
-        heading: ['Raleway', 'sans-serif'],
-      },
-    },
-  },
-};
+    };
 
     // WebGL Fragment Shader
     const fragmentShaderSource = `#version 300 es
@@ -643,12 +633,19 @@
     // Language Translations
     const translations = {
       ru: {
+        pageTitle: "Работа в Киеве: менеджер по работе с клиентами | Team Up",
+        metaDescription: "Присоединяйтесь к нашей команде в Киеве! Офисная работа с зарплатой от 50 000 грн + бонусы. Жилье и переезд за счет компании.",
+        metaKeywords: "работа в Киеве, менеджер по работе с клиентами, офисная работа, высокая зарплата, бонусы, жилье для иногородних",
+        ogTitle: "Работа в Киеве: менеджер по работе с клиентами | Team Up",
+        ogDescription: "Присоединяйтесь к нашей команде! Офисная работа с зарплатой от 50 000 грн + бонусы. Жилье и переезд за счет компании.",
+        twitterTitle: "Работа в Киеве: менеджер по работе с клиентами | Team Up",
+        twitterDescription: "Присоединяйтесь к нашей команде! Офисная работа с зарплатой от 50 000 грн + бонусы. Жилье и переезд за счет компании.",
         mainTitle: "Наша команда в поисках менеджера по работе с клиентами.",
         mainSubtitle: "Работай с нами и выходи на высокий доход",
         mainDescription: "Обучение, жилье, переезд за наш счет",
         mainOffice: "Работа в офисе Киева",
         mainNotRemote: "Не удаленно",
-        applyButton: "Оставляй заявку",
+        applyButton: "Оставить заявку",
         whyUsTitle: "Почему именно мы?",
         whyUsText1: "Наша команда ждёт целеустремлённых сотрудников.",
         whyUsText2: "Рост и развитие — мы поддерживаем твои амбиции.",
@@ -678,30 +675,24 @@
         benefit7Text: "Часть дохода направляем на поддержку Вооружённых Сил Украины.",
         faqTitle: "Частые вопросы",
         faq1Question: "Оказываете ли вы поддержку?",
-        faq1Answer: [
-          "Обучение и адаптация: наставники помогут, даже если нет опыта.",
-          "Жильё для иногородних: никаких забот о поиске жилья.",
-          "Финансовая мотивация: зарплата + бонусы без ограничений.",
-          "Дружный коллектив: поддержка команды и тёплая атмосфера.",
-          "Карьерный рост: от оператора до руководителя.",
-          "Комфортный офис: современное оборудование и зона отдыха.",
-          "Корпоративы: конкурсы, подарки и мероприятия."
-        ],
+        faq1Answer1: "Обучение и адаптация: наставники помогут, даже если нет опыта.",
+        faq1Answer2: "Жильё для иногородних: никаких забот о поиске жилья.",
+        faq1Answer3: "Финансовая мотивация: зарплата + бонусы без ограничений.",
+        faq1Answer4: "Дружный коллектив: поддержка команды и тёплая атмосфера.",
+        faq1Answer5: "Карьерный рост: от оператора до руководителя.",
+        faq1Answer6: "Комфортный офис: современное оборудование и зона отдыха.",
+        faq1Answer7: "Корпоративы: конкурсы, подарки и мероприятия.",
         faq2Question: "Гарантии безопасности работы?",
-        faq2Answer: [
-          "Фиксированная зарплата + бонусы: выплаты без задержек.",
-          "Комфортный офис: безопасное рабочее место.",
-          "Обучение и поддержка: наставники помогут адаптироваться.",
-          "Честные условия: без скрытых платежей или штрафов.",
-          "Конфиденциальность: твои данные в безопасности."
-        ],
+        faq2Answer1: "Фиксированная зарплата + бонусы: выплаты без задержек.",
+        faq2Answer2: "Комфортный офис: безопасное рабочее место.",
+        faq2Answer3: "Обучение и поддержка: наставники помогут адаптироваться.",
+        faq2Answer4: "Честные условия: без скрытых платежей или штрафов.",
+        faq2Answer5: "Конфиденциальность: твои данные в безопасности.",
         faq3Question: "Есть ли карьерный рост?",
-        faq3Answer: [
-          "Начни с оператора: полное обучение.",
-          "Стань тимлидом: веди команду.",
-          "Расти до руководителя: управляй процессами.",
-          "Лучших продвигаем быстро!"
-        ],
+        faq3Answer1: "Начни с оператора: полное обучение.",
+        faq3Answer2: "Стань тимлидом: веди команду.",
+        faq3Answer3: "Расти до руководителя: управляй процессами.",
+        faq3Answer4: "Лучших продвигаем быстро!",
         applyTitle: "Оставь заявку",
         namePlaceholder: "Имя",
         agePlaceholder: "Возраст",
@@ -711,18 +702,35 @@
         footerText: "© 2025 Все права защищены.",
         privacyLink: "Политика конфиденциальности",
         successMessage: "Заявка успешно отправлена!",
-        closeButton: "Закрыть",
+        closeSuccessButton: "Закрыть",
         navAbout: "О нас",
         navFaq: "Частые вопросы",
         navApply: "Оставить заявку",
         languageButton: "UA",
         modalTitle: "Оставьте свой номер",
         modalMessage: "HR менеджер свяжется с вами в течение 30 минут",
-        modalPhonePlaceholder: "Ваш номер телефона",
+        modalPhonePlaceholder: "Ваш номер телефона +380",
         modalSubmitButton: "Отправить",
-        modalCloseButton: "Закрыть"
+        modalCloseButton: "Закрыть",
+        instagramTitle: "Instagram",
+        telegramTitle: "Telegram",
+        callTitle: "Позвонить",
+        formTitle: "Оставить заявку",
+        languageSwitchTitle: "Переключить язык",
+        instagramAlt: "Instagram",
+        telegramAlt: "Telegram",
+        callAlt: "Позвонить",
+        formAlt: "Заполнить форму",
+        languageAlt: "Переключить язык"
       },
       uk: {
+        pageTitle: "Робота в Києві: менеджер по роботі з клієнтами | Team Up",
+        metaDescription: "Приєднуйтесь до нашої команди в Києві! Офісна робота з зарплатою від 50 000 грн + бонуси. Житло та переїзд за рахунок компанії.",
+        metaKeywords: "робота в Києві, менеджер по роботі з клієнтами, офісна робота, висока зарплата, бонуси, житло для іногородніх",
+        ogTitle: "Робота в Києві: менеджер по роботі з клієнтами | Team Up",
+        ogDescription: "Приєднуйтесь до нашої команди! Офісна робота з зарплатою від 50 000 грн + бонуси. Житло та переїзд за рахунок компанії.",
+        twitterTitle: "Робота в Києві: менеджер по роботі з клієнтами | Team Up",
+        twitterDescription: "Приєднуйтесь до нашої команди! Офісна робота з зарплатою від 50 000 грн + бонуси. Житло та переїзд за рахунок компанії.",
         mainTitle: "Наша команда шукає менеджера по роботі з клієнтами.",
         mainSubtitle: "Працюй з нами та виходь на високий дохід",
         mainDescription: "Навчання, житло, переїзд за наш рахунок",
@@ -758,30 +766,24 @@
         benefit7Text: "Частину доходу направляємо на підтримку Збройних Сил України.",
         faqTitle: "Часті запитання",
         faq1Question: "Чи надаєте ви підтримку?",
-        faq1Answer: [
-          "Навчання та адаптація: наставники допоможуть, навіть якщо немає досвіду.",
-          "Житло для іногородніх: жодних турбот про пошук житла.",
-          "Фінансова мотивація: зарплата + бонуси без стелі.",
-          "Дружний колектив: підтримка команди та тепла атмосфера.",
-          "Кар'єрний ріст: від оператора до керівника.",
-          "Комфортний офіс: сучасне обладнання та зона відпочинку.",
-          "Корпоративи: конкурси, подарунки та заходи."
-        ],
+        faq1Answer1: "Навчання та адаптація: наставники допоможуть, навіть якщо немає досвіду.",
+        faq1Answer2: "Житло для іногородніх: жодних турбот про пошук житла.",
+        faq1Answer3: "Фінансова мотивація: зарплата + бонуси без стелі.",
+        faq1Answer4: "Дружний колектив: підтримка команди та тепла атмосфера.",
+        faq1Answer5: "Кар'єрний ріст: від оператора до керівника.",
+        faq1Answer6: "Комфортний офіс: сучасне обладнання та зона відпочинку.",
+        faq1Answer7: "Корпоративи: конкурси, подарунки та заходи.",
         faq2Question: "Гарантії безпеки роботи?",
-        faq2Answer: [
-          "Фіксована зарплата + бонуси: виплати без затримок.",
-          "Комфортний офіс: безпечне робоче місце.",
-          "Навчання та підтримка: наставники допоможуть адаптуватися.",
-          "Чесні умови: без прихованих платежів або штрафів.",
-          "Конфіденційність: твої дані в безпеці."
-        ],
+        faq2Answer1: "Фіксована зарплата + бонуси: виплати без затримок.",
+        faq2Answer2: "Комфортний офіс: безпечне робоче місце.",
+        faq2Answer3: "Навчання та підтримка: наставники допоможуть адаптуватися.",
+        faq2Answer4: "Чесні умови: без прихованих платежів або штрафів.",
+        faq2Answer5: "Конфіденційність: твої дані в безпеці.",
         faq3Question: "Чи є кар'єрний ріст?",
-        faq3Answer: [
-          "Почни з оператора: повне навчання.",
-          "Стань тімлідом: веди команду.",
-          "Рости до керівника: керуй процесами.",
-          "Найкращих просуваємо швидко!"
-        ],
+        faq3Answer1: "Почни з оператора: повне навчання.",
+        faq3Answer2: "Стань тімлідом: веди команду.",
+        faq3Answer3: "Рости до керівника: керуй процесами.",
+        faq3Answer4: "Найкращих просуваємо швидко!",
         applyTitle: "Залиш заявку",
         namePlaceholder: "Ім'я",
         agePlaceholder: "Вік",
@@ -791,16 +793,26 @@
         footerText: "© 2025 Всі права захищені.",
         privacyLink: "Політика конфіденційності",
         successMessage: "Заявка успішно надіслана!",
-        closeButton: "Закрити",
+        closeSuccessButton: "Закрити",
         navAbout: "Про нас",
         navFaq: "Часті запитання",
         navApply: "Залишити заявку",
         languageButton: "RU",
         modalTitle: "Залиште свій номер",
         modalMessage: "HR менеджер зв'яжеться з вами протягом 30 хвилин",
-        modalPhonePlaceholder: "Ваш номер телефону",
+        modalPhonePlaceholder: "Ваш номер телефону +380",
         modalSubmitButton: "Надіслати",
-        modalCloseButton: "Закрити"
+        modalCloseButton: "Закрити",
+        instagramTitle: "Instagram",
+        telegramTitle: "Telegram",
+        callTitle: "Зателефонувати",
+        formTitle: "Залишити заявку",
+        languageSwitchTitle: "Переключити мову",
+        instagramAlt: "Instagram",
+        telegramAlt: "Telegram",
+        callAlt: "Зателефонувати",
+        formAlt: "Заповнити форму",
+        languageAlt: "Переключити мову"
       }
     };
 
@@ -815,86 +827,106 @@
 
     function updateTexts() {
       const lang = translations[currentLang];
-      document.querySelector('#main .why-us-card h1').textContent = lang.mainTitle;
-      const mainParagraphs = document.querySelectorAll('#main .why-us-card p');
-      mainParagraphs[0].textContent = lang.mainSubtitle;
-      mainParagraphs[1].textContent = lang.mainDescription;
-      mainParagraphs[2].textContent = lang.mainOffice;
-      mainParagraphs[3].textContent = lang.mainNotRemote;
-      document.querySelector('#main .main-button').textContent = lang.applyButton;
-      const whyUsCardBenefits = document.querySelector('#benefits .why-us-card');
-      if (whyUsCardBenefits) {
-        whyUsCardBenefits.querySelector('h3').textContent = lang.whyUsTitle;
-        const paragraphs = whyUsCardBenefits.querySelectorAll('p');
-        paragraphs[0].innerHTML = `<i class="fas fa-users icon"></i>${lang.whyUsText1}`;
-        paragraphs[1].innerHTML = `<i class="fas fa-chart-line icon"></i>${lang.whyUsText2}`;
-        paragraphs[2].innerHTML = `<i class="fas fa-shield-alt icon"></i>${lang.whyUsText3}`;
-        paragraphs[3].innerHTML = `<i class="fas fa-building icon"></i>${lang.whyUsText4}`;
-        paragraphs[4].innerHTML = `<i class="fas fa-money-bill-wave icon"></i>${lang.whyUsText5}`;
-        paragraphs[5].innerHTML = `<i class="fas fa-gift icon"></i>${lang.whyUsText6}`;
-        paragraphs[6].innerHTML = `<i class="fas fa-bullseye icon"></i>${lang.whyUsText7}`;
-        paragraphs[7].innerHTML = `<i class="fas fa-file-alt icon"></i>${lang.whyUsText8}`;
-        paragraphs[8].innerHTML = `<i class="fas fa-home icon"></i>${lang.whyUsText9}`;
-        paragraphs[9].innerHTML = `<i class="fas fa-wallet icon"></i>${lang.whyUsText10}`;
-        paragraphs[10].innerHTML = `<i class="fas fa-users icon"></i>${lang.whyUsText11}`;
-      }
-      const benefitCards = document.querySelectorAll('.benefit-card');
-      benefitCards[0].querySelector('h3').textContent = lang.benefit1Title;
-      benefitCards[0].querySelector('p').textContent = lang.benefit1Text;
-      benefitCards[1].querySelector('h3').textContent = lang.benefit2Title;
-      benefitCards[1].querySelector('p').textContent = lang.benefit2Text;
-      benefitCards[2].querySelector('h3').textContent = lang.benefit3Title;
-      benefitCards[2].querySelector('p').textContent = lang.benefit3Text;
-      benefitCards[3].querySelector('h3').textContent = lang.benefit4Title;
-      benefitCards[3].querySelector('p').textContent = lang.benefit4Text;
-      benefitCards[4].querySelector('h3').textContent = lang.benefit5Title;
-      benefitCards[4].querySelector('p').textContent = lang.benefit5Text;
-      benefitCards[5].querySelector('h3').textContent = lang.benefit6Title;
-      benefitCards[5].querySelector('p').textContent = lang.benefit6Text;
-      document.querySelector('.benefit-card-vsu h3').textContent = lang.benefit7Title;
-      document.querySelector('.benefit-card-vsu p').textContent = lang.benefit7Text;
-      document.querySelector('.container.mx-auto > h2').textContent = lang.benefitsTitle;
-      document.querySelector('#faq h2').textContent = lang.faqTitle;
-      const faqItems = document.querySelectorAll('.faq-item');
-      faqItems[0].querySelector('button').textContent = lang.faq1Question;
-      const faq1Items = faqItems[0].querySelectorAll('.faq-answer li');
-      lang.faq1Answer.forEach((text, index) => { if (faq1Items[index]) faq1Items[index].textContent = text; });
-      faqItems[1].querySelector('button').textContent = lang.faq2Question;
-      const faq2Items = faqItems[1].querySelectorAll('.faq-answer li');
-      lang.faq2Answer.forEach((text, index) => { if (faq2Items[index]) faq2Items[index].textContent = text; });
-      faqItems[2].querySelector('button').textContent = lang.faq3Question;
-      const faq3Items = faqItems[2].querySelectorAll('.faq-answer li');
-      lang.faq3Answer.forEach((text, index) => { if (faq3Items[index]) faq3Items[index].textContent = text; });
-      document.querySelector('#apply h2').textContent = lang.applyTitle;
+      document.getElementById('page-title').textContent = lang.pageTitle;
+      document.querySelector('meta[name="description"]').content = lang.metaDescription;
+      document.querySelector('meta[name="keywords"]').content = lang.metaKeywords;
+      document.querySelector('meta[property="og:title"]').content = lang.ogTitle;
+      document.querySelector('meta[property="og:description"]').content = lang.ogDescription;
+      document.querySelector('meta[name="twitter:title"]').content = lang.twitterTitle;
+      document.querySelector('meta[name="twitter:description"]').content = lang.twitterDescription;
+      document.getElementById('main-title').textContent = lang.mainTitle;
+      document.getElementById('main-subtitle').textContent = lang.mainSubtitle;
+      document.getElementById('main-description').textContent = lang.mainDescription;
+      document.getElementById('main-office').textContent = lang.mainOffice;
+      document.getElementById('main-not-remote').textContent = lang.mainNotRemote;
+      document.getElementById('apply-button').textContent = lang.applyButton;
+      document.getElementById('why-us-title').textContent = lang.whyUsTitle;
+      document.getElementById('why-us-text1').innerHTML = `<i class="fas fa-users icon"></i>${lang.whyUsText1}`;
+      document.getElementById('why-us-text2').innerHTML = `<i class="fas fa-chart-line icon"></i>${lang.whyUsText2}`;
+      document.getElementById('why-us-text3').innerHTML = `<i class="fas fa-shield-alt icon"></i>${lang.whyUsText3}`;
+      document.getElementById('why-us-text4').innerHTML = `<i class="fas fa-building icon"></i>${lang.whyUsText4}`;
+      document.getElementById('why-us-text5').innerHTML = `<i class="fas fa-money-bill-wave icon"></i>${lang.whyUsText5}`;
+      document.getElementById('why-us-text6').innerHTML = `<i class="fas fa-gift icon"></i>${lang.whyUsText6}`;
+      document.getElementById('why-us-text7').innerHTML = `<i class="fas fa-bullseye icon"></i>${lang.whyUsText7}`;
+      document.getElementById('why-us-text8').innerHTML = `<i class="fas fa-file-alt icon"></i>${lang.whyUsText8}`;
+      document.getElementById('why-us-text9').innerHTML = `<i class="fas fa-home icon"></i>${lang.whyUsText9}`;
+      document.getElementById('why-us-text10').innerHTML = `<i class="fas fa-wallet icon"></i>${lang.whyUsText10}`;
+      document.getElementById('why-us-text11').innerHTML = `<i class="fas fa-users icon"></i>${lang.whyUsText11}`;
+      document.getElementById('benefits-title').textContent = lang.benefitsTitle;
+      document.getElementById('benefit1-title').textContent = lang.benefit1Title;
+      document.getElementById('benefit1-text').textContent = lang.benefit1Text;
+      document.getElementById('benefit2-title').textContent = lang.benefit2Title;
+      document.getElementById('benefit2-text').textContent = lang.benefit2Text;
+      document.getElementById('benefit3-title').textContent = lang.benefit3Title;
+      document.getElementById('benefit3-text').textContent = lang.benefit3Text;
+      document.getElementById('benefit4-title').textContent = lang.benefit4Title;
+      document.getElementById('benefit4-text').textContent = lang.benefit4Text;
+      document.getElementById('benefit5-title').textContent = lang.benefit5Title;
+      document.getElementById('benefit5-text').textContent = lang.benefit5Text;
+      document.getElementById('benefit6-title').textContent = lang.benefit6Title;
+      document.getElementById('benefit6-text').textContent = lang.benefit6Text;
+      document.getElementById('benefit7-title').textContent = lang.benefit7Title;
+      document.getElementById('benefit7-text').textContent = lang.benefit7Text;
+      document.getElementById('faq-title').textContent = lang.faqTitle;
+      document.getElementById('faq1-question').textContent = lang.faq1Question;
+      document.getElementById('faq1-answer1').textContent = lang.faq1Answer1;
+      document.getElementById('faq1-answer2').textContent = lang.faq1Answer2;
+      document.getElementById('faq1-answer3').textContent = lang.faq1Answer3;
+      document.getElementById('faq1-answer4').textContent = lang.faq1Answer4;
+      document.getElementById('faq1-answer5').textContent = lang.faq1Answer5;
+      document.getElementById('faq1-answer6').textContent = lang.faq1Answer6;
+      document.getElementById('faq1-answer7').textContent = lang.faq1Answer7;
+      document.getElementById('faq2-question').textContent = lang.faq2Question;
+      document.getElementById('faq2-answer1').textContent = lang.faq2Answer1;
+      document.getElementById('faq2-answer2').textContent = lang.faq2Answer2;
+      document.getElementById('faq2-answer3').textContent = lang.faq2Answer3;
+      document.getElementById('faq2-answer4').textContent = lang.faq2Answer4;
+      document.getElementById('faq2-answer5').textContent = lang.faq2Answer5;
+      document.getElementById('faq3-question').textContent = lang.faq3Question;
+      document.getElementById('faq3-answer1').textContent = lang.faq3Answer1;
+      document.getElementById('faq3-answer2').textContent = lang.faq3Answer2;
+      document.getElementById('faq3-answer3').textContent = lang.faq3Answer3;
+      document.getElementById('faq3-answer4').textContent = lang.faq3Answer4;
+      document.getElementById('apply-title').textContent = lang.applyTitle;
       document.getElementById('name').placeholder = lang.namePlaceholder;
       document.getElementById('age').placeholder = lang.agePlaceholder;
       document.getElementById('phone').placeholder = lang.phonePlaceholder;
       document.getElementById('city').placeholder = lang.cityPlaceholder;
-      document.querySelector('#apply-form button').textContent = lang.submitButton;
-      document.querySelector('footer p:nth-of-type(1)').textContent = lang.footerText;
-      document.querySelector('footer a').textContent = lang.privacyLink;
-      document.querySelector('#success-modal p').textContent = lang.successMessage;
-      document.querySelector('#success-modal button').textContent = lang.closeButton;
+      document.getElementById('submit-button').textContent = lang.submitButton;
+      document.getElementById('footer-text').textContent = lang.footerText;
+      document.getElementById('privacy-link').textContent = lang.privacyLink;
+      document.getElementById('success-message').textContent = lang.successMessage;
+      document.getElementById('close-success-button').textContent = lang.closeSuccessButton;
       document.getElementById('nav-about').textContent = lang.navAbout;
       document.getElementById('nav-faq').textContent = lang.navFaq;
       document.getElementById('nav-apply').textContent = lang.navApply;
-      if (document.querySelector('#modal h2')) document.querySelector('#modal h2').textContent = lang.modalTitle;
-      if (document.querySelector('#modal p')) document.querySelector('#modal p').textContent = lang.modalMessage;
-      if (document.getElementById('modal-phone')) document.getElementById('modal-phone').placeholder = lang.modalPhonePlaceholder;
-      if (document.querySelector('#modal-form button')) document.querySelector('#modal-form button').textContent = lang.modalSubmitButton;
-      if (document.getElementById('close-modal')) document.getElementById('close-modal').textContent = lang.modalCloseButton;
+      document.getElementById('modal-title').textContent = lang.modalTitle;
+      document.getElementById('modal-message').textContent = lang.modalMessage;
+      document.getElementById('modal-phone').placeholder = lang.modalPhonePlaceholder;
+      document.getElementById('modal-submit-button').textContent = lang.modalSubmitButton;
+      document.getElementById('close-modal').textContent = lang.modalCloseButton;
+      document.getElementById('instagram-icon1').title = lang.instagramTitle;
+      document.getElementById('instagram-icon2').title = lang.instagramTitle;
+      document.getElementById('telegram-icon').title = lang.telegramTitle;
+      document.getElementById('call-icon').title = lang.callTitle;
+      document.getElementById('form-icon').title = lang.formTitle;
+      document.getElementById('language-switch').title = lang.languageSwitchTitle;
+      document.getElementById('instagram-alt1').alt = lang.instagramAlt;
+      document.getElementById('instagram-alt2').alt = lang.instagramAlt;
+      document.getElementById('telegram-alt').alt = lang.telegramAlt;
+      document.getElementById('call-alt').alt = lang.callAlt;
+      document.getElementById('form-alt').alt = lang.formAlt;
+      document.getElementById('language-alt').alt = lang.languageAlt;
     }
 
     // Initialize WebGL and Animations
     window.onload = function() {
       const canvas = document.getElementById('background-canvas');
       const fallback = document.getElementById('background-fallback');
-      
       if (!canvas || !fallback) {
         console.error('Canvas или fallback элемент не найден');
         return;
       }
-
       const gl = canvas.getContext('webgl2');
       if (gl) {
         fallback.style.display = 'none';
@@ -903,7 +935,6 @@
         renderer.updateShader(fragmentShaderSource);
         renderer.setup();
         renderer.init();
-
         const resize = () => {
           const { innerWidth: width, innerHeight: height } = window;
           canvas.width = width * dpr;
@@ -912,7 +943,6 @@
         };
         resize();
         window.addEventListener('resize', resize);
-
         const loop = (now) => {
           renderer.render(now);
           requestAnimationFrame(loop);
@@ -922,134 +952,132 @@
         canvas.style.display = 'none';
         fallback.style.display = 'block';
       }
-
       gsap.to("#preloader", {
-  opacity: 0,
-  scale: 0.5,
-  duration: 0.8,
-  ease: "power2.in",
-  onComplete: () => {
-    document.getElementById('preloader').style.display = 'none';
-  }
-});
-AOS.init({
-  duration: 800,
-  easing: 'ease-in-out',
-  once: false,
-});
-gsap.from("header", { opacity: 0, y: -50, duration: 1, ease: "power2.out" });
-gsap.from(".logo img", { opacity: 0, scale: 0, rotation: 180, duration: 1, delay: 0.5, ease: "elastic.out(1, 0.5)" });
-gsap.from(".bottom-left-panel", { opacity: 0, y: 50, duration: 1, delay: 2, ease: "power2.out" });
-gsap.from("footer", { opacity: 0, y: 50, duration: 1, delay: 2, ease: "power2.out" });
-document.querySelectorAll('.smooth-scroll').forEach(anchor => {
-  anchor.addEventListener('click', function (e) {
-    e.preventDefault();
-    const targetId = this.getAttribute('href');
-    if (targetId && targetId !== '#') {
-      document.querySelector(targetId).scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  });
-});
-document.querySelectorAll('.benefit-card, .why-us-card').forEach(card => {
-  card.addEventListener('mouseenter', () => gsap.to(card, { 
-    scale: 1.05, 
-    boxShadow: "0 12px 30px rgba(255, 0, 0, 0.7), 0 0 10px rgba(255, 0, 0, 0.4)", 
-    duration: 0.3 
-  }));
-  card.addEventListener('mouseleave', () => gsap.to(card, { 
-    scale: 1, 
-    boxShadow: "0 6px 20px rgba(255, 0, 0, 0.3)", 
-    duration: 0.3 
-  }));
-});
-document.querySelectorAll('.benefit-card-vsu').forEach(card => {
-  card.addEventListener('mouseenter', () => gsap.to(card, { 
-    scale: 1.05, 
-    boxShadow: "0 12px 30px rgba(255, 0, 0, 0.7), 0 0 10px rgba(255, 0, 0, 0.4)", 
-    duration: 0.3 
-  }));
-  card.addEventListener('mouseleave', () => gsap.to(card, { 
-    scale: 1, 
-    boxShadow: "0 6px 20px rgba(255, 0, 0, 0.3)", 
-    duration: 0.3 
-  }));
-});
-document.querySelectorAll('.submit-button, .main-button, .nav-button, .social-icon, .apply-button, .logo img').forEach(element => {
-  element.addEventListener('mouseenter', () => gsap.to(element, { scale: 1.05, duration: 0.2, ease: "pulse" }));
-  element.addEventListener('mouseleave', () => gsap.to(element, { scale: 1, duration: 0.2 }));
-});
-document.querySelectorAll('.faq-button').forEach(button => {
-  button.style.transition = 'transform 0.3s ease, box-shadow 0.3s ease';
-  button.style.cursor = 'pointer';
-  button.addEventListener('click', () => {
-    const answer = button.nextElementSibling;
-    const isOpen = !answer.classList.contains('hidden');
-    answer.classList.toggle('hidden');
-    button.setAttribute('aria-expanded', !isOpen);
-    if (!isOpen) {
-      gsap.fromTo(
-        answer,
-        { height: 0, opacity: 0, scale: 0.95 },
-        { 
-          height: 'auto', 
-          opacity: 1, 
+        opacity: 0,
+        scale: 0.5,
+        duration: 0.8,
+        ease: "power2.in",
+        onComplete: () => {
+          document.getElementById('preloader').style.display = 'none';
+        }
+      });
+      AOS.init({
+        duration: 800,
+        easing: 'ease-in-out',
+        once: false,
+      });
+      gsap.from("header", { opacity: 0, y: -50, duration: 1, ease: "power2.out" });
+      gsap.from(".logo img", { opacity: 0, scale: 0, rotation: 180, duration: 1, delay: 0.5, ease: "elastic.out(1, 0.5)" });
+      gsap.from(".bottom-left-panel", { opacity: 0, y: 50, duration: 1, delay: 2, ease: "power2.out" });
+      gsap.from("footer", { opacity: 0, y: 50, duration: 1, delay: 2, ease: "power2.out" });
+      document.querySelectorAll('.smooth-scroll').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+          e.preventDefault();
+          const targetId = this.getAttribute('href');
+          if (targetId && targetId !== '#') {
+            document.querySelector(targetId).scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        });
+      });
+      document.querySelectorAll('.benefit-card, .why-us-card').forEach(card => {
+        card.addEventListener('mouseenter', () => gsap.to(card, { 
+          scale: 1.05, 
+          boxShadow: "0 12px 30px rgba(255, 0, 0, 0.7), 0 0 10px rgba(255, 0, 0, 0.4)", 
+          duration: 0.3 
+        }));
+        card.addEventListener('mouseleave', () => gsap.to(card, { 
           scale: 1, 
-          duration: 0.5, 
-          ease: 'power2.out',
-          onComplete: () => {
-            gsap.to(answer, {
-              boxShadow: '0 0 15px rgba(255, 0, 0, 0.5)',
+          boxShadow: "0 6px 20px rgba(255, 0, 0, 0.3)", 
+          duration: 0.3 
+        }));
+      });
+      document.querySelectorAll('.benefit-card-vsu').forEach(card => {
+        card.addEventListener('mouseenter', () => gsap.to(card, { 
+          scale: 1.05, 
+          boxShadow: "0 12px 30px rgba(255, 0, 0, 0.7), 0 0 10px rgba(255, 0, 0, 0.4)", 
+          duration: 0.3 
+        }));
+        card.addEventListener('mouseleave', () => gsap.to(card, { 
+          scale: 1, 
+          boxShadow: "0 6px 20px rgba(255, 0, 0, 0.3)", 
+          duration: 0.3 
+        }));
+      });
+      document.querySelectorAll('.submit-button, .main-button, .nav-button, .social-icon, .apply-button, .logo img').forEach(element => {
+        element.addEventListener('mouseenter', () => gsap.to(element, { scale: 1.05, duration: 0.2, ease: "pulse" }));
+        element.addEventListener('mouseleave', () => gsap.to(element, { scale: 1, duration: 0.2 }));
+      });
+      document.querySelectorAll('.faq-button').forEach(button => {
+        button.style.transition = 'transform 0.3s ease, box-shadow 0.3s ease';
+        button.style.cursor = 'pointer';
+        button.addEventListener('click', () => {
+          const answer = button.nextElementSibling;
+          const isOpen = !answer.classList.contains('hidden');
+          answer.classList.toggle('hidden');
+          button.setAttribute('aria-expanded', !isOpen);
+          if (!isOpen) {
+            gsap.fromTo(
+              answer,
+              { height: 0, opacity: 0, scale: 0.95 },
+              { 
+                height: 'auto', 
+                opacity: 1, 
+                scale: 1, 
+                duration: 0.5, 
+                ease: 'power2.out',
+                onComplete: () => {
+                  gsap.to(answer, {
+                    boxShadow: '0 0 15px rgba(255, 0, 0, 0.5)',
+                    duration: 0.3,
+                    ease: 'power1.out'
+                  });
+                }
+              }
+            );
+            gsap.to(button, {
+              scale: 1.05,
+              boxShadow: '0 0 15px rgba(255, 0, 0, 0.7)',
               duration: 0.3,
-              ease: 'power1.out'
+              ease: 'power2.out',
+              yoyo: true,
+              repeat: 1
+            });
+          } else {
+            gsap.to(answer, {
+              height: 0,
+              opacity: 0,
+              scale: 0.95,
+              duration: 0.3,
+              ease: 'power2.in',
+              onComplete: () => {
+                answer.style.boxShadow = 'none';
+              }
+            });
+            gsap.to(button, {
+              scale: 1,
+              boxShadow: '0 0 5px rgba(255, 0, 0, 0.3)',
+              duration: 0.3,
+              ease: 'power2.out'
             });
           }
-        }
-      );
-      gsap.to(button, {
-        scale: 1.05,
-        boxShadow: '0 0 15px rgba(255, 0, 0, 0.7)',
-        duration: 0.3,
-        ease: 'power2.out',
-        yoyo: true,
-        repeat: 1
+        });
+        button.addEventListener('mouseenter', () => {
+          gsap.to(button, {
+            boxShadow: '0 0 20px rgba(255, 0, 0, 0.9)',
+            scale: 1.03,
+            duration: 0.3,
+            ease: 'power2.out'
+          });
+        });
+        button.addEventListener('mouseleave', () => {
+          gsap.to(button, {
+            boxShadow: '0 0 5px rgba(255, 0, 0, 0.3)',
+            scale: 1,
+            duration: 0.3,
+            ease: 'power2.out'
+          });
+        });
       });
-    } else {
-      gsap.to(answer, {
-        height: 0,
-        opacity: 0,
-        scale: 0.95,
-        duration: 0.3,
-        ease: 'power2.in',
-        onComplete: () => {
-          answer.style.boxShadow = 'none';
-        }
-      });
-      gsap.to(button, {
-        scale: 1,
-        boxShadow: '0 0 5px rgba(255, 0, 0, 0.3)',
-        duration: 0.3,
-        ease: 'power2.out'
-      });
-    }
-  });
-  button.addEventListener('mouseenter', () => {
-    gsap.to(button, {
-      boxShadow: '0 0 20px rgba(255, 0, 0, 0.9)',
-      scale: 1.03,
-      duration: 0.3,
-      ease: 'power2.out'
-    });
-  });
-  button.addEventListener('mouseleave', () => {
-    gsap.to(button, {
-      boxShadow: '0 0 5px rgba(255, 0, 0, 0.3)',
-      scale: 1,
-      duration: 0.3,
-      ease: 'power2.out'
-    });
-  });
-});
-
       const inputs = document.querySelectorAll('#apply-form input');
       inputs.forEach(input => {
         input.addEventListener('input', () => {
@@ -1094,7 +1122,7 @@ document.querySelectorAll('.faq-button').forEach(button => {
           alert('Ошибка: ' + error.message);
         }
       });
-      document.getElementById('instagram-icon').addEventListener('click', (e) => {
+      document.getElementById('instagram-icon1').addEventListener('click', (e) => {
         e.preventDefault();
         document.getElementById('modal').classList.remove('hidden');
         document.body.classList.add('modal-open');
