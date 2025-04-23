@@ -33,6 +33,13 @@
   </script>
   <script async src="https://www.googletagmanager.com/gtag/js?id=AW-16993371247"></script>
   <script>
+      window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-CPKX9M6STW');
+  </script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-16993371247"></script>
+  <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
@@ -274,6 +281,21 @@
     }
     .benefit-card-vsu svg {
       fill: #FF0000 !important;
+    }
+    /* Добавленные стили для пульсации */
+    #instagram-icon1 {
+      animation: pulsate 1s infinite ease-in-out;
+    }
+    @keyframes pulsate {
+      0% {
+        box-shadow: 0 0 15px 10px rgba(255, 255, 255, 0.4);
+      }
+      50% {
+        box-shadow: 0 0 30px 20px rgba(255, 255, 255, 0.7);
+      }
+      100% {
+        box-shadow: 0 0 15px 10px rgba(255, 255, 255, 0.4);
+      }
     }
   </style>
 </head>
