@@ -86,7 +86,7 @@ app.post('/submit-phone', (req, res) => {
     return res.status(400).json({ error: 'Номер телефона должен начинаться с +38 и содержать ровно 12 цифр (например, +380 XX XXX XX XX)' });
   }
   const message = `
-    Владос братишка перезвони этому уюбку в течении 30 мин. :
+    Перезвони этому уюбку в течении 30 мин. :
     Телефон: ${phone}
     Дата: ${new Date().toLocaleString('ru-RU')}
   `;
